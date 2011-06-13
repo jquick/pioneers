@@ -1,0 +1,23 @@
+ - If the trade page is already shown, and the player initiating the
+   trade asks for new quotes, it's easy to oversee the changed trade
+   parameters in the top line. This should be made clearer somehow,
+   e.g. by a beep and/or a note in the messages window.
+
+ - During a setup phase, the client allowed the player to place a road
+   nearly everywhere (at least the road cursor was visible). Should
+   try to reproduce this and find the cause. Hint: The settlement was
+   built first and was on the coast.
+
+ - The meta server should be somehow configurable to:
+    - start only a certain max. number of servers on the local machine
+    - if this number is reached, start servers on other machines
+      (maybe with a proxy meta server running there, or via ssh)
+      [Done]
+    - be able to restrict access in some forms, maybe based on host
+      name and/or IP, and permission to request running server data
+      and start new servers
+
+ - Maybe implement ranking of players somehow: In a user's home dir,
+   the client could record how often this player won a game, was
+   second (point-wise), and so on... The server could collect these
+   data on game start, update it at the end and show some statistics.

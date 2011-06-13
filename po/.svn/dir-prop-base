@@ -1,0 +1,12 @@
+K 10
+svn:ignore
+V 82
+Makefile
+Makefile.in
+Makefile.in.in
+POTFILES
+*.gmo
+stamp-it
+.intltool-merge-cache
+
+END

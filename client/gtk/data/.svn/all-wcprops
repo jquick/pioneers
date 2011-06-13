@@ -1,0 +1,179 @@
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svnroot/pio/!svn/ver/1624/trunk/pioneers/client/gtk/data
+END
+bridge.png
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/pio/!svn/ver/518/trunk/pioneers/client/gtk/data/bridge.png
+END
+develop.png
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/pio/!svn/ver/518/trunk/pioneers/client/gtk/data/develop.png
+END
+pioneers.svg
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/pio/!svn/ver/928/trunk/pioneers/client/gtk/data/pioneers.svg
+END
+trade.png
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/pio/!svn/ver/518/trunk/pioneers/client/gtk/data/trade.png
+END
+grain.png
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/pio/!svn/ver/1054/trunk/pioneers/client/gtk/data/grain.png
+END
+ship.png
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/518/trunk/pioneers/client/gtk/data/ship.png
+END
+pioneers.rc
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/pio/!svn/ver/1103/trunk/pioneers/client/gtk/data/pioneers.rc
+END
+dice.png
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/518/trunk/pioneers/client/gtk/data/dice.png
+END
+style-human-1.png
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/pio/!svn/ver/1296/trunk/pioneers/client/gtk/data/style-human-1.png
+END
+splash.svg
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/pio/!svn/ver/1417/trunk/pioneers/client/gtk/data/splash.svg
+END
+style-human-2.png
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/pio/!svn/ver/1296/trunk/pioneers/client/gtk/data/style-human-2.png
+END
+style-human-3.png
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/pio/!svn/ver/1296/trunk/pioneers/client/gtk/data/style-human-3.png
+END
+style-human.png
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svnroot/pio/!svn/ver/1296/trunk/pioneers/client/gtk/data/style-human.png
+END
+style-human-4.png
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/pio/!svn/ver/1296/trunk/pioneers/client/gtk/data/style-human-4.png
+END
+style-human-5.png
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/pio/!svn/ver/1296/trunk/pioneers/client/gtk/data/style-human-5.png
+END
+city.png
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/518/trunk/pioneers/client/gtk/data/city.png
+END
+style-human-6.png
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/pio/!svn/ver/1296/trunk/pioneers/client/gtk/data/style-human-6.png
+END
+style-human-7.png
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svnroot/pio/!svn/ver/1296/trunk/pioneers/client/gtk/data/style-human-7.png
+END
+finish.png
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/pio/!svn/ver/518/trunk/pioneers/client/gtk/data/finish.png
+END
+wool.png
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/pio/!svn/ver/1054/trunk/pioneers/client/gtk/data/wool.png
+END
+settlement.png
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/pio/!svn/ver/518/trunk/pioneers/client/gtk/data/settlement.png
+END
+road.png
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/518/trunk/pioneers/client/gtk/data/road.png
+END
+ore.png
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/1054/trunk/pioneers/client/gtk/data/ore.png
+END
+lumber.png
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/pio/!svn/ver/1054/trunk/pioneers/client/gtk/data/lumber.png
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/pio/!svn/ver/1380/trunk/pioneers/client/gtk/data/Makefile.am
+END
+city_wall.png
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/pio/!svn/ver/1270/trunk/pioneers/client/gtk/data/city_wall.png
+END
+style-ai.png
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnroot/pio/!svn/ver/1296/trunk/pioneers/client/gtk/data/style-ai.png
+END
+ship_move.png
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnroot/pio/!svn/ver/518/trunk/pioneers/client/gtk/data/ship_move.png
+END
+brick.png
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/pio/!svn/ver/1054/trunk/pioneers/client/gtk/data/brick.png
+END

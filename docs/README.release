@@ -1,0 +1,50 @@
+Before a release:
+* Check whether 'make distcheck' still is ok
+  ./autogen.sh --enable-warnings --enable-deprecation-checks;make clean distcheck 2> err
+* Update the translation templates
+  cd po;make update-po
+* Fix fuzzy translations only due to layout changes
+* Announce that a release is pending, and announce a string freeze
+  The mailing list is pio-develop@lists.sourceforge.net
+* Write an email to the (last) translators
+  The mailing list is pio-i18n@lists.sourceforge.net
+* Check the pioneers.spec.in file
+* Check the pioneers.nsi.in file
+* Check the Debian files
+* Update the manual where needed (including the screenshots)
+
+If the protocol has changed:
+* Check configure.ac, AC_INIT and PROTOCOL_VERSION
+* If the protocol is backwards compatible, adjust the version checks
+* Update server/player.c and server/server.h
+* Update client/gtk/data/splash.svg
+
+At release time:
+* Update (if needed): NEWS, README, README.Cygwin, README.MinGW, TODO
+* Update the line numbers in the translation templates
+  cd po;make update-po
+* Update: client/ai/lobbybot.c
+* Create a tag in the Subversion repository
+  svn copy https://pio.svn.sourceforge.net/svnroot/pio/trunk https://pio.svn.sourceforge.net/svnroot/pio/tags/Build_X_Y_Z
+* Extract a clean copy
+  cd my_build_directory;svn export https://pio.svn.sourceforge.net/svnroot/pio/tags/Build_X_Y_Z
+* Create the tarball
+  ./autogen.sh;make dist
+* Sign the tarball
+  gpg -u packager@foo.net --armor --output tarball.sig --detach-sig tarball.tar.gz
+  (Verify with gpg --verify tarball.sig tarball.tar.gz)
+* Update the version number in configure.ac
+* Upload the tarball to upload.sourceforge.net
+* Update the Files section at SourceForge
+* Write a news item
+* Write an e-mail
+  The lists to use: pio-announce@lists.sourceforge.net, and
+  pio-general@lists.sourceforge.net
+* Update the homepage
+* Update the screenshots page
+* Update the released information at freshmeat.net and tucows
+* Reboot to Windows
+* Download the tarball
+* Create the installer under MinGW
+* Upload the installer to SourceForge
+* Update the released information at gnomefiles

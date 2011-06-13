@@ -1,0 +1,14 @@
+?package(pioneers):needs="X11" section="Games/Board"\
+  title="Pioneers" longtitle="Play a game of Pioneers"\
+  command="/usr/games/pioneers" \
+  icon="/usr/share/pixmaps/pioneers-client.xpm"
+
+?package(pioneers):needs="X11" section="Games/Board"\
+  title="Pioneers Server" longtitle="Host a game of Pioneers"\
+  command="/usr/games/pioneers-server-gtk"\
+  icon="/usr/share/pixmaps/pioneers-server.xpm"
+
+?package(pioneers):needs="X11" section="Games/Board"\
+  title="Pioneers Editor" longtitle="Edit a map for Pioneers"\
+  command="/usr/games/pioneers-editor"\
+  icon="/usr/share/pixmaps/pioneers-editor.xpm"

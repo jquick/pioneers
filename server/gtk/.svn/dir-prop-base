@@ -1,0 +1,11 @@
+K 10
+svn:ignore
+V 100
+.dirstamp
+.deps
+pioneers-server.png
+pioneers-server.ico
+pioneers-server.res
+pioneers-server.desktop
+
+END

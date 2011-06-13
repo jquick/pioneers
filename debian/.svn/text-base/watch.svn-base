@@ -1,0 +1,5 @@
+# format version number, currently 3; this line is compulsory!
+version=3
+
+# Pioneers is at SourceForge
+http://sf.net/pio/pioneers-(.*)\.tar\.gz

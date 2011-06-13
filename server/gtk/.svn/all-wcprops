@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svnroot/pio/!svn/ver/1636/trunk/pioneers/server/gtk
+END
+main.c
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/pio/!svn/ver/1636/trunk/pioneers/server/gtk/main.c
+END
+pioneers-server.desktop.in
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/pio/!svn/ver/1380/trunk/pioneers/server/gtk/pioneers-server.desktop.in
+END
+pioneers-server.svg
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/pio/!svn/ver/928/trunk/pioneers/server/gtk/pioneers-server.svg
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1556/trunk/pioneers/server/gtk/Makefile.am
+END
+pioneers-server.rc
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/pio/!svn/ver/1227/trunk/pioneers/server/gtk/pioneers-server.rc
+END

@@ -1,0 +1,245 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svnroot/pio/!svn/ver/1658/trunk/pioneers/client/gtk
+END
+interface.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1548/trunk/pioneers/client/gtk/interface.c
+END
+histogram.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/960/trunk/pioneers/client/gtk/histogram.h
+END
+plenty.c
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/pio/!svn/ver/1601/trunk/pioneers/client/gtk/plenty.c
+END
+admin-gtk.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1464/trunk/pioneers/client/gtk/admin-gtk.c
+END
+resource-table.c
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/pio/!svn/ver/1593/trunk/pioneers/client/gtk/resource-table.c
+END
+callbacks.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1658/trunk/pioneers/client/gtk/callbacks.c
+END
+frontend.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/1270/trunk/pioneers/client/gtk/frontend.c
+END
+name.c
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/pio/!svn/ver/1658/trunk/pioneers/client/gtk/name.c
+END
+resource-table.h
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/pio/!svn/ver/1452/trunk/pioneers/client/gtk/resource-table.h
+END
+frontend.h
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/1658/trunk/pioneers/client/gtk/frontend.h
+END
+gold.c
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/pio/!svn/ver/1612/trunk/pioneers/client/gtk/gold.c
+END
+resource.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/1650/trunk/pioneers/client/gtk/resource.c
+END
+avahi.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1563/trunk/pioneers/client/gtk/avahi.c
+END
+player.c
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/pio/!svn/ver/1612/trunk/pioneers/client/gtk/player.c
+END
+quote.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1593/trunk/pioneers/client/gtk/quote.c
+END
+avahi.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1556/trunk/pioneers/client/gtk/avahi.h
+END
+legend.c
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/pio/!svn/ver/1650/trunk/pioneers/client/gtk/legend.c
+END
+develop.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pio/!svn/ver/1593/trunk/pioneers/client/gtk/develop.c
+END
+shapes.dia
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pio/!svn/ver/518/trunk/pioneers/client/gtk/shapes.dia
+END
+trade.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1548/trunk/pioneers/client/gtk/trade.c
+END
+audio.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1394/trunk/pioneers/client/gtk/audio.c
+END
+quote-view.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/1645/trunk/pioneers/client/gtk/quote-view.c
+END
+gameover.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/1640/trunk/pioneers/client/gtk/gameover.c
+END
+audio.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1394/trunk/pioneers/client/gtk/audio.h
+END
+avahi-browser.c
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/pio/!svn/ver/1593/trunk/pioneers/client/gtk/avahi-browser.c
+END
+discard.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pio/!svn/ver/1612/trunk/pioneers/client/gtk/discard.c
+END
+quote-view.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/1452/trunk/pioneers/client/gtk/quote-view.h
+END
+monopoly.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/1593/trunk/pioneers/client/gtk/monopoly.c
+END
+settingscreen.c
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/pio/!svn/ver/1593/trunk/pioneers/client/gtk/settingscreen.c
+END
+avahi-browser.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/pio/!svn/ver/1558/trunk/pioneers/client/gtk/avahi-browser.h
+END
+chat.c
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/pio/!svn/ver/1593/trunk/pioneers/client/gtk/chat.c
+END
+pioneers.desktop.in
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnroot/pio/!svn/ver/1380/trunk/pioneers/client/gtk/pioneers.desktop.in
+END
+state.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1152/trunk/pioneers/client/gtk/state.c
+END
+offline.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pio/!svn/ver/1658/trunk/pioneers/client/gtk/offline.c
+END
+gui.c
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/pio/!svn/ver/1656/trunk/pioneers/client/gtk/gui.c
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1658/trunk/pioneers/client/gtk/Makefile.am
+END
+identity.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/1653/trunk/pioneers/client/gtk/identity.c
+END
+gui.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/pio/!svn/ver/1650/trunk/pioneers/client/gtk/gui.h
+END
+connect.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pio/!svn/ver/1658/trunk/pioneers/client/gtk/connect.c
+END
+histogram.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1651/trunk/pioneers/client/gtk/histogram.c
+END

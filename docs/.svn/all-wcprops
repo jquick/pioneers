@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svnroot/pio/!svn/ver/1630/trunk/pioneers/docs
+END
+README.states
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1127/trunk/pioneers/docs/README.states
+END
+pioneers-server-gtk.6
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/pio/!svn/ver/1436/trunk/pioneers/docs/pioneers-server-gtk.6
+END
+pioneers-meta-server.6
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/pio/!svn/ver/1465/trunk/pioneers/docs/pioneers-meta-server.6
+END
+pioneersai.6
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/pio/!svn/ver/851/trunk/pioneers/docs/pioneersai.6
+END
+README.game
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/pio/!svn/ver/1292/trunk/pioneers/docs/README.game
+END
+client_states.fig
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1127/trunk/pioneers/docs/client_states.fig
+END
+pioneers.6
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svnroot/pio/!svn/ver/1463/trunk/pioneers/docs/pioneers.6
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/pio/!svn/ver/1442/trunk/pioneers/docs/Makefile.am
+END
+README.release
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/pio/!svn/ver/1630/trunk/pioneers/docs/README.release
+END
+pioneers-editor.6
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1442/trunk/pioneers/docs/pioneers-editor.6
+END
+pioneers-server-console.6
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnroot/pio/!svn/ver/1436/trunk/pioneers/docs/pioneers-server-console.6
+END
+server_states.fig
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/446/trunk/pioneers/docs/server_states.fig
+END
+server_states_trade.dot
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnroot/pio/!svn/ver/1414/trunk/pioneers/docs/server_states_trade.dot
+END

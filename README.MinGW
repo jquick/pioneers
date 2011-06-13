@@ -1,0 +1,70 @@
+Short guide to build Pioneers in MinGW
+
+NOTE: The package list is for Pioneers 0.9. It should be updated...
+
+Install a minimal setup
+=======================
+* The required files can be found at the following locations:
+
+  http://www.gimp.org/~tml/gimp/win32/downloads.html
+
+glib-dev-2.6.6.zip
+gtk+-dev-2.6.9.zip
+pango-dev-1.8.2.zip
+atk-dev-1.9.0.zip
+pkgconfig-0.15.zip
+libiconv-1.9.1-bin.woe32.zip
+gettext-dev-0.14.5.zip
+
+  http://sourceforge.net/project/showfiles.php?group_id=2435
+  
+mingw-runtime-3.8.tar.gz
+w32api-3.3.tar.gz
+binutils-2.15.91-20040904-1.tar.gz
+gcc-core-3.4.2-20040616-1.tar.gz
+gcc-g++-3.4.2-20040916-1.tar.gz
+MSYS-1.0.10.exe
+
+  http://sourceforge.net/project/showfiles.php?group_id=235&package_id=119698
+
+gtk-runtime-2.6.9-rev-a.exe
+
+* Unzip and untar all files to c:\mingw
+* Install MSYS, and give 'c:/mingw' as path for MinGW
+* Install the GTK+ runtime
+
+If any of the files cannot be found, a newer version will probably work too.
+
+Install Pioneers
+================
+1) Download the source tarball to your home directory
+   (c:\msys\1.0\home\%username%)
+2) Start the MSYS shell
+3) Expand the source tarball
+   (tar xvzf pioneers-%versionnumber%.tar.gz)
+4) Enter the source directory (cd pioneers-%versionnumber%)
+5) Modify the file configure (to work around older versions of Perl):
+   - replace the number 5.8.1 by 3.8.1 in the line
+     $INTLTOOL_PERL -e "use 5.8.1;" > /dev/null 2>&1
+   - remove the no-xml in the line
+     if test "x" != "xno-xml"; then
+6) Configure, build and install
+     ./configure
+     make
+     make install
+     make install-MinGW
+
+Start Pioneers
+==============
+a) Start Pioneers by double clicking on the executable
+    (found in C:\msys\1.0\usr\local)
+b) or start pioneers.exe from /usr/local in the shell
+
+Known limitations
+=================
+* The online help is not built
+* The server and metaserver are not built
+
+Roland Clobus
+2005-11-15 (Pioneers-0.9.35)
+2011-01-24 (Pioneers-0.12.4) (Updated the build instructions)

@@ -1,0 +1,53 @@
+This package was first debianized by Dave Cole dave@dccs.com.au on
+Sat,  8 May 1999 20:35:36 +1000.
+
+It was downloaded from 
+  http://sourceforge.net/project/showfiles.php?group_id=5095
+
+Although the debian packaging is not in the release tarball, it is part of the
+upstream source, and is covered by the same license.  Copyright holders of the
+packaging are:
+Dave Cole
+Andy Heroff
+Jeff Breidenbach
+Bas Wijnen
+
+This software is copyright (c) 2000-2009 by:
+Dave Cole <dave@dccs.com.au>
+Andy Heroff <aheroff@mediaone.net>
+Roman Hodek <roman@hodek.net>
+Dan Egnor <egnor@ofb.net>
+Steve Langasek <vorlon@dodds.net>
+Bibek Sahu <scorpio@dodds.net>
+Roderick Schertler <roderick@argon.org>
+Jeff Breidenbach <jab@debian.org>
+David Fallon <davef@tetsubo.com>
+Matt Waggoner <matt@waggoner.com>
+Geoff Hanson <gwhizz@usa.net>
+Bas Wijnen <shevek@fmf.nl>
+Roland Clobus <rclobus@bigfoot.com>
+Brian Wellington <bwelling@xbill.org>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+
+On Debian systems, the complete text of the GNU General Public
+License can be found in the following files:
+Version 2: /usr/share/common-licenses/GPL-2
+Version 3: /usr/share/common-licenses/GPL-3
+The latest version: /usr/share/common-licenses/GPL
+
+Note that you can choose any version later than 3 as well once they are
+released.  The above links are only provided for your convenience, not to
+suggest an complete list.

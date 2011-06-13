@@ -1,0 +1,155 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svnroot/pio/!svn/ver/1657/trunk/pioneers/common
+END
+buildrec.h
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/pio/!svn/ver/1377/trunk/pioneers/common/buildrec.h
+END
+network.h
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/pio/!svn/ver/1458/trunk/pioneers/common/network.h
+END
+notifying-string.gob
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/pio/!svn/ver/1580/trunk/pioneers/common/notifying-string.gob
+END
+driver.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/pio/!svn/ver/960/trunk/pioneers/common/driver.h
+END
+cards.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/pio/!svn/ver/1508/trunk/pioneers/common/cards.h
+END
+map_query.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1377/trunk/pioneers/common/map_query.c
+END
+cost.c
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/pio/!svn/ver/1270/trunk/pioneers/common/cost.c
+END
+game.c
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/pio/!svn/ver/1635/trunk/pioneers/common/game.c
+END
+quoteinfo.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1052/trunk/pioneers/common/quoteinfo.c
+END
+cost.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/pio/!svn/ver/1270/trunk/pioneers/common/cost.h
+END
+map.c
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/pio/!svn/ver/1657/trunk/pioneers/common/map.c
+END
+game.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/pio/!svn/ver/1635/trunk/pioneers/common/game.h
+END
+quoteinfo.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1052/trunk/pioneers/common/quoteinfo.h
+END
+state.c
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/pio/!svn/ver/1593/trunk/pioneers/common/state.c
+END
+log.c
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/pio/!svn/ver/1593/trunk/pioneers/common/log.c
+END
+map.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/pio/!svn/ver/1657/trunk/pioneers/common/map.h
+END
+common_glib.c
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/pio/!svn/ver/960/trunk/pioneers/common/common_glib.c
+END
+state.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/pio/!svn/ver/1587/trunk/pioneers/common/state.h
+END
+log.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svnroot/pio/!svn/ver/1061/trunk/pioneers/common/log.h
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1617/trunk/pioneers/common/Makefile.am
+END
+buildrec.c
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/pio/!svn/ver/1377/trunk/pioneers/common/buildrec.c
+END
+network.c
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svnroot/pio/!svn/ver/1564/trunk/pioneers/common/network.c
+END
+common_glib.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/pio/!svn/ver/960/trunk/pioneers/common/common_glib.h
+END
+driver.c
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/pio/!svn/ver/960/trunk/pioneers/common/driver.c
+END
+cards.c
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svnroot/pio/!svn/ver/1593/trunk/pioneers/common/cards.c
+END

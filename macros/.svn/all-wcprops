@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svnroot/pio/!svn/ver/1625/trunk/pioneers/macros
+END
+type_socklen_t.m4
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/pio/!svn/ver/1625/trunk/pioneers/macros/type_socklen_t.m4
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1102/trunk/pioneers/macros/Makefile.am
+END
+gnome-autogen.sh
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/1447/trunk/pioneers/macros/gnome-autogen.sh
+END

@@ -1,0 +1,15 @@
+K 10
+svn:ignore
+V 131
+*.substvars
+*.debhelper
+pioneers*.log
+pioneers
+pioneers-console
+pioneers-data
+pioneers-console-data
+pioneers-meta-server
+files
+tmp
+
+END

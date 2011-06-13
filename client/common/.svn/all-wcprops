@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/pio/!svn/ver/1658/trunk/pioneers/client/common
+END
+client.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1658/trunk/pioneers/client/common/client.c
+END
+develop.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/1593/trunk/pioneers/client/common/develop.c
+END
+build.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/1377/trunk/pioneers/client/common/build.c
+END
+setup.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/1377/trunk/pioneers/client/common/setup.c
+END
+client.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1658/trunk/pioneers/client/common/client.h
+END
+stock.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/1270/trunk/pioneers/client/common/stock.c
+END
+main.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pio/!svn/ver/1391/trunk/pioneers/client/common/main.c
+END
+resource.c
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/pio/!svn/ver/1120/trunk/pioneers/client/common/resource.c
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/pio/!svn/ver/1391/trunk/pioneers/client/common/Makefile.am
+END
+turn.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pio/!svn/ver/1377/trunk/pioneers/client/common/turn.c
+END
+robber.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1377/trunk/pioneers/client/common/robber.c
+END
+callback.c
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/pio/!svn/ver/1658/trunk/pioneers/client/common/callback.c
+END
+player.c
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1644/trunk/pioneers/client/common/player.c
+END

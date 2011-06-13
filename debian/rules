@@ -1,0 +1,97 @@
+#!/usr/bin/make -f
+# Based on sample debian/rules by Joey Hess.
+
+# Uncomment this to turn on verbose mode. 
+#export DH_VERBOSE=1
+
+CFLAGS += -Wall
+
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+	CFLAGS += -O0
+else
+	CFLAGS += -O2
+endif
+
+ifneq (,$(findstring debug,$(DEB_BUILD_OPTIONS)))
+	CONFIGUREFLAGS += --enable-maintainer-mode
+endif
+
+DEB_HOST_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+
+ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
+	CONFIGUREFLAGS += --build $(DEB_HOST_GNU_TYPE)
+else
+	CONFIGUREFLAGS += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
+endif
+
+
+AUTO_JUNK = config.guess config.sub configure depcomp INSTALL acinclude.m4 \
+        install-sh ltmain.sh missing mkinstalldirs aclocal.m4 config.h.in \
+	compile
+
+build: build-stamp
+build-stamp:
+	dh_testdir
+	if diff debian/copyright AUTHORS | grep ^'>' >&2 ; then \
+		echo >&2 "The above lines are present in the AUTHORS file, but not in debian/copyright.  Please fix this" ; \
+		exit 1 ; \
+	fi
+	# Commands to compile the package.
+	# --enable-maintainer-mode is implicit for autogen.sh
+	# So don't run configure from it.
+	NOCONFIGURE=true ./autogen.sh
+	./configure --prefix=/usr --bindir=/usr/games --mandir=/usr/share/man \
+		$(CONFIGUREFLAGS) --enable-warnings \
+		CFLAGS="$(CFLAGS)" --disable-dependency-tracking
+	$(MAKE) $(LIBFLAGS)
+	rsvg --width 32 --height 32 client/gtk/data/pioneers.svg pioneers32.png
+	convert pioneers32.png pioneers.xpm
+	rm pioneers32.png
+	rsvg --width 32 --height 32 server/gtk/pioneers-server.svg pioneers-server32.png
+	convert pioneers-server32.png pioneers-server.xpm
+	rm pioneers-server32.png
+	rsvg --width 32 --height 32 editor/gtk/pioneers-editor.svg pioneers-editor32.png
+	convert pioneers-editor32.png pioneers-editor.xpm
+	rm pioneers-editor32.png
+	touch build-stamp
+
+clean:
+	# Commands to clean up after the build process.
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp install-stamp pioneers.xpm pioneers-server.xpm pioneers-editor.xpm debian/po/templates.pot
+ifneq ($(wildcard Makefile),)
+	$(MAKE) maintainer-clean
+endif
+ifneq ($(wildcard ${AUTO_JUNK}),)
+	rm $(wildcard ${AUTO_JUNK})
+endif
+	find . -name Makefile.in -exec rm {} \;
+	dh clean
+	# Translators insist on having templates.pot in the source package,
+	# so it must be created during clean.
+	debconf-updatepo
+
+install: install-stamp
+install-stamp: build-stamp
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	# Commands to install the package into debian/tmp.
+	$(MAKE) DESTDIR=$(CURDIR)/debian/tmp install $(LIBFLAGS)
+	install -D -m644 server/*.game debian/tmp/usr/share/games/pioneers
+	install -D -m644 pioneers.xpm debian/tmp/usr/share/pixmaps/pioneers-client.xpm
+	install -D -m644 pioneers-server.xpm debian/tmp/usr/share/pixmaps/pioneers-server.xpm
+	install -D -m644 pioneers-editor.xpm debian/tmp/usr/share/pixmaps/pioneers-editor.xpm
+	dh_install --fail-missing -X usr/share/man/man6/
+	dh_installman
+	dh_installdocs -A README
+	touch install-stamp
+
+# Build architecture-independent files here.
+binary-indep binary-arch binary: build install
+	dh $@
+
+.PHONY: build clean binary-indep binary-arch binary install

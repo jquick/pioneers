@@ -1,0 +1,3674 @@
+# Galician translation for Pioneers
+# Copyright (c) 2009 Rosetta Contributors and Canonical Ltd 2009
+# This file is distributed under the same license as the Pioneers package.
+# Indalecio Freiría Santos <ifreiria@gmail.com>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Pioneers 0.12.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-01-26 11:25+0100\n"
+"PO-Revision-Date: 2010-04-05 08:14+0000\n"
+"Last-Translator: Indalecio Freiría Santos <ifreiria@gmail.com>\n"
+"Language-Team: Galician <gl@li.org>\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-04-06 06:08+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+"Plural-Forms: nplurals=2; plural=(n!=1)\n"
+
+#. Commandline pioneersai: server
+#: ../client/ai/ai.c:68
+msgid "Server Host"
+msgstr "Servidor"
+
+#. Commandline pioneersai: port
+#: ../client/ai/ai.c:71
+msgid "Server Port"
+msgstr "Porto do Servidor"
+
+#. Commandline pioneersai: name
+#: ../client/ai/ai.c:74
+msgid "Computer name (mandatory)"
+msgstr "Nome do computador (requerido)"
+
+#. Commandline pioneersai: time
+#: ../client/ai/ai.c:77
+msgid "Time to wait between turns (in milliseconds)"
+msgstr "Tempo de espera entre quendas (en milisegundos)"
+
+#. Commandline pioneersai: chat-free
+#: ../client/ai/ai.c:80
+msgid "Stop computer player from talking"
+msgstr "Parar de falar co xogador do computador"
+
+#. Commandline pioneersai: algorithm
+#: ../client/ai/ai.c:83
+msgid "Type of computer player"
+msgstr "Tipo de xogador do computador"
+
+#. Commandline option of ai: enable debug logging
+#. Commandline option of client: enable debug logging
+#. Commandline option of meta server: enable debug logging
+#. Commandline option of server-gtk: enable debug logging
+#. Commandline option of server: enable debug logging
+#: ../client/ai/ai.c:86 ../client/gtk/offline.c:66 ../meta-server/main.c:1085
+#: ../server/gtk/main.c:1000 ../server/main.c:145
+msgid "Enable debug messages"
+msgstr "Activar as mensaxes depuradas"
+
+#. Commandline option of ai: version
+#. Commandline option of client: version
+#. Commandline option of editor: version
+#. Commandline option of meta server: version
+#. Commandline option of server-gtk: version
+#. Commandline option of server-console: version
+#: ../client/ai/ai.c:89 ../client/gtk/offline.c:69 ../editor/gtk/editor.c:1150
+#: ../meta-server/main.c:1091 ../server/gtk/main.c:1003 ../server/main.c:100
+msgid "Show version information"
+msgstr "Amosar información da versión"
+
+#. Long description in the commandline for pioneersai: help
+#: ../client/ai/ai.c:100
+msgid "- Computer player for Pioneers"
+msgstr "Xogador do computador para Pioneiros"
+
+#: ../client/ai/ai.c:110 ../client/gtk/offline.c:177
+#: ../editor/gtk/editor.c:1190 ../meta-server/main.c:1121
+#: ../server/gtk/main.c:1053 ../server/main.c:208
+#, c-format
+msgid "Pioneers version:"
+msgstr "Versión de Pioneiros:"
+
+#. ai commandline error
+#: ../client/ai/ai.c:130
+#, c-format
+msgid "A name must be provided.\n"
+msgstr "Debes de prover un nome.\n"
+
+#: ../client/ai/ai.c:144
+#, c-format
+msgid "Type of computer player: %s\n"
+msgstr "Tipo de xogador do computador:%s\n"
+
+#: ../client/ai/ai.c:173
+msgid "The game is already full. I'm leaving."
+msgstr "O xogo xa está cheo. Voume."
+
+#: ../client/ai/greedy.c:959
+msgid "No settlements in stock to use for setup"
+msgstr "Non hai asentamentos nas reservas para usar na montaxe"
+
+#: ../client/ai/greedy.c:966
+msgid "There is no place to setup a settlement"
+msgstr "Non hai sitio para instalar un asentamento"
+
+#: ../client/ai/greedy.c:990
+msgid "No roads in stock to use for setup"
+msgstr "Non hai camiños nas reservas para usar na montaxe"
+
+#: ../client/ai/greedy.c:1007
+msgid "There is no place to setup a road"
+msgstr "Non hai sitio para instalar un camiño"
+
+#. AI chat at the start of the turn
+#: ../client/ai/greedy.c:1311
+msgid "Ok, let's go!"
+msgstr "De acordo, vamos!"
+
+#. AI chat at the start of the turn
+#: ../client/ai/greedy.c:1313
+msgid "I'll beat you all now! ;)"
+msgstr "Agora vencereinos a todos"
+
+#. AI chat at the start of the turn
+#: ../client/ai/greedy.c:1315
+msgid "Now for another try..."
+msgstr "Intentalo outra vez..."
+
+#. AI chat when one resource is received
+#: ../client/ai/greedy.c:1320
+msgid "At least I get something..."
+msgstr "Polo menos obtiven algo"
+
+#. AI chat when one resource is received
+#: ../client/ai/greedy.c:1322
+msgid "One is better than none..."
+msgstr "Un é mellor que nada..."
+
+#. AI chat when more than one resource is received
+#: ../client/ai/greedy.c:1327
+msgid "Wow!"
+msgstr "Wow!"
+
+#. AI chat when more than one resource is received
+#: ../client/ai/greedy.c:1329
+msgid "Ey, I'm becoming rich ;)"
+msgstr "Ei, estoume enriquecendo ;)"
+
+#. AI chat when more than one resource is received
+#: ../client/ai/greedy.c:1331
+msgid "This is really a good year!"
+msgstr "Este é realmente un bo ano!"
+
+#. AI chat when other players receive more than one resource
+#: ../client/ai/greedy.c:1336
+msgid "You really don't deserve that much!"
+msgstr "Realmente non mereces tanto!"
+
+#. AI chat when other players receive more than one resource
+#: ../client/ai/greedy.c:1338
+msgid "You don't know what to do with that many resources ;)"
+msgstr "Non sabes que facer con tantos recursos ;)"
+
+#. AI chat when other players receive more than one resource
+#: ../client/ai/greedy.c:1340
+msgid "Ey, wait for my robber and lose all this again!"
+msgstr "Ei, espera ao meu ladrón e perde todo de novo!"
+
+#. AI chat when it moves the robber
+#: ../client/ai/greedy.c:1345
+msgid "Hehe!"
+msgstr "Jeje!"
+
+#. AI chat when it moves the robber
+#: ../client/ai/greedy.c:1347
+msgid "Go, robber, go!"
+msgstr "Vai ladrón, vai!"
+
+#. AI chat when the robber is moved to it
+#: ../client/ai/greedy.c:1352
+msgid "You bastard!"
+msgstr "Cabrón!"
+
+#. AI chat when the robber is moved to it
+#: ../client/ai/greedy.c:1354
+msgid "Can't you move that robber somewhere else?!"
+msgstr "Non podes mover ese ladrón a outra parte?"
+
+#. AI chat when the robber is moved to it
+#: ../client/ai/greedy.c:1356
+msgid "Why always me??"
+msgstr "Por que sempre eu?"
+
+#. AI chat when it must discard resources
+#: ../client/ai/greedy.c:1361
+msgid "Oh no!"
+msgstr "Non!"
+
+#. AI chat when it must discard resources
+#: ../client/ai/greedy.c:1363
+msgid "Grrr!"
+msgstr "Grr!"
+
+#. AI chat when it must discard resources
+#: ../client/ai/greedy.c:1365
+msgid "Who the hell rolled that 7??"
+msgstr "Quen demo tirou ese 7?"
+
+#. AI chat when it must discard resources
+#: ../client/ai/greedy.c:1367
+msgid "Why always me?!?"
+msgstr "Por que sempre eu?"
+
+#. AI chat when other players must discard
+#: ../client/ai/greedy.c:1372
+msgid "Say good bye to your cards... :)"
+msgstr "Dille adeus ás túas cartas... :)"
+
+#. AI chat when other players must discard
+#: ../client/ai/greedy.c:1374
+msgid "*evilgrin*"
+msgstr "*Sorriso maligno*"
+
+#. AI chat when other players must discard
+#: ../client/ai/greedy.c:1376
+msgid "/me says farewell to your cards ;)"
+msgstr "/dime adeus ás túas cartas ;)"
+
+#. AI chat when other players must discard
+#: ../client/ai/greedy.c:1378
+msgid "That's the price for being rich... :)"
+msgstr "Ese é o prezo de ser rico... :)"
+
+#. AI chat when someone steals from it
+#: ../client/ai/greedy.c:1383
+msgid "Ey! Where's that card gone?"
+msgstr "Ei!, a onde foi esa carta?"
+
+#. AI chat when someone steals from it
+#: ../client/ai/greedy.c:1385
+msgid "Thieves! Thieves!!"
+msgstr "Ladrón, ladrón!"
+
+#. AI chat when someone steals from it
+#: ../client/ai/greedy.c:1387
+msgid "Wait for my revenge..."
+msgstr "Espera polo meu desquite..."
+
+#. AI chat when someone plays the monopoly card
+#: ../client/ai/greedy.c:1392
+msgid "Oh no :("
+msgstr "Non :("
+
+#. AI chat when someone plays the monopoly card
+#: ../client/ai/greedy.c:1394
+msgid "Must this happen NOW??"
+msgstr "Tiña que pasar agora?"
+
+#. AI chat when someone plays the monopoly card
+#: ../client/ai/greedy.c:1396
+msgid "Args"
+msgstr "Args"
+
+#. AI chat when it has the largest army
+#: ../client/ai/greedy.c:1401
+msgid "Hehe, my soldiers rule!"
+msgstr "Je je, mandan os meus soldados"
+
+#. AI chat when another player that the largest army
+#: ../client/ai/greedy.c:1406
+msgid "First robbing us, then grabbing the points..."
+msgstr "Primeiro róubasnos, e logo cóllesnos os puntos..."
+
+#. AI chat when it has the longest road
+#: ../client/ai/greedy.c:1411
+msgid "See that road!"
+msgstr "Mira ese camiño!"
+
+#. AI chat when another player has the longest road
+#: ../client/ai/greedy.c:1416
+msgid "Pf, you won't win with roads alone..."
+msgstr "Pff, non gañarás só con camiños..."
+
+#: ../client/ai/greedy.c:1904
+msgid "Rejecting trade.\n"
+msgstr "Rexeitando o negocio.\n"
+
+#: ../client/ai/greedy.c:2003
+#, c-format
+msgid "Received error from server: %s.  Quitting\n"
+msgstr "Erro recibido do servidor: %s. Saíndo\n"
+
+#. AI chat when it wins
+#: ../client/ai/greedy.c:2015
+msgid "Yippie!"
+msgstr "Viva!"
+
+#. AI chat when another player wins
+#: ../client/ai/greedy.c:2018
+msgid "My congratulations"
+msgstr "Os meus parabéns"
+
+#. Translators: don't translate '/help'
+#: ../client/ai/lobbybot.c:80
+msgid ""
+"Hello, welcome to the lobby. I am a simple robot. Type '/help' in the chat "
+"to see the list of commands I know."
+msgstr ""
+"Ola, benvido ao salón. Son un simple robot. Escriba '/help' na sala de "
+"conversa para ver a lista de ordes que coñezo."
+
+#. Translators: don't translate '/help'
+#: ../client/ai/lobbybot.c:107
+msgid "'/help' shows this message again"
+msgstr "'/help' amosa esta mensaxe de novo"
+
+#. Translators: don't translate '/why'
+#: ../client/ai/lobbybot.c:110
+msgid "'/why' explains the purpose of this strange board layout"
+msgstr "'/why' explica o propósito desta estraña presentación do taboleiro"
+
+#. Translators: don't translate '/news'
+#: ../client/ai/lobbybot.c:113
+msgid "'/news' tells the last released version"
+msgstr "'/news' dá cal é a ultima versión que saíu"
+
+#. AI chat that explains '/why'
+#: ../client/ai/lobbybot.c:119
+msgid ""
+"This board is not intended to be a game that can be played. Instead, players "
+"can find eachother here, and decide which board they want to play. Then, one "
+"of the players will host the proposed game by starting a server, and "
+"registers it at the metaserver. The other players can subsequently "
+"disconnect from the lobby, and enter that game."
+msgstr ""
+"Este taboleiro non pretende ser só un xogo que poida ser xogado. En lugar "
+"diso, os xogadores pódense atopar aquí e decidir que taboleiro queren usar. "
+"Entón, un dos xogadores será o anfitrión do xogo proposto iniciando un "
+"servidor e rexistrándoo no Meta-servidor. Os outros xogadores poden "
+"seguidamente saír do salón e entrar ao xogo."
+
+#: ../client/ai/lobbybot.c:130
+msgid "The last released version of Pioneers is"
+msgstr "A versión de Pioneiros máis recente é"
+
+#. The lobbybot leaves when a game is starting
+#: ../client/ai/lobbybot.c:146
+msgid "The game is starting. I'm not needed anymore. Goodbye."
+msgstr "O xogo está comezando. Non me precisan máis. Adeus."
+
+#: ../client/common/client.c:102
+msgid "Waiting"
+msgstr "Agardando"
+
+#: ../client/common/client.c:104 ../client/common/client.c:1318
+msgid "Idle"
+msgstr "Inactivo"
+
+#: ../client/common/client.c:518
+msgid "We have been kicked out of the game.\n"
+msgstr "Fomos expulsados do xogo.\n"
+
+#. Network status: offline
+#: ../client/common/client.c:521 ../client/common/client.c:965
+#: ../client/gtk/gui.c:1485
+msgid "Offline"
+msgstr "Sen conexión"
+
+#: ../client/common/client.c:542
+#, c-format
+msgid "Error (%s): %s\n"
+msgstr "Erro(%s): %s\n"
+
+#: ../client/common/client.c:551 ../client/common/client.c:562
+#, c-format
+msgid "Notice: %s\n"
+msgstr "Noticia: %s\n"
+
+#: ../client/common/client.c:677
+#, c-format
+msgid "%s does not receive any %s, because the bank is empty.\n"
+msgstr "%s non recibe %s, porque o banco está baleiro.\n"
+
+#: ../client/common/client.c:690
+#, c-format
+msgid "%s only receives %s, because the bank didn't have any more.\n"
+msgstr "%s só recibe %s, porque o banco non ten máis.\n"
+
+#: ../client/common/client.c:700
+#, c-format
+msgid "%s receives %s.\n"
+msgstr "%s recibe %s.\n"
+
+#. Year of Plenty
+#: ../client/common/client.c:708 ../client/common/client.c:2665
+#, c-format
+msgid "%s takes %s.\n"
+msgstr "%s toma a %s.\n"
+
+#: ../client/common/client.c:713
+#, c-format
+msgid "%s spent %s.\n"
+msgstr "%s gasta %s.\n"
+
+#: ../client/common/client.c:719
+#, c-format
+msgid "%s is refunded %s.\n"
+msgstr "Reembolsase %2s a %1s.\n"
+
+#: ../client/common/client.c:750
+#, c-format
+msgid "%s discarded %s.\n"
+msgstr "%s descartou %s.\n"
+
+#: ../client/common/client.c:824
+#, c-format
+msgid "%s has won the game with %d victory points!\n"
+msgstr "%s gañou con %d puntos!\n"
+
+#: ../client/common/client.c:923
+msgid "Loading"
+msgstr "Cargando"
+
+#: ../client/common/client.c:966
+msgid "Version mismatch."
+msgstr "Versión incompatíbel."
+
+#: ../client/common/client.c:968
+msgid "Version mismatch. Please make sure client and server are up to date.\n"
+msgstr ""
+"Versión é incompatíbel, Asegúrese de que o cliente e o servidor están "
+"actualizados.\n"
+
+#: ../client/common/client.c:1417
+msgid "Build two settlements, each with a connecting"
+msgstr "Constrúa dous asentamentos, cada un cunha conexión"
+
+#: ../client/common/client.c:1420
+msgid "Build a settlement with a connecting"
+msgstr "Constrúa un asentamento cunha conexión"
+
+#: ../client/common/client.c:1423
+msgid "road"
+msgstr "camiño"
+
+#: ../client/common/client.c:1425
+msgid "bridge"
+msgstr "ponte"
+
+#: ../client/common/client.c:1427
+msgid "ship"
+msgstr "barco"
+
+#: ../client/common/client.c:1435
+msgid " or"
+msgstr " ou"
+
+#: ../client/common/client.c:1496
+msgid "Waiting for your turn."
+msgstr "Esperando quenda."
+
+#: ../client/common/client.c:1548 ../client/gtk/interface.c:753
+msgid "Select the building to steal from."
+msgstr "Elixe o edificio que queres roubar."
+
+#: ../client/common/client.c:1570 ../client/gtk/interface.c:743
+msgid "Select the ship to steal from."
+msgstr "Elixe o barco queres roubar"
+
+#: ../client/common/client.c:1655 ../client/gtk/interface.c:785
+msgid "Place the robber."
+msgstr "Coloca o ladrón."
+
+#: ../client/common/client.c:1705
+msgid "Finish the road building action."
+msgstr "Remata a acción de construción do camiño"
+
+#: ../client/common/client.c:1707
+msgid "Build one road segment."
+msgstr "Construír un tramo do camiño."
+
+#: ../client/common/client.c:1709
+msgid "Build two road segments."
+msgstr "Construír dous tramos do camiño"
+
+#: ../client/common/client.c:1982 ../client/common/client.c:2076
+msgid "It is your turn."
+msgstr "Tócache."
+
+#: ../client/common/client.c:2170
+#, c-format
+msgid "Sorry, %s available.\n"
+msgstr "Sintoo, %s dispoñíbel.\n"
+
+#: ../client/common/client.c:2484
+msgid "The game is over."
+msgstr "Rematou o xogo."
+
+#. This development card is unique
+#: ../client/common/develop.c:66
+#, c-format
+msgid "You bought the %s development card.\n"
+msgstr "Mercaches a carta de desenvolvemento «%s».\n"
+
+#. This development card is not unique
+#: ../client/common/develop.c:72
+#, c-format
+msgid "You bought a %s development card.\n"
+msgstr "Mercaches unha carta de desenvolvemento «%s».\n"
+
+#: ../client/common/develop.c:95
+#, c-format
+msgid "%s bought a development card.\n"
+msgstr "%s mercou unha carta de desenvolvemento.\n"
+
+#: ../client/common/develop.c:114
+#, c-format
+msgid "%s played the %s development card.\n"
+msgstr "%s usou a carta de desenvolvemento «%s».\n"
+
+#: ../client/common/develop.c:119
+#, c-format
+msgid "%s played a %s development card.\n"
+msgstr "%s usou unha carta de desenvolvemento «%s».\n"
+
+#: ../client/common/develop.c:131
+msgid "You have run out of road segments.\n"
+msgstr "Gastaches todos os tramos para o camiño.\n"
+
+#. I get the cards
+#. $1=resources, $2=player that loses resources
+#: ../client/common/develop.c:172
+#, c-format
+msgid "You get %s from %s.\n"
+msgstr "Recibes %s de %s.\n"
+
+#. I lose the cards
+#. $1=player that steals, $2=resources
+#: ../client/common/develop.c:178
+#, c-format
+msgid "%s took %s from you.\n"
+msgstr "%s quítache %s.\n"
+
+#: ../client/common/develop.c:185
+#, c-format
+msgid "%s took %s from %s.\n"
+msgstr "%s toma %s de %s.\n"
+
+#: ../client/common/player.c:124 ../server/player.c:557
+#, c-format
+msgid "Viewer %d"
+msgstr "Visualizador %d"
+
+#: ../client/common/player.c:126
+#, c-format
+msgid "viewer %d"
+msgstr "Visualizador %d"
+
+#: ../client/common/player.c:134 ../server/player.c:560
+#, c-format
+msgid "Player %d"
+msgstr "Xogador %d"
+
+#: ../client/common/player.c:136
+#, c-format
+msgid "player %d"
+msgstr "Xogador %d"
+
+#: ../client/common/player.c:212
+#, c-format
+msgid "New viewer: %s.\n"
+msgstr "Novo visualizador: %s.\n"
+
+#: ../client/common/player.c:215 ../client/common/player.c:231
+#, c-format
+msgid "%s is now %s.\n"
+msgstr "%s é agora %s.\n"
+
+#: ../client/common/player.c:228
+#, c-format
+msgid "Player %d is now %s.\n"
+msgstr "O xogador %d chámase agora %s.\n"
+
+#: ../client/common/player.c:267
+#, c-format
+msgid "%s has quit.\n"
+msgstr "%s foise.\n"
+
+#: ../client/common/player.c:276
+msgid "There is no largest army.\n"
+msgstr "Non hai un exército máis grande.\n"
+
+#: ../client/common/player.c:279
+#, c-format
+msgid "%s has the largest army.\n"
+msgstr "%s ten o exército máis grande.\n"
+
+#: ../client/common/player.c:300
+msgid "There is no longest road.\n"
+msgstr "Non hai un camiño máis longo.\n"
+
+#: ../client/common/player.c:303
+#, c-format
+msgid "%s has the longest road.\n"
+msgstr "%s ten o camiño máis longo.\n"
+
+#: ../client/common/player.c:324
+#, c-format
+msgid "Waiting for %s."
+msgstr "Esperando a %s."
+
+#. We are not in on the action
+#. someone stole a resource from someone else
+#: ../client/common/player.c:352
+#, c-format
+msgid "%s stole a resource from %s.\n"
+msgstr "%s róuballe unha carta de recurso a %s.\n"
+
+#. $1=resource, $2=player name
+#: ../client/common/player.c:363
+#, c-format
+msgid "You stole %s from %s.\n"
+msgstr "Roubas %s a %s.\n"
+
+#. $1=player name, $2=resource
+#: ../client/common/player.c:370
+#, c-format
+msgid "%s stole %s from you.\n"
+msgstr "%s róubache %s.\n"
+
+#: ../client/common/player.c:404
+#, c-format
+msgid "%s gave %s nothing!?\n"
+msgstr "¿¡%s non da nada a %s!?\n"
+
+#. $1=giving player, $2=receiving player, $3=resources
+#: ../client/common/player.c:411 ../client/common/player.c:421
+#, c-format
+msgid "%s gave %s %s for free.\n"
+msgstr "%s da %s a %s gratis.\n"
+
+#: ../client/common/player.c:429
+#, c-format
+msgid "%s gave %s %s in exchange for %s.\n"
+msgstr "%1s dalle %3s a %2s a cambio de %4s.\n"
+
+#: ../client/common/player.c:460
+#, c-format
+msgid "%s exchanged %s for %s.\n"
+msgstr "%s cambia %s por %s.\n"
+
+#: ../client/common/player.c:480
+#, c-format
+msgid "%s built a road.\n"
+msgstr "%s constrúe un camiño.\n"
+
+#: ../client/common/player.c:492
+#, c-format
+msgid "%s built a ship.\n"
+msgstr "%s constrúe un barco.\n"
+
+#: ../client/common/player.c:505
+#, c-format
+msgid "%s built a settlement.\n"
+msgstr "%s crea un pobo.\n"
+
+#: ../client/common/player.c:524
+#, c-format
+msgid "%s built a city.\n"
+msgstr "%s crea unha cidade.\n"
+
+#: ../client/common/player.c:538
+#, c-format
+msgid "%s built a city wall.\n"
+msgstr "%s amurallou unha cidade.\n"
+
+#. Error message
+#: ../client/common/player.c:549
+#, c-format
+msgid "player_build_add called with BUILD_NONE for user %s\n"
+msgstr "Chamouse player_build_add con BUILD_NONE para o usuario %s\n"
+
+#: ../client/common/player.c:559
+#, c-format
+msgid "%s built a bridge.\n"
+msgstr "%s constrúe unha ponte.\n"
+
+#: ../client/common/player.c:585
+#, c-format
+msgid "%s removed a road.\n"
+msgstr "%s quita un camiño.\n"
+
+#: ../client/common/player.c:595
+#, c-format
+msgid "%s removed a ship.\n"
+msgstr "%s quita un barco.\n"
+
+#: ../client/common/player.c:605
+#, c-format
+msgid "%s removed a settlement.\n"
+msgstr "%s quita un pobo.\n"
+
+#: ../client/common/player.c:616
+#, c-format
+msgid "%s removed a city.\n"
+msgstr "%s quita unha cidade.\n"
+
+#: ../client/common/player.c:630
+#, c-format
+msgid "%s removed a city wall.\n"
+msgstr "%s quitou a muralla a unha cidade.\n"
+
+#. Error message
+#: ../client/common/player.c:640
+#, c-format
+msgid "player_build_remove called with BUILD_NONE for user %s\n"
+msgstr "Chamouse player_build_remove con BUILD_NONE para o usuario %s\n"
+
+#: ../client/common/player.c:649
+#, c-format
+msgid "%s removed a bridge.\n"
+msgstr "%s quita unha ponte.\n"
+
+#: ../client/common/player.c:680
+#, c-format
+msgid "%s has canceled a ship's movement.\n"
+msgstr "%s cancela un movemento de barco.\n"
+
+#: ../client/common/player.c:683
+#, c-format
+msgid "%s moved a ship.\n"
+msgstr "%s move un barco.\n"
+
+#. tell the user that someone got something
+#: ../client/common/player.c:703
+#, c-format
+msgid "%s received %s.\n"
+msgstr "%s recibe %s.\n"
+
+#: ../client/common/player.c:721
+msgid "server asks to lose invalid point.\n"
+msgstr "O servidor solicita perder punto invalido.\n"
+
+#. tell the user the point is lost
+#: ../client/common/player.c:727
+#, c-format
+msgid "%s lost %s.\n"
+msgstr "%s gasta %s.\n"
+
+#: ../client/common/player.c:750
+msgid "server asks to move invalid point.\n"
+msgstr "O servidor solicita mover punto inválido.\n"
+
+#. tell the user someone (1) lost something (2) to someone else (3)
+#: ../client/common/player.c:757
+#, c-format
+msgid "%s lost %s to %s.\n"
+msgstr "%s perde %s a %s.\n"
+
+#: ../client/common/resource.c:35
+msgid "brick"
+msgstr "ladrillo"
+
+#: ../client/common/resource.c:35
+msgid "Brick"
+msgstr "Ladrillo"
+
+#: ../client/common/resource.c:36
+msgid "grain"
+msgstr "cereais"
+
+#: ../client/common/resource.c:36
+msgid "Grain"
+msgstr "cereais"
+
+#: ../client/common/resource.c:37
+msgid "ore"
+msgstr "minerais"
+
+#: ../client/common/resource.c:37
+msgid "Ore"
+msgstr "Minerais"
+
+#: ../client/common/resource.c:38
+msgid "wool"
+msgstr "la"
+
+#: ../client/common/resource.c:38
+msgid "Wool"
+msgstr "La"
+
+#: ../client/common/resource.c:39
+msgid "lumber"
+msgstr "madeira"
+
+#: ../client/common/resource.c:39
+msgid "Lumber"
+msgstr "Madeira"
+
+#: ../client/common/resource.c:40
+msgid "no resource (bug)"
+msgstr "ningún recurso (erro)"
+
+#: ../client/common/resource.c:40
+msgid "No resource (bug)"
+msgstr "Ningún recurso (erro)"
+
+#: ../client/common/resource.c:41
+msgid "any resource (bug)"
+msgstr "calquera recurso (erro)"
+
+#: ../client/common/resource.c:41
+msgid "Any resource (bug)"
+msgstr "Calquera recurso (erro)"
+
+#: ../client/common/resource.c:42
+msgid "gold"
+msgstr "ouro"
+
+#: ../client/common/resource.c:42 ../client/gtk/legend.c:39
+msgid "Gold"
+msgstr "Ouro"
+
+#: ../client/common/resource.c:47
+msgid "a brick card"
+msgstr "unha carta de ladrillo"
+
+#: ../client/common/resource.c:47
+#, c-format
+msgid "%d brick cards"
+msgstr "%d cartas de ladrillo"
+
+#: ../client/common/resource.c:48
+msgid "a grain card"
+msgstr "unha carta de cereais"
+
+#: ../client/common/resource.c:48
+#, c-format
+msgid "%d grain cards"
+msgstr "%d cartas de cereais"
+
+#: ../client/common/resource.c:49
+msgid "an ore card"
+msgstr "unha carta de minerais"
+
+#: ../client/common/resource.c:49
+#, c-format
+msgid "%d ore cards"
+msgstr "%d cartas de minerais"
+
+#: ../client/common/resource.c:50
+msgid "a wool card"
+msgstr "unha carta de la"
+
+#: ../client/common/resource.c:50
+#, c-format
+msgid "%d wool cards"
+msgstr "%d cartas de la"
+
+#: ../client/common/resource.c:51
+msgid "a lumber card"
+msgstr "unha carta de madeira"
+
+#: ../client/common/resource.c:51
+#, c-format
+msgid "%d lumber cards"
+msgstr "%d cartas de madeira"
+
+#: ../client/common/resource.c:139 ../client/common/resource.c:225
+msgid "nothing"
+msgstr "ningún"
+
+#. Construct "A, B and C" for resources
+#: ../client/common/resource.c:166
+#, c-format
+msgid "%s and %s"
+msgstr "%s e %s"
+
+#. Construct "A, B and C" for resources
+#: ../client/common/resource.c:170
+#, c-format
+msgid "%s, %s"
+msgstr "%s, %s"
+
+#: ../client/common/robber.c:62
+#, c-format
+msgid "%s has undone the robber movement.\n"
+msgstr "%s desfixo o movemento dos ladróns.\n"
+
+#: ../client/common/robber.c:65
+#, c-format
+msgid "%s moved the robber.\n"
+msgstr "%s move o ladrón.\n"
+
+#: ../client/common/robber.c:75
+#, c-format
+msgid "%s has undone the pirate movement.\n"
+msgstr "%s desfixo o movemento pirata.\n"
+
+#: ../client/common/robber.c:78
+#, c-format
+msgid "%s moved the pirate.\n"
+msgstr "%s move o pirata.\n"
+
+#: ../client/common/robber.c:85
+#, c-format
+msgid "%s must move the robber."
+msgstr "%s debe mover o ladrón."
+
+#: ../client/common/setup.c:146
+#, c-format
+msgid "Setup for %s.\n"
+msgstr "Instalación para %s.\n"
+
+#: ../client/common/setup.c:158
+#, c-format
+msgid "Double setup for %s.\n"
+msgstr "Dobre instalación para %s.\n"
+
+#: ../client/common/turn.c:37
+#, c-format
+msgid "%s rolled %d.\n"
+msgstr "%s tirou %d.\n"
+
+#: ../client/common/turn.c:50
+#, c-format
+msgid "Begin turn %d for %s.\n"
+msgstr "Comeza a quenda %d para %s.\n"
+
+#: ../client/gtk/avahi-browser.c:83
+msgid "Select an automatically discovered game"
+msgstr ""
+
+#. $1=Game title, $2=version, $3=host_name, $4=port
+#: ../client/gtk/avahi-browser.c:132
+#, c-format
+msgid "%s (%s) on %s:%s"
+msgstr ""
+
+#. Label text
+#: ../client/gtk/chat.c:73
+msgid "<b>Chat</b>"
+msgstr "<b>Falar</b>"
+
+#: ../client/gtk/chat.c:233
+msgid "Beeper test.\n"
+msgstr "Proba de pitado.\n"
+
+#: ../client/gtk/chat.c:236
+#, c-format
+msgid "%s beeped you.\n"
+msgstr "%s pítache.\n"
+
+#: ../client/gtk/chat.c:240
+#, c-format
+msgid "You beeped %s.\n"
+msgstr "Pitaches a %s.\n"
+
+#: ../client/gtk/chat.c:246
+#, c-format
+msgid "You could not beep %s.\n"
+msgstr "Non puideches pitar a %s.\n"
+
+#: ../client/gtk/chat.c:290
+msgid " said: "
+msgstr " di: "
+
+#: ../client/gtk/connect.c:263
+#, c-format
+msgid "Meta-server at %s, port %s"
+msgstr "Metaservidor en %s, porto %s"
+
+#: ../client/gtk/connect.c:273
+msgid "Finished.\n"
+msgstr "Rematado.\n"
+
+#: ../client/gtk/connect.c:290 ../client/gtk/connect.c:340
+#: ../client/gtk/connect.c:440 ../server/meta.c:169
+msgid "Meta-server kicked us off\n"
+msgstr "Botounos o Meta-servidor\n"
+
+#: ../client/gtk/connect.c:315
+msgid "Receiving game names from the meta server.\n"
+msgstr "Recibindo nomes do xogo dende o metaservidor.\n"
+
+#: ../client/gtk/connect.c:362
+#, c-format
+msgid "New game server requested on %s port %s\n"
+msgstr "Novo servidor solicitado en %s porto %s.\n"
+
+#: ../client/gtk/connect.c:371 ../server/meta.c:162
+#, c-format
+msgid "Unknown message from the metaserver: %s\n"
+msgstr "Mensaxe descoñecida do metaservidor: %s\n"
+
+#: ../client/gtk/connect.c:455 ../server/meta.c:119
+msgid "Too many meta-server redirects\n"
+msgstr "Demasiada redireccións do metaservidor\n"
+
+#: ../client/gtk/connect.c:482 ../server/meta.c:134
+#, c-format
+msgid "Bad redirect line: %s\n"
+msgstr "Mala liña de redireccionamento: %s\n"
+
+#: ../client/gtk/connect.c:508
+#, c-format
+msgid "Meta server too old to create servers (version %d.%d)\n"
+msgstr "Metaservidor moi vello para crear servidores(versión %d.%d)\n"
+
+#. Sevens rule: normal
+#: ../client/gtk/connect.c:580 ../client/gtk/settingscreen.c:181
+#: ../common/gtk/game-rules.c:74
+msgid "Normal"
+msgstr "Normal"
+
+#. Sevens rule: reroll on 1st 2 turns
+#: ../client/gtk/connect.c:585 ../client/gtk/settingscreen.c:183
+#: ../common/gtk/game-rules.c:80
+msgid "Reroll on 1st 2 turns"
+msgstr "Volver a tirar durante as dúas primeiras quendas"
+
+#. Sevens rule: reroll all 7s
+#: ../client/gtk/connect.c:589 ../client/gtk/settingscreen.c:185
+#: ../common/gtk/game-rules.c:87
+msgid "Reroll all 7s"
+msgstr "Tirar de novo todos os setes"
+
+#: ../client/gtk/connect.c:603
+msgid "Default"
+msgstr "Predefinido"
+
+#: ../client/gtk/connect.c:606
+msgid "Random"
+msgstr "Aleatorio"
+
+#: ../client/gtk/connect.c:636 ../server/meta.c:182
+#, c-format
+msgid "Redirected to meta-server at %s, port %s\n"
+msgstr "Desviado ao metaservidor en %s, porto %s\n"
+
+#: ../client/gtk/connect.c:639
+msgid "Receiving a list of Pioneers servers from the meta server.\n"
+msgstr "Recibindo unha lista de servidores Pioneiros do meta-servidor.\n"
+
+#: ../client/gtk/connect.c:694
+msgid ""
+"<b>Note</b>:\n"
+"\tThe metaserver does not send information about the games.\n"
+"\tPlease set appropriate values yourself."
+msgstr ""
+"<b>Nota</b>:\n"
+"\tO metaservidor non envía información acerca dos xogos.\n"
+"\tPor favor, axuste os valores apropiados vostede mesmo."
+
+#. Label
+#: ../client/gtk/connect.c:712
+#, fuzzy
+#| msgid "Type of computer player"
+msgid "Number of computer players"
+msgstr "Tipo de xogador do computador"
+
+#. Tooltip
+#: ../client/gtk/connect.c:732
+#, fuzzy
+#| msgid "The number of players"
+msgid "The number of computer players"
+msgstr "Número de xogadores"
+
+#: ../client/gtk/connect.c:753
+msgid "Requesting new game server\n"
+msgstr "Pidindo un novo servidor de xogo\n"
+
+#: ../client/gtk/connect.c:796 ../server/gtk/main.c:359 ../server/server.c:153
+#, c-format
+msgid "Error starting %s: %s"
+msgstr "Erro ao empezar %s: %s"
+
+#. Dialog caption
+#: ../client/gtk/connect.c:818
+#, fuzzy
+#| msgid "Create a public game"
+msgid "Create a Public Game"
+msgstr "Crear un xogo público"
+
+#. Dialog caption
+#: ../client/gtk/connect.c:941
+msgid "Join a Public Game"
+msgstr "Unir a un xogo público"
+
+#. Button text
+#: ../client/gtk/connect.c:947
+msgid "_New Remote Game"
+msgstr "_Novo xogo remoto"
+
+#. Tooltip
+#: ../client/gtk/connect.c:961
+msgid "Refresh the list of games"
+msgstr "Renovar a lista de xogos"
+
+#. Tooltip
+#: ../client/gtk/connect.c:965
+msgid "Create a new public game at the meta server"
+msgstr "Crear un xogo público novo no metaservidor"
+
+#. Tooltip
+#: ../client/gtk/connect.c:970
+msgid "Don't join a public game"
+msgstr "Non unirse a un xogo público"
+
+#. Tooltip
+#: ../client/gtk/connect.c:974
+msgid "Join the selected game"
+msgstr "Unirse ao xogo seleccionado"
+
+#. Tooltip
+#: ../client/gtk/connect.c:1011
+msgid "Select a game to join"
+msgstr "Seleccionar un xogo para unirse"
+
+#. Column name
+#: ../client/gtk/connect.c:1015
+msgid "Map Name"
+msgstr "Nome do mapa"
+
+#. Tooltip for column 'Map Name'
+#: ../client/gtk/connect.c:1023
+msgid "Name of the game"
+msgstr "Nome do xogo"
+
+#. Column name
+#: ../client/gtk/connect.c:1029
+msgid "Curr"
+msgstr "Corr."
+
+#. Tooltip for column 'Curr'
+#: ../client/gtk/connect.c:1037
+msgid "Number of players in the game"
+msgstr "Número de xogadores na partida"
+
+#. Column name
+#: ../client/gtk/connect.c:1043
+msgid "Max"
+msgstr "Máximo"
+
+#. Tooltip for column 'Max'
+#: ../client/gtk/connect.c:1051
+msgid "Maximum players for the game"
+msgstr "Máximo de xogadores para a partida"
+
+#. Column name
+#: ../client/gtk/connect.c:1055
+msgid "Terrain"
+msgstr "Terreo"
+
+#. Tooltip for column 'Terrain'
+#: ../client/gtk/connect.c:1064
+msgid "Random of default terrain"
+msgstr "Terreo predeterminado aleatorio"
+
+#. Column name
+#: ../client/gtk/connect.c:1070
+msgid "Vic. Points"
+msgstr "Puntos de Vic."
+
+#. Tooltip for column 'Vic. Points'
+#: ../client/gtk/connect.c:1078
+msgid "Points needed to win"
+msgstr "Puntos precisados para gañar"
+
+#. Column name
+#: ../client/gtk/connect.c:1082
+msgid "Sevens Rule"
+msgstr "Regra dos setes"
+
+#. Tooltip for column 'Sevens Rule'
+#. Label
+#: ../client/gtk/connect.c:1090 ../common/gtk/game-rules.c:66
+msgid "Sevens rule"
+msgstr "Regra dos setes"
+
+#. Column name
+#: ../client/gtk/connect.c:1094
+msgid "Host"
+msgstr "Servidor"
+
+#. Tooltip for column 'Host'
+#: ../client/gtk/connect.c:1103
+msgid "Host of the game"
+msgstr "Servidor do xogo"
+
+#. Column name
+#: ../client/gtk/connect.c:1109
+msgid "Port"
+msgstr "Porto"
+
+#. Tooltip for column 'Port'
+#: ../client/gtk/connect.c:1118
+msgid "Port of the the game"
+msgstr "Porto do xogo"
+
+#. Column name
+#: ../client/gtk/connect.c:1122
+msgid "Version"
+msgstr "Versión"
+
+#. Tooltip for column 'Version'
+#: ../client/gtk/connect.c:1131
+msgid "Version of the host"
+msgstr "Versión do servidor"
+
+#. Dialog caption
+#: ../client/gtk/connect.c:1215
+msgid "Start a New Game"
+msgstr "Comezar un xogo novo"
+
+#. Label
+#. Commandline option of client: name of the player
+#: ../client/gtk/connect.c:1242 ../client/gtk/offline.c:56
+msgid "Player name"
+msgstr "Nome de xogador"
+
+#. Tooltip
+#: ../client/gtk/connect.c:1260
+msgid "Enter your name"
+msgstr "Insire o teu nome de xogador"
+
+#. Check button
+#. Role of the player: viewer
+#: ../client/gtk/connect.c:1263 ../server/gtk/main.c:527
+msgid "Viewer"
+msgstr "Visor"
+
+#. Tooltip for checkbox Viewer
+#: ../client/gtk/connect.c:1272
+#, fuzzy
+#| msgid "Do you want to be a viewer?"
+msgid "Check if you want to be a viewer"
+msgstr "Queres ser un espectador?"
+
+#. Label
+#: ../client/gtk/connect.c:1283
+msgid "Avahi"
+msgstr ""
+
+#. Button
+#: ../client/gtk/connect.c:1290
+msgid "Join"
+msgstr ""
+
+#. Tooltip for button Join
+#: ../client/gtk/connect.c:1294
+msgid "Join an automatically discovered game"
+msgstr ""
+
+#. Label
+#: ../client/gtk/connect.c:1321 ../server/gtk/main.c:660
+msgid "Meta server"
+msgstr "Metaservidor"
+
+#. Button
+#: ../client/gtk/connect.c:1343
+msgid "Join Public Game"
+msgstr "Unirse a un xogo público"
+
+#. Tooltip
+#: ../client/gtk/connect.c:1349
+msgid "Join a public game"
+msgstr "Unir a un xogo público"
+
+#. Button
+#: ../client/gtk/connect.c:1354
+msgid "Create Game"
+msgstr "Crear un xogo"
+
+#. Tooltip
+#: ../client/gtk/connect.c:1358
+msgid "Create a game"
+msgstr "Crear un xogo"
+
+#. Button
+#: ../client/gtk/connect.c:1369
+msgid "Join Private Game"
+msgstr "Unirse a un xogo privado"
+
+#. Tooltip
+#. Dialog caption
+#: ../client/gtk/connect.c:1373 ../client/gtk/connect.c:1518
+msgid "Join a private game"
+msgstr "Unirse a un xogo privado"
+
+#. Label
+#. Commandline option of client: hostname of the server
+#: ../client/gtk/connect.c:1552 ../client/gtk/offline.c:50
+msgid "Server host"
+msgstr "Servidor"
+
+#. Tooltip
+#: ../client/gtk/connect.c:1566
+msgid "Name of the host of the game"
+msgstr "Nome do servidor do xogo"
+
+#. Label
+#. Commandline option of client: port of the server
+#: ../client/gtk/connect.c:1570 ../client/gtk/offline.c:53
+#: ../server/gtk/main.c:632
+msgid "Server port"
+msgstr "Porto do Servidor"
+
+#. Tooltip
+#: ../client/gtk/connect.c:1587
+msgid "Port of the host of the game"
+msgstr "Porto do servidor do xogo"
+
+#. Tooltip
+#. Label
+#: ../client/gtk/connect.c:1628 ../client/gtk/connect.c:1631
+msgid "Recent games"
+msgstr "Xogos recentes"
+
+#. Caption for list of bought development cards
+#: ../client/gtk/develop.c:130
+msgid "<b>Development cards</b>"
+msgstr "<b>Cartas de desenvolvemento</b>"
+
+#. Button text: play development card
+#: ../client/gtk/develop.c:163
+msgid "Play Card"
+msgstr "Carta de xogo"
+
+#. Dialog caption
+#: ../client/gtk/discard.c:78
+msgid "Discard Resources"
+msgstr "Descarta recursos"
+
+#: ../client/gtk/discard.c:101
+#, fuzzy, c-format
+#| msgid "You must discard %d resources"
+msgid "You must discard %d resource"
+msgid_plural "You must discard %d resources"
+msgstr[0] "Tes que descartar %d recursos"
+msgstr[1] "Tes que descartar %d recursos"
+
+#. Label
+#: ../client/gtk/discard.c:110
+msgid "Total discards"
+msgstr "Descartes totais"
+
+#. Caption for list of player that must discard cards
+#: ../client/gtk/discard.c:235
+msgid "<b>Waiting for players to discard</b>"
+msgstr "<b>Esperando a que os xogadores descarten</b>"
+
+#. Dialog caption
+#: ../client/gtk/gameover.c:34
+msgid "Game Over"
+msgstr "Fin da partida"
+
+#: ../client/gtk/gameover.c:51
+#, c-format
+msgid "%s has won the game with %d victory points!"
+msgstr "%s gañou con %d puntos!"
+
+#: ../client/gtk/gameover.c:58
+#, c-format
+msgid "All praise %s, Lord of the known world!"
+msgstr "Louvanzas a %s, Señor do mundo coñecido!"
+
+#. Dialog caption
+#: ../client/gtk/gold.c:73
+msgid "Choose Resources"
+msgstr "Elixe recursos"
+
+#: ../client/gtk/gold.c:96
+#, fuzzy, c-format
+#| msgid "You may choose %d resources"
+msgid "You may choose %d resource"
+msgid_plural "You may choose %d resources"
+msgstr[0] "Podes elixir %d recursos"
+msgstr[1] "Podes elixir %d recursos"
+
+#. Text for total in choose gold dialog
+#. Text for total in year of plenty dialog
+#: ../client/gtk/gold.c:105 ../client/gtk/plenty.c:102
+msgid "Total resources"
+msgstr "Recursos totais"
+
+#. Caption for list of player that must choose gold
+#: ../client/gtk/gold.c:217
+msgid "<b>Waiting for players to choose</b>"
+msgstr "<b>Esperando a que os xogadores elixan</b>"
+
+#. Menu entry
+#: ../client/gtk/gui.c:217 ../server/gtk/main.c:100
+msgid "_Game"
+msgstr "_Xogo"
+
+#. Menu entry
+#: ../client/gtk/gui.c:220
+msgid "_New Game"
+msgstr "Partida _nova"
+
+#. Tooltip for New Game menu entry
+#: ../client/gtk/gui.c:222
+msgid "Start a new game"
+msgstr "Comezar un xogo novo"
+
+#. Menu entry
+#: ../client/gtk/gui.c:225
+msgid "_Leave Game"
+msgstr "_Abandonar a partida"
+
+#. Tooltip for Leave Game menu entry
+#: ../client/gtk/gui.c:227
+msgid "Leave this game"
+msgstr "Abandonar esta partida"
+
+#. Menu entry
+#: ../client/gtk/gui.c:231
+msgid "_Admin"
+msgstr "_Administrar"
+
+#. Tooltip for Admin menu entry
+#: ../client/gtk/gui.c:233
+msgid "Administer Pioneers server"
+msgstr "Administrar o servidor de Pioneiros"
+
+#. Menu entry
+#: ../client/gtk/gui.c:237
+msgid "_Player Name"
+msgstr "Nome do _xogador"
+
+#. Tooltip for Player Name menu entry
+#: ../client/gtk/gui.c:239
+msgid "Change your player name"
+msgstr "Cambiar o teu nome de xogador"
+
+#. Menu entry
+#: ../client/gtk/gui.c:242
+msgid "L_egend"
+msgstr "L_enda"
+
+#. Tooltip for Legend menu entry
+#: ../client/gtk/gui.c:244
+msgid "Terrain legend and building costs"
+msgstr "Lenda do terreo e costos de construción"
+
+#. Menu entry
+#: ../client/gtk/gui.c:247
+msgid "_Game Settings"
+msgstr "_Axustes do xogo"
+
+#. Tooltip for Game Settings menu entry
+#: ../client/gtk/gui.c:249
+msgid "Settings for the current game"
+msgstr "Axustes do xogo actual"
+
+#. Menu entry
+#: ../client/gtk/gui.c:252
+msgid "_Dice Histogram"
+msgstr "_Histograma dos dados"
+
+#. Tooltip for Dice Histogram menu entry
+#: ../client/gtk/gui.c:254
+msgid "Histogram of dice rolls"
+msgstr "Histograma das tiradas"
+
+#. Menu entry
+#: ../client/gtk/gui.c:257 ../editor/gtk/editor.c:1093
+#: ../server/gtk/main.c:112
+msgid "_Quit"
+msgstr "_Saír"
+
+#. Tooltip for Quit menu entry
+#. Tooltop for Quit menu entry
+#: ../client/gtk/gui.c:259 ../server/gtk/main.c:114
+msgid "Quit the program"
+msgstr "Saír do aplicativo"
+
+#. Menu entry
+#: ../client/gtk/gui.c:262
+msgid "_Actions"
+msgstr "_Accións"
+
+#. Menu entry
+#: ../client/gtk/gui.c:265
+msgid "Roll Dice"
+msgstr "Tirar os dados"
+
+#. Tooltip for Roll Dice menu entry
+#: ../client/gtk/gui.c:267
+msgid "Roll the dice"
+msgstr "Tirar os dados"
+
+#. Menu entry
+#. Tooltip for Trade menu entry
+#. Tab page name
+#: ../client/gtk/gui.c:270 ../client/gtk/gui.c:272 ../client/gtk/gui.c:673
+msgid "Trade"
+msgstr "Comercio"
+
+#. Menu entry
+#. Tooltip for Undo menu entry
+#: ../client/gtk/gui.c:276 ../client/gtk/gui.c:278
+msgid "Undo"
+msgstr "Desfacer"
+
+#. Menu entry
+#. Tooltip for Finish menu entry
+#: ../client/gtk/gui.c:281 ../client/gtk/gui.c:283
+msgid "Finish"
+msgstr "Rematar"
+
+#. Menu entry
+#: ../client/gtk/gui.c:286 ../client/gtk/legend.c:227
+#: ../editor/gtk/game-buildings.c:10
+msgid "Road"
+msgstr "Camiño"
+
+#. Tooltip for Road menu entry
+#: ../client/gtk/gui.c:288
+msgid "Build a road"
+msgstr "Construir un camiño"
+
+#. Menu entry
+#: ../client/gtk/gui.c:291 ../client/gtk/legend.c:231
+#: ../editor/gtk/game-buildings.c:10
+msgid "Ship"
+msgstr "Barco"
+
+#. Tooltip for Ship menu entry
+#: ../client/gtk/gui.c:293
+msgid "Build a ship"
+msgstr "Construir un barco"
+
+#. Menu entry
+#: ../client/gtk/gui.c:296
+msgid "Move Ship"
+msgstr "Quitar o barco"
+
+#. Tooltip for Move Ship menu entry
+#: ../client/gtk/gui.c:298
+msgid "Move a ship"
+msgstr "Mover un barco"
+
+#. Menu entry
+#: ../client/gtk/gui.c:301 ../client/gtk/legend.c:234
+#: ../editor/gtk/game-buildings.c:10
+msgid "Bridge"
+msgstr "Ponte"
+
+#. Tooltip for Bridge menu entry
+#: ../client/gtk/gui.c:303
+msgid "Build a bridge"
+msgstr "Construír unha ponte"
+
+#. Menu entry
+#: ../client/gtk/gui.c:306 ../client/gtk/legend.c:236
+#: ../client/gtk/player.c:53 ../editor/gtk/game-buildings.c:10
+msgid "Settlement"
+msgstr "Asentamento"
+
+#. Tooltip for Settlement menu entry
+#: ../client/gtk/gui.c:309
+msgid "Build a settlement"
+msgstr "Construír un asentamento"
+
+#. Menu entry
+#: ../client/gtk/gui.c:312 ../client/gtk/legend.c:237
+#: ../client/gtk/player.c:54 ../editor/gtk/game-buildings.c:11
+msgid "City"
+msgstr "Cidade"
+
+#. Tooltip for City menu entry
+#: ../client/gtk/gui.c:314
+msgid "Build a city"
+msgstr "Construir unha cidade"
+
+#. Menu entry
+#: ../client/gtk/gui.c:317
+msgid "Develop"
+msgstr "Desenvolver"
+
+#. Tooltip for Develop menu entry
+#: ../client/gtk/gui.c:319
+msgid "Buy a development card"
+msgstr "Mercar unha carta de desenvolvemento"
+
+#. Menu entry
+#: ../client/gtk/gui.c:322
+msgid "City Wall"
+msgstr "Muralla da cidade"
+
+#. Tooltip for City Wall menu entry
+#: ../client/gtk/gui.c:324
+msgid "Build a city wall"
+msgstr "Construír unha muralla para a cidade"
+
+#. Menu entry
+#: ../client/gtk/gui.c:328
+msgid "_Settings"
+msgstr "_Axustes"
+
+#. Menu entry
+#: ../client/gtk/gui.c:331
+msgid "Prefere_nces"
+msgstr "Prefere_ncias"
+
+#. Tooltip for Preferences menu entry
+#: ../client/gtk/gui.c:333
+msgid "Configure the application"
+msgstr "Configurar o aplicativo"
+
+#. Menu entry
+#: ../client/gtk/gui.c:337 ../client/gtk/gui.c:346 ../editor/gtk/editor.c:1058
+#: ../server/gtk/main.c:103
+msgid "_Help"
+msgstr "_Axuda"
+
+#. Menu entry
+#: ../client/gtk/gui.c:340
+msgid "_About Pioneers"
+msgstr "_Acerca de Pioneiros"
+
+#. Tooltip for About Pioneers menu entry
+#: ../client/gtk/gui.c:342
+msgid "Information about Pioneers"
+msgstr "Información acerca de Pioneiros"
+
+#. Tooltip for Help menu entry
+#: ../client/gtk/gui.c:348 ../client/gtk/gui.c:1210
+msgid "Show the manual"
+msgstr "Amosar o manual"
+
+#. Menu entry
+#: ../client/gtk/gui.c:356
+msgid "_Toolbar"
+msgstr "_Barra de ferramentas"
+
+#. Tooltip for Toolbar menu entry
+#: ../client/gtk/gui.c:358
+msgid "Show or hide the toolbar"
+msgstr "Amosar ou ocultar a barra de ferramentas"
+
+#. Victory points target in statusbar
+#: ../client/gtk/gui.c:453
+#, c-format
+msgid "Points needed to win: %i"
+msgstr "Puntos necesarios para gañar: %i"
+
+#: ../client/gtk/gui.c:539
+msgid "<b>Messages</b>"
+msgstr "<b>Mensaxes</b>"
+
+#. Tab page name
+#: ../client/gtk/gui.c:666 ../editor/gtk/editor.c:1245
+msgid "Map"
+msgstr "Mapa"
+
+#. Tooltip
+#: ../client/gtk/gui.c:675
+msgid "Finish trading"
+msgstr "Rematar negocio"
+
+#. Tab page name
+#. Button text
+#: ../client/gtk/gui.c:685 ../client/gtk/quote.c:322
+msgid "Quote"
+msgstr "Comiñas"
+
+#. Tooltip
+#: ../client/gtk/gui.c:687
+msgid "Reject domestic trade"
+msgstr "Rexeitar negocio domestico"
+
+#. Tab page name
+#. Dialog caption
+#: ../client/gtk/gui.c:697 ../client/gtk/legend.c:263
+msgid "Legend"
+msgstr "Lenda"
+
+#. Tab page name, shown for the splash screen
+#: ../client/gtk/gui.c:720
+msgid "Welcome to Pioneers"
+msgstr "Benvido ao Pioneiros"
+
+#. Caption of preferences dialog
+#: ../client/gtk/gui.c:996
+msgid "Pioneers Preferences"
+msgstr "Preferencias de Pioneiros"
+
+#. Label for changing the theme, in the preferences dialog
+#: ../client/gtk/gui.c:1025
+msgid "Theme:"
+msgstr "Tema:"
+
+#. Tooltip for changing the theme in the preferences dialog
+#: ../client/gtk/gui.c:1048
+msgid "Choose one of the themes"
+msgstr "Elixir un dos temas"
+
+#. Label for the option to show the legend
+#: ../client/gtk/gui.c:1052
+msgid "Show legend"
+msgstr "Amosar a lenda"
+
+#. Tooltip for the option to show the legend
+#: ../client/gtk/gui.c:1062
+msgid "Show the legend as a page beside the map"
+msgstr "Amosar a lenda como unha páxina xunto ao mapa?"
+
+#. Label for the option to display log messages in color
+#: ../client/gtk/gui.c:1067
+msgid "Messages with color"
+msgstr "Usar cores nas mensaxes?"
+
+#. Tooltip for the option to display log messages in color
+#: ../client/gtk/gui.c:1077
+msgid "Show new messages with color"
+msgstr "Usar cores nas mensaxes novas?"
+
+#. Label for the option to display chat in color of player
+#: ../client/gtk/gui.c:1082
+msgid "Chat in color of player"
+msgstr "conversar coa cor do xogador?"
+
+#. Tooltip for the option to display chat in color of player
+#: ../client/gtk/gui.c:1093
+msgid "Show new chat messages in the color of the player"
+msgstr "Amosar as novas mensaxes de conversa na cor do xogador"
+
+#. Label for the option to display the summary with colors
+#: ../client/gtk/gui.c:1098
+msgid "Summary with color"
+msgstr "Resume con cor"
+
+#. Tooltip for the option to display the summary with colors
+#: ../client/gtk/gui.c:1109
+msgid "Use colors in the player summary"
+msgstr "Usar cores no resume do xogador"
+
+#. Label for the option to display keyboard accelerators in the toolbar
+#: ../client/gtk/gui.c:1114
+msgid "Toolbar with shortcuts"
+msgstr "Barra de ferramentas con acceso directo"
+
+#. Tooltip for the option to display keyboard accelerators in the toolbar
+#: ../client/gtk/gui.c:1124
+msgid "Show keyboard shortcuts in the toolbar"
+msgstr "Amosar os accesos directos de teclado na barra de ferramentas"
+
+#. Label for the option to disable all sounds
+#: ../client/gtk/gui.c:1130
+msgid "Silent mode"
+msgstr "Modo silencioso"
+
+#. Tooltip for the option to disable all sounds
+#: ../client/gtk/gui.c:1136
+msgid "In silent mode no sounds are made"
+msgstr "En modo de silencio, non se reproducen sons."
+
+#. Label for the option to announce when players/viewers enter
+#: ../client/gtk/gui.c:1142
+msgid "Announce new players"
+msgstr "Anunciar novos xogadores"
+
+#. Tooltip for the option to use sound when players/viewers enter
+#: ../client/gtk/gui.c:1152
+msgid "Make a sound when a new player or viewer enters the game"
+msgstr "Facer un  son cando un xogador novo ou visor entre ao xogo"
+
+#. Label for the option to use the 16:9 layout.
+#: ../client/gtk/gui.c:1163
+msgid "Use 16:9 layout"
+msgstr "Usa un tema de 16:9"
+
+#. Tooltip for 16:9 option.
+#: ../client/gtk/gui.c:1173
+msgid "Use a 16:9 friendly layout for the window"
+msgstr "Usar unha disposición para a xanela de 16:9"
+
+#. Caption of about box
+#: ../client/gtk/gui.c:1186
+msgid "About Pioneers"
+msgstr "Acerca de Pioneiros"
+
+#. Initial text in status bar
+#: ../client/gtk/gui.c:1497 ../client/gtk/offline.c:107
+msgid "Welcome to Pioneers!"
+msgstr "Benvenido ao Pioneiros!"
+
+#. The name of the application
+#: ../client/gtk/gui.c:1608 ../client/gtk/pioneers.desktop.in.h:1
+msgid "Pioneers"
+msgstr "Pioneiros"
+
+#. Dialog caption
+#: ../client/gtk/histogram.c:253
+msgid "Dice Histogram"
+msgstr "Histograma dos dados"
+
+#: ../client/gtk/interface.c:94
+msgid "Ship movement canceled."
+msgstr "Movemento de barco cancelado"
+
+#: ../client/gtk/interface.c:102 ../client/gtk/interface.c:103
+msgid "Select a new location for the ship."
+msgstr "Seleccione unha localización nova para o barco"
+
+#: ../client/gtk/legend.c:32
+msgid "Hill"
+msgstr "Montículo"
+
+#: ../client/gtk/legend.c:33
+msgid "Field"
+msgstr "Campo"
+
+#: ../client/gtk/legend.c:34
+msgid "Mountain"
+msgstr "Montaña"
+
+#: ../client/gtk/legend.c:35
+msgid "Pasture"
+msgstr "Pasto"
+
+#: ../client/gtk/legend.c:36
+msgid "Forest"
+msgstr "Bosque"
+
+#: ../client/gtk/legend.c:37
+msgid "Desert"
+msgstr "Deserto"
+
+#: ../client/gtk/legend.c:38
+msgid "Sea"
+msgstr "Mar"
+
+#. Label
+#: ../client/gtk/legend.c:170
+msgid "<b>Terrain yield</b>"
+msgstr "<b>Produción de terreo</b>"
+
+#. Label
+#: ../client/gtk/legend.c:203
+msgid "<b>Building costs</b>"
+msgstr "<b>Custes de construción</b>"
+
+#: ../client/gtk/legend.c:241 ../client/gtk/player.c:55
+#: ../editor/gtk/game-buildings.c:11
+msgid "City wall"
+msgstr "Muralla da cidade"
+
+#: ../client/gtk/legend.c:244 ../client/gtk/player.c:66
+msgid "Development card"
+msgstr "Carta de desenvolvemento"
+
+#. Dialog caption
+#. Name of the development card
+#: ../client/gtk/monopoly.c:84 ../common/cards.c:125
+msgid "Monopoly"
+msgstr "Monopolio"
+
+#. Label
+#: ../client/gtk/monopoly.c:105
+msgid "Select the resource you wish to monopolize."
+msgstr "Elixe o recurso que queres monopolizar."
+
+#. Dialog caption
+#: ../client/gtk/name.c:156
+msgid "Change Player Name"
+msgstr "Cambiar o teu nome de xogador"
+
+#. Label
+#: ../client/gtk/name.c:184
+msgid "Player name:"
+msgstr "Nome de xogador:"
+
+#. Label: set player icon preferences
+#: ../client/gtk/name.c:244
+msgid "Face:"
+msgstr "Cara:"
+
+#. Label: set player icon preferences
+#: ../client/gtk/name.c:260
+msgid "Variant:"
+msgstr "Variante:"
+
+#: ../client/gtk/offline.c:60
+msgid "Connect as a viewer"
+msgstr "Conectar como visor"
+
+#: ../client/gtk/offline.c:63
+msgid "Meta-server Host"
+msgstr "Meta-servidor do anfitrion"
+
+#: ../client/gtk/offline.c:77
+msgid "Select a game to join."
+msgstr "Seleccionar un xogo para unirse."
+
+#: ../client/gtk/offline.c:93
+msgid "Connecting"
+msgstr "Conectando"
+
+#. Long description in the commandline for pioneers: help
+#: ../client/gtk/offline.c:166
+msgid "- Play a game of Pioneers"
+msgstr "- Xogar unha partida de Pioneiros"
+
+#: ../client/gtk/pioneers.desktop.in.h:2
+msgid "Play a game of Pioneers"
+msgstr "Xogar unha partida de Pioneiros"
+
+#: ../client/gtk/player.c:53
+msgid "Settlements"
+msgstr "Asentamentos"
+
+#: ../client/gtk/player.c:54
+msgid "Cities"
+msgstr "Cidades"
+
+#: ../client/gtk/player.c:55
+msgid "City walls"
+msgstr "Muros da Cidade"
+
+#: ../client/gtk/player.c:56
+msgid "Largest army"
+msgstr "Maior exército"
+
+#: ../client/gtk/player.c:57
+msgid "Longest road"
+msgstr "Camiño máis longo"
+
+#. Name of the development card
+#: ../client/gtk/player.c:58 ../common/cards.c:131
+msgid "Chapel"
+msgstr "Capela"
+
+#: ../client/gtk/player.c:58
+msgid "Chapels"
+msgstr "Capelas"
+
+#. Name of the development card
+#: ../client/gtk/player.c:59 ../common/cards.c:134
+msgid "Pioneer university"
+msgstr "Universidade pioneira"
+
+#: ../client/gtk/player.c:59
+msgid "Pioneer universities"
+msgstr "Universidades Pioneiras"
+
+#. Name of the development card
+#: ../client/gtk/player.c:61 ../common/cards.c:137
+msgid "Governor's house"
+msgstr "Palacio do gobernador"
+
+#: ../client/gtk/player.c:61
+msgid "Governor's houses"
+msgstr "Palacio do Gobernador"
+
+#. Name of the development card
+#: ../client/gtk/player.c:62 ../common/cards.c:140
+msgid "Library"
+msgstr "Biblioteca"
+
+#: ../client/gtk/player.c:62
+msgid "Libraries"
+msgstr "Bibliotecas"
+
+#. Name of the development card
+#: ../client/gtk/player.c:63 ../common/cards.c:143
+msgid "Market"
+msgstr "Mercado"
+
+#: ../client/gtk/player.c:63
+msgid "Markets"
+msgstr "Mercados"
+
+#. Name of the development card
+#: ../client/gtk/player.c:64 ../common/cards.c:146
+msgid "Soldier"
+msgstr "Soldado"
+
+#: ../client/gtk/player.c:64
+msgid "Soldiers"
+msgstr "Soldados"
+
+#: ../client/gtk/player.c:65
+msgid "Resource card"
+msgstr "Carta de recurso"
+
+#: ../client/gtk/player.c:65
+msgid "Resource cards"
+msgstr "Cartas de recurso"
+
+#. Caption
+#: ../client/gtk/player.c:66 ../editor/gtk/editor.c:743
+msgid "Development cards"
+msgstr "Cartas de desenvolvemento"
+
+#. Caption for the overview of the points and card of other players
+#: ../client/gtk/player.c:551
+msgid "<b>Player summary</b>"
+msgstr "<b>Resumo de xogadores</b>"
+
+#. Dialog caption
+#: ../client/gtk/plenty.c:61
+msgid "Year of Plenty"
+msgstr "Ano de abundancia"
+
+#: ../client/gtk/plenty.c:91
+msgid "Please choose one resource from the bank"
+msgstr "Elixa un recurso do banco"
+
+#: ../client/gtk/plenty.c:94
+msgid "Please choose two resources from the bank"
+msgstr "Elixa dous recursos do banco"
+
+#: ../client/gtk/plenty.c:96
+msgid "The bank is empty"
+msgstr "O banco está vacio"
+
+#: ../client/gtk/quote.c:186
+#, c-format
+msgid "%s has %s, and is looking for %s"
+msgstr "%s ten %s e quere %s"
+
+#. Label
+#: ../client/gtk/quote.c:299
+msgid "I want"
+msgstr "Quero..."
+
+#. Label
+#: ../client/gtk/quote.c:309
+msgid "Give them"
+msgstr "Dalles..."
+
+#. Button text
+#: ../client/gtk/quote.c:328
+msgid "Delete"
+msgstr "Eliminar"
+
+#. Button text
+#: ../client/gtk/quote.c:353
+msgid "Reject Domestic Trade"
+msgstr "Rexeitar negocio domestico"
+
+#. Now create columns
+#. Table header: Player who trades
+#. Role of the player: player
+#: ../client/gtk/quote-view.c:170 ../server/gtk/main.c:529
+msgid "Player"
+msgstr "Xogador"
+
+#. Table header: Quote
+#: ../client/gtk/quote-view.c:185
+msgid "Quotes"
+msgstr "Comiñas"
+
+#. trade: maritime quote: %1 resources of type %2 for
+#. * one resource of type %3
+#: ../client/gtk/quote-view.c:292
+#, c-format
+msgid "%d:1 %s for %s"
+msgstr "%d:1 %s por %s"
+
+#. Trade: a player has rejected trade
+#: ../client/gtk/quote-view.c:431
+msgid "Rejected trade"
+msgstr "Negocio rexeitado"
+
+#. Caption for overview of the resources of the player
+#: ../client/gtk/resource.c:110
+msgid "<b>Resources</b>"
+msgstr "<b>Recursos</b>"
+
+#. Label
+#: ../client/gtk/resource.c:125
+msgid "Total"
+msgstr "Total"
+
+#. Tooltip for the amount of resources in the hand
+#: ../client/gtk/resource-table.c:180
+msgid "Amount in hand"
+msgstr "Cartas de recurso en man"
+
+#. Button for decreasing the selected amount
+#: ../client/gtk/resource-table.c:185
+msgid "<less"
+msgstr "<menos"
+
+#. Tooltip for decreasing the selected amount
+#: ../client/gtk/resource-table.c:195
+msgid "Decrease the selected amount"
+msgstr "Reducir a cantidade seleccionada"
+
+#. Tooltip for the amount of resources in the bank
+#: ../client/gtk/resource-table.c:209
+msgid "Amount in the bank"
+msgstr "Cantidade no banco"
+
+#. Button for increasing the selected amount
+#: ../client/gtk/resource-table.c:214
+msgid "more>"
+msgstr "máis>"
+
+#. Tooltip for increasing the selected amount
+#: ../client/gtk/resource-table.c:226
+msgid "Increase the selected amount"
+msgstr "Incrementar a cantidade seleccionada"
+
+#. Tooltip for the selected amount
+#: ../client/gtk/resource-table.c:243
+msgid "Selected amount"
+msgstr "Cantidade seleccionada"
+
+#. Tooltip for the total selected amount
+#: ../client/gtk/resource-table.c:288
+msgid "Total selected amount"
+msgstr "Cantidade seleccionada total"
+
+#. Tooltip when the bank cannot be emptied
+#: ../client/gtk/resource-table.c:307
+msgid "The bank cannot be emptied"
+msgstr "O banco non se pode baleirar"
+
+#: ../client/gtk/settingscreen.c:74
+msgid "Yes"
+msgstr "Si"
+
+#: ../client/gtk/settingscreen.c:76 ../client/gtk/settingscreen.c:222
+msgid "No"
+msgstr "Non"
+
+#: ../client/gtk/settingscreen.c:87 ../client/gtk/settingscreen.c:187
+msgid "Unknown"
+msgstr "Descoñecido"
+
+#: ../client/gtk/settingscreen.c:121
+msgid "No game in progress..."
+msgstr "No hai xogo en proceso"
+
+#. Label
+#: ../client/gtk/settingscreen.c:132
+msgid "<b>General settings</b>"
+msgstr "<b>Configuracións xerais</b>"
+
+#: ../client/gtk/settingscreen.c:149
+msgid "Number of players:"
+msgstr "Número de xogadores:"
+
+#: ../client/gtk/settingscreen.c:153
+msgid "Victory point target:"
+msgstr "Punto de victoria:"
+
+#: ../client/gtk/settingscreen.c:157
+msgid "Random terrain:"
+msgstr "Terreo ao chou:"
+
+#: ../client/gtk/settingscreen.c:161
+msgid "Allow trade between players:"
+msgstr "Permitir comerciar entre xogadores:"
+
+#: ../client/gtk/settingscreen.c:166
+msgid "Allow trade only before building or buying:"
+msgstr "Permitir comerciar só antes de construír ou mercar:"
+
+#: ../client/gtk/settingscreen.c:171
+#, fuzzy
+#| msgid "Check for victory only at end of turn"
+msgid "Check victory only at end of turn:"
+msgstr "Revisa a vitoria unicamente ao rematar a quenda"
+
+#: ../client/gtk/settingscreen.c:176
+msgid "Amount of each resource:"
+msgstr "Cantidade de cada recurso:"
+
+#: ../client/gtk/settingscreen.c:190
+msgid "Sevens rule:"
+msgstr "Regra dos setes:"
+
+#: ../client/gtk/settingscreen.c:196
+msgid "Use the pirate to block ships:"
+msgstr "Use ao pirata para bloquear barcos:"
+
+#: ../client/gtk/settingscreen.c:225
+msgid "Island discovery bonuses:"
+msgstr "Bonificacións por descubrimento de illas:"
+
+#. Label
+#: ../client/gtk/settingscreen.c:242
+msgid "<b>Building quotas</b>"
+msgstr "<b>Custos de construción</b>"
+
+#: ../client/gtk/settingscreen.c:259
+msgid "Roads:"
+msgstr "Camiños:"
+
+#: ../client/gtk/settingscreen.c:265
+msgid "Settlements:"
+msgstr "Asentamentos:"
+
+#: ../client/gtk/settingscreen.c:271
+msgid "Cities:"
+msgstr "Cidades:"
+
+#: ../client/gtk/settingscreen.c:277
+msgid "City walls:"
+msgstr "Muros da cidade:"
+
+#: ../client/gtk/settingscreen.c:283
+msgid "Ships:"
+msgstr "Barcos:"
+
+#: ../client/gtk/settingscreen.c:289
+msgid "Bridges:"
+msgstr "Pontes:"
+
+#. Label
+#: ../client/gtk/settingscreen.c:302
+msgid "<b>Development card deck</b>"
+msgstr "<b>Cartas de desenvolvemento</b>"
+
+#: ../client/gtk/settingscreen.c:318
+msgid "Road building cards:"
+msgstr "Cartas de construír camiños:"
+
+#: ../client/gtk/settingscreen.c:322
+msgid "Monopoly cards:"
+msgstr "Cartas de monopolio:"
+
+#: ../client/gtk/settingscreen.c:326
+msgid "Year of plenty cards:"
+msgstr "Cartas de ano de abundancia:"
+
+#: ../client/gtk/settingscreen.c:330
+msgid "Chapel cards:"
+msgstr "Cartas de capela:"
+
+#: ../client/gtk/settingscreen.c:334
+msgid "Pioneer university cards:"
+msgstr "Cartas de universidade de Pioneiros:"
+
+#: ../client/gtk/settingscreen.c:338
+msgid "Governor's house cards:"
+msgstr "Cartas  de palacio do gobernador:"
+
+#: ../client/gtk/settingscreen.c:342
+msgid "Library cards:"
+msgstr "Cartas de biblioteca:"
+
+#: ../client/gtk/settingscreen.c:346
+msgid "Market cards:"
+msgstr "Cartas de mercado:"
+
+#: ../client/gtk/settingscreen.c:350
+msgid "Soldier cards:"
+msgstr "Cartas de soldado:"
+
+#. Dialog caption
+#: ../client/gtk/settingscreen.c:388
+msgid "Current Game Settings"
+msgstr "Axuste do xogo actual"
+
+#. trade: you ask for something for free
+#: ../client/gtk/trade.c:193
+#, c-format
+msgid "ask for %s for free"
+msgstr "pida %s gratis"
+
+#. trade: you give something away for free
+#: ../client/gtk/trade.c:198
+#, c-format
+msgid "give %s for free"
+msgstr "ofreza %s gratis"
+
+#. trade: you trade something for something else
+#: ../client/gtk/trade.c:203
+#, c-format
+msgid "give %s for %s"
+msgstr "ofreza %s por %s"
+
+#. I want some resources, and give them some resources
+#: ../client/gtk/trade.c:230
+#, c-format
+msgid "I want %s, and give them %s"
+msgstr "Quero %s, e darlles %s"
+
+#. Frame title, trade: I want to trade these resources
+#: ../client/gtk/trade.c:438
+msgid "<b>I want</b>"
+msgstr "<b>Quero...</b>"
+
+#. Frame title, trade: I want these resources in return
+#: ../client/gtk/trade.c:466
+msgid "<b>Give them</b>"
+msgstr "<b>Dalles...</b>"
+
+#. Button text, trade: call for quotes from other players
+#: ../client/gtk/trade.c:495
+msgid "_Call for Quotes"
+msgstr "Pedir orzamentos"
+
+#. Button text: Trade page, accept selected quote
+#: ../client/gtk/trade.c:523
+msgid "_Accept Quote"
+msgstr "_Aceptar orzamento"
+
+#. Button text: Trade page, finish trading
+#: ../client/gtk/trade.c:529
+msgid "_Finish Trading"
+msgstr "Rematar negocio"
+
+#. Name of the development card
+#: ../common/cards.c:122
+msgid "Road building"
+msgstr "Construción de camiños"
+
+#. Name of the development card
+#: ../common/cards.c:128
+msgid "Year of plenty"
+msgstr "Ano de abundancia"
+
+#. Description of the 'Road Building' development card
+#: ../common/cards.c:157
+msgid "Build two new roads"
+msgstr ""
+
+#. Description of the 'Monopoly' development card
+#: ../common/cards.c:160
+msgid ""
+"Select a resource type and take every card of that type held by all other "
+"players"
+msgstr ""
+
+#. Description of the 'Year of Plenty' development card
+#: ../common/cards.c:164
+msgid ""
+"Take two resource cards of any type from the bank (cards may be of the same "
+"or different types)"
+msgstr ""
+
+#. Description of a development card of 1 victory point
+#: ../common/cards.c:173
+msgid "One victory point"
+msgstr ""
+
+#. Description of the 'Soldier' development card
+#: ../common/cards.c:176
+msgid ""
+"Move the robber to a different space and take one resource card from another "
+"player adjacent to that space"
+msgstr ""
+
+#: ../common/game.c:606 ../common/game.c:637
+msgid "This game cannot be won."
+msgstr "Este xogo non se puede gañar."
+
+#: ../common/game.c:607
+msgid "There is no land."
+msgstr "Non hai terra"
+
+#: ../common/game.c:641
+msgid "It is possible that this game cannot be won."
+msgstr "É posíbel que este xogo non se poida gañar."
+
+#: ../common/game.c:647
+msgid "This game can be won by only building all settlements and cities."
+msgstr ""
+"Este xogo pode gañarse con só construír todos os asentamentos e cidades."
+
+#: ../common/game.c:653
+#, c-format
+msgid ""
+"Required victory points: %d\n"
+"Points obtained by building all: %d\n"
+"Points in development cards: %d\n"
+"Longest road/largest army: %d+%d\n"
+"Maximum island discovery bonus: %d\n"
+"Total: %d"
+msgstr ""
+"Puntos de vitoria necesarios: %d\n"
+"Puntos obtidos por construccións: %d\n"
+"Puntos ao desenvolver cartas: %d\n"
+"Estrada máis longa/Exército máis grande: %d+%d\n"
+"Bonificación máxima por descubrimento de illas: %d\n"
+"Total: %d"
+
+#: ../common/gtk/aboutbox.c:75
+msgid ""
+"Pioneers is based upon the excellent\n"
+"Settlers of Catan board game.\n"
+msgstr ""
+"Pioneiros está baseado no excelente\n"
+"xogo de mesa «Os fundadores de Catan».\n"
+
+#: ../common/gtk/aboutbox.c:78
+msgid "Version:"
+msgstr "Versión:"
+
+#: ../common/gtk/aboutbox.c:84
+msgid "Homepage:"
+msgstr "Páxina de inicio:"
+
+#: ../common/gtk/aboutbox.c:89
+msgid "Authors:"
+msgstr "Autores:"
+
+#. Translators: add your name here. Keep the list alphabetically,
+#. * do not remove any names, and add \n after your name (except the last name).
+#.
+#: ../common/gtk/aboutbox.c:103 ../common/gtk/aboutbox.c:114
+msgid "translator_credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Indalecio Freiría Santos https://launchpad.net/~ifreiria"
+
+#. Header for the translator_credits. Use your own language name
+#: ../common/gtk/aboutbox.c:109
+msgid "Pioneers is translated to <your language here> by:\n"
+msgstr "Pioneiros tradúcese ao galego por:\n"
+
+#. Caption for result of checking victory points
+#: ../common/gtk/common_gtk.c:321
+msgid "Victory Point Analysis"
+msgstr ""
+
+#. Tooltip for sevens rule normal
+#: ../common/gtk/game-rules.c:94
+msgid "All sevens move the robber or pirate"
+msgstr "Todos os 7 quitan o ladrón ou o pirata"
+
+#. Tooltip for sevens rule reroll on 1st 2 turns
+#: ../common/gtk/game-rules.c:98
+msgid "In the first two turns all sevens are rerolled"
+msgstr "Nas primeiras dúas quendas todos os 7 tíranse de novo"
+
+#. Tooltip for sevens rule reroll all
+#: ../common/gtk/game-rules.c:102
+msgid "All sevens are rerolled"
+msgstr "Todos os 7 tíranse de novo"
+
+#: ../common/gtk/game-rules.c:113
+msgid "Randomize terrain"
+msgstr "Facer o terreo ao chou"
+
+#: ../common/gtk/game-rules.c:113
+msgid "Randomize the terrain"
+msgstr "Facer o terreo ao chou"
+
+#: ../common/gtk/game-rules.c:115
+msgid "Use pirate"
+msgstr "Use pirata"
+
+#: ../common/gtk/game-rules.c:115
+msgid "Use the pirate to block ships"
+msgstr "Use ao pirata para bloquear barcos"
+
+#: ../common/gtk/game-rules.c:117
+msgid "Strict trade"
+msgstr "Negocio rigoroso"
+
+#: ../common/gtk/game-rules.c:118
+msgid "Allow trade only before building or buying"
+msgstr "Permitir comerciar só antes de construír ou mercar"
+
+#: ../common/gtk/game-rules.c:120
+msgid "Domestic trade"
+msgstr "Negocio local"
+
+#: ../common/gtk/game-rules.c:120
+msgid "Allow trade between players"
+msgstr "Permitir comerciar entre xogadores"
+
+#: ../common/gtk/game-rules.c:122
+msgid "Victory at end of turn"
+msgstr "Vitoria ao rematar a quenda"
+
+#: ../common/gtk/game-rules.c:123
+msgid "Check for victory only at end of turn"
+msgstr "Revisa a vitoria unicamente ao rematar a quenda"
+
+#. Label text for customising a game
+#: ../common/gtk/game-settings.c:106
+msgid "Number of players"
+msgstr "Número de xogadores"
+
+#. Tooltip for 'Number of Players'
+#: ../common/gtk/game-settings.c:124
+msgid "The number of players"
+msgstr "Número de xogadores"
+
+#. Label for customising a game
+#: ../common/gtk/game-settings.c:127
+msgid "Victory point target"
+msgstr "Punto de vitoria"
+
+#. Tooltip for Victory Point Target
+#: ../common/gtk/game-settings.c:147
+msgid "The points needed to win the game"
+msgstr "Puntos precisos para gañar o xogo"
+
+#. Tooltip for the check button
+#: ../common/gtk/game-settings.c:161
+msgid "Is it possible to win this game?"
+msgstr "Pódese gañar este xogo?"
+
+#. Port indicator for a resource: trade 2 for 1
+#: ../common/gtk/guimap.c:761
+msgid "2:1"
+msgstr "2:1"
+
+#. Port indicator: trade 3 for 1
+#. General port indicator
+#: ../common/gtk/guimap.c:764 ../common/gtk/guimap.c:789
+msgid "3:1"
+msgstr "3:1"
+
+#. Port indicator for brick
+#: ../common/gtk/guimap.c:769
+msgid "Brick port|B"
+msgstr "Porto de Ladrillo|L"
+
+#. Port indicator for grain
+#: ../common/gtk/guimap.c:773
+msgid "Grain port|G"
+msgstr "Porto de cereais|C"
+
+#. Port indicator for ore
+#: ../common/gtk/guimap.c:777
+msgid "Ore port|O"
+msgstr "Porto de ouro|O"
+
+#. Port indicator for wool
+#: ../common/gtk/guimap.c:781
+msgid "Wool port|W"
+msgstr "Porto de lá|La"
+
+#. Port indicator for lumber
+#: ../common/gtk/guimap.c:785
+msgid "Lumber port|L"
+msgstr "Porto de madeira|M"
+
+#. Tooltip for the list of meta servers
+#: ../common/gtk/metaserver.c:86
+msgid "Select a meta server"
+msgstr "Seleccionar un meta-servidor"
+
+#. Tooltip for the list of games
+#: ../common/gtk/select-game.c:103
+msgid "Select a game"
+msgstr "Seleccione un xogo"
+
+#. Log prefix
+#: ../common/log.c:55
+msgid "*ERROR* "
+msgstr "*ERRO* "
+
+#. Log prefix
+#: ../common/log.c:63
+msgid "Chat: "
+msgstr "Falar: "
+
+#. Log prefix
+#: ../common/log.c:67
+msgid "Resource: "
+msgstr "Recursos: "
+
+#. Log prefix
+#: ../common/log.c:71
+msgid "Build: "
+msgstr "Construír: "
+
+#. Log prefix
+#: ../common/log.c:75
+msgid "Dice: "
+msgstr "Dados: "
+
+#. Log prefix
+#: ../common/log.c:79
+msgid "Steal: "
+msgstr "Roubar: "
+
+#. Log prefix
+#: ../common/log.c:83
+msgid "Trade: "
+msgstr "Comercio: "
+
+#. Log prefix
+#: ../common/log.c:87
+msgid "Development: "
+msgstr "Desenvolvemento: "
+
+#. Log prefix
+#: ../common/log.c:91
+msgid "Army: "
+msgstr "Exercito: "
+
+#. Log prefix
+#: ../common/log.c:95
+msgid "Road: "
+msgstr "Camiño: "
+
+#. Log prefix
+#: ../common/log.c:99
+msgid "*BEEP* "
+msgstr "*TON DE AVISO* "
+
+#. Log prefix
+#: ../common/log.c:105
+msgid "Player 1: "
+msgstr "Xogador 1: "
+
+#. Log prefix
+#: ../common/log.c:109
+msgid "Player 2: "
+msgstr "Xogador 2: "
+
+#. Log prefix
+#: ../common/log.c:113
+msgid "Player 3: "
+msgstr "Xogador 3: "
+
+#. Log prefix
+#: ../common/log.c:117
+msgid "Player 4: "
+msgstr "Xogador 4: "
+
+#. Log prefix
+#: ../common/log.c:121
+msgid "Player 5: "
+msgstr "Xogador 5: "
+
+#. Log prefix
+#: ../common/log.c:125
+msgid "Player 6: "
+msgstr "Xogador 6: "
+
+#. Log prefix
+#: ../common/log.c:129
+msgid "Player 7: "
+msgstr "Xogador 7: "
+
+#. Log prefix
+#: ../common/log.c:133
+msgid "Player 8: "
+msgstr "Xogador 8: "
+
+#. Log prefix
+#: ../common/log.c:137
+msgid "Viewer: "
+msgstr "Visor: "
+
+#. Log prefix
+#: ../common/log.c:141
+msgid "** UNKNOWN MESSAGE TYPE ** "
+msgstr "** TIPO DE MENSAXE DESCOÑECIDA ** "
+
+#: ../common/network.c:290
+#, c-format
+msgid "Error checking connect status: %s\n"
+msgstr "Erro comprobando o estado da conexión: %s\n"
+
+#: ../common/network.c:308
+#, c-format
+msgid "Error connecting to host '%s': %s\n"
+msgstr "Erro conectando ao anfitrión '%s': %s\n"
+
+#: ../common/network.c:335
+#, c-format
+msgid "Error writing socket: %s\n"
+msgstr "Erro escribindo conectador: %s\n"
+
+#: ../common/network.c:386
+#, c-format
+msgid "Error writing to socket: %s\n"
+msgstr "erro escribindo conectador: %s\n"
+
+#: ../common/network.c:440
+msgid "Read buffer overflow - disconnecting\n"
+msgstr "Ler desbordamento de buffer - desconectando\n"
+
+#: ../common/network.c:450
+#, c-format
+msgid "Error reading socket: %s\n"
+msgstr "Erro lendo conectador: %s\n"
+
+#: ../common/network.c:593
+#, c-format
+msgid "Error creating socket: %s\n"
+msgstr "Erro creando conectador: %s\n"
+
+#: ../common/network.c:600
+#, c-format
+msgid "Error setting socket close-on-exec: %s\n"
+msgstr "Erro axustando conectador close-on-exec: %s\n"
+
+#: ../common/network.c:609 ../common/network.c:805
+#, c-format
+msgid "Error setting socket non-blocking: %s\n"
+msgstr "Erro axustando conectador de non bloqueo:%s\n"
+
+#: ../common/network.c:632
+#, c-format
+msgid "Error connecting to %s: %s\n"
+msgstr "Erro conectando a %s: %s\n"
+
+#: ../common/network.c:670
+#, c-format
+msgid "Cannot resolve %s port %s: %s\n"
+msgstr "Non se pode resolver %s porto %s: %s\n"
+
+#: ../common/network.c:676
+#, c-format
+msgid "Cannot resolve %s port %s: host not found\n"
+msgstr "Non se pode resolver %s porto %s: anfitrión non atopado\n"
+
+#: ../common/network.c:764
+#, c-format
+msgid "Error creating struct addrinfo: %s"
+msgstr "Erro creando struct addrinfo: %s"
+
+#: ../common/network.c:794
+#, c-format
+msgid "Error creating listening socket: %s\n"
+msgstr "Erro creando conectador de escoita: %s\n"
+
+#: ../common/network.c:814
+#, c-format
+msgid "Error during listen on socket: %s\n"
+msgstr "Erro durante a escoita no conectador: %s\n"
+
+#: ../common/network.c:824
+msgid "Listening not yet supported on this platform."
+msgstr "Escoita non compatíbel aínda nesta plataforma."
+
+#: ../common/network.c:846 ../common/network.c:847
+msgid "unknown"
+msgstr "descoñecido"
+
+#: ../common/network.c:853
+#, c-format
+msgid "Error getting peer name: %s"
+msgstr "Erro obtendo nome ao mesmo nivel: %s"
+
+#: ../common/network.c:865
+#, c-format
+msgid "Error resolving address: %s"
+msgstr "Erro conseguindo enderezo: %s"
+
+#: ../common/network.c:879
+msgid "Net_get_peer_name not yet supported on this platform."
+msgstr "Net_get_peer_name aínda non é compatíbel con esta plataforma"
+
+#: ../common/network.c:895
+#, c-format
+msgid "Error accepting connection: %s"
+msgstr "Produciuse un erro ao aceptar a conexión : %s"
+
+#: ../common/state.c:168
+#, c-format
+msgid "Connecting to %s, port %s\n"
+msgstr "Conectando a %s, porto %s\n"
+
+#. Error message
+#: ../common/state.c:291
+msgid "State stack overflow. Stack dump sent to standard error.\n"
+msgstr ""
+"Estado de desbordamento de pila. Volteado de pila enviado a erro estándar.\n"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:73
+msgid "_Hill"
+msgstr "_Outeiro"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:75
+msgid "_Field"
+msgstr "_Leira"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:77
+msgid "_Mountain"
+msgstr "_Montaña"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:79
+msgid "_Pasture"
+msgstr "_Prado"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:81
+msgid "F_orest"
+msgstr "_Bosque"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:83
+msgid "_Desert"
+msgstr "_Deserto"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:85
+msgid "_Sea"
+msgstr "M_ar"
+
+#. Use an unique shortcut key for each resource
+#: ../editor/gtk/editor.c:87
+msgid "_Gold"
+msgstr "O_uro"
+
+#. Use an unique shortcut key for each resource
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:89 ../editor/gtk/editor.c:104
+msgid "_None"
+msgstr "_Ningún"
+
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:94
+msgid "_Brick (2:1)"
+msgstr "La_drillo (2:1)"
+
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:96
+msgid "_Grain (2:1)"
+msgstr "_Cereais (2:1)"
+
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:98
+msgid "_Ore (2:1)"
+msgstr "Mine_rais (2:1)"
+
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:100
+msgid "_Wool (2:1)"
+msgstr "_Lá (2:1)"
+
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:102
+msgid "_Lumber (2:1)"
+msgstr "_Madeira (2:1)"
+
+#. Use an unique shortcut key for each port type
+#: ../editor/gtk/editor.c:106
+msgid "_Any (3:1)"
+msgstr "Calquera (_3:1)"
+
+#. East
+#: ../editor/gtk/editor.c:111
+msgid "East|E"
+msgstr "Leste|L"
+
+#. North east
+#: ../editor/gtk/editor.c:113
+msgid "North East|NE"
+msgstr "Nordeste|NE"
+
+#. North west
+#: ../editor/gtk/editor.c:115
+msgid "North West|NW"
+msgstr "Noroeste|NO"
+
+#. West
+#: ../editor/gtk/editor.c:117
+msgid "West|W"
+msgstr "Oeste@O"
+
+#. South west
+#: ../editor/gtk/editor.c:119
+msgid "South West|SW"
+msgstr "Suroeste|SO"
+
+#. South east
+#: ../editor/gtk/editor.c:121
+msgid "South East|SE"
+msgstr "Sureste|SE"
+
+#. Menu item
+#: ../editor/gtk/editor.c:602
+msgid "Shuffle"
+msgstr "Ao chou"
+
+#. Caption
+#: ../editor/gtk/editor.c:734 ../server/gtk/main.c:468
+msgid "Game parameters"
+msgstr "Parametros do xogo"
+
+#. Caption
+#: ../editor/gtk/editor.c:737 ../server/gtk/main.c:498
+msgid "Rules"
+msgstr "Regras"
+
+#. Caption
+#: ../editor/gtk/editor.c:739
+msgid "Resources"
+msgstr "Recursos"
+
+#. Caption
+#: ../editor/gtk/editor.c:741
+msgid "Buildings"
+msgstr "Construccións"
+
+#. Application caption
+#: ../editor/gtk/editor.c:761 ../editor/gtk/pioneers-editor.desktop.in.h:2
+msgid "Pioneers Editor"
+msgstr "Editor de Pioneiros"
+
+#: ../editor/gtk/editor.c:846
+#, c-format
+msgid "Failed to load '%s'"
+msgstr "Falla ao cargar '%s'"
+
+#: ../editor/gtk/editor.c:886
+#, c-format
+msgid "Failed to save to '%s'"
+msgstr "Falla ao gardar a '%s'"
+
+#. Dialog caption
+#: ../editor/gtk/editor.c:903
+msgid "Open Game"
+msgstr "Abrir partida"
+
+#. Dialog caption
+#: ../editor/gtk/editor.c:931
+msgid "Save As..."
+msgstr "Gardar como..."
+
+#. Dialog caption
+#: ../editor/gtk/editor.c:969
+msgid "Change Title"
+msgstr "Cambiar titulo"
+
+#. Label
+#: ../editor/gtk/editor.c:992
+msgid "New title:"
+msgstr "Novo titulo:"
+
+#. About dialog caption
+#: ../editor/gtk/editor.c:1049
+msgid "About Pioneers Game Editor"
+msgstr "Acerca do editor de Pioneiros"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1055
+msgid "_File"
+msgstr "_Ficheiro"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1062
+msgid "_New"
+msgstr "_Novo"
+
+#: ../editor/gtk/editor.c:1063
+msgid "Create a new game"
+msgstr "Crear un novo xogo"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1066
+msgid "_Open..."
+msgstr "_Abrir..."
+
+#. Tooltip for Open menu entry
+#: ../editor/gtk/editor.c:1068
+msgid "Open an existing game"
+msgstr "Abrir un xogo existente"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1071
+msgid "_Save"
+msgstr "_Gardar"
+
+#. Tooltip for Save menu entry
+#: ../editor/gtk/editor.c:1073
+msgid "Save game"
+msgstr "Gardar o xogo"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1076
+msgid "Save _As..."
+msgstr "Gardar _como..."
+
+#. Tooltip for Save As menu entry
+#: ../editor/gtk/editor.c:1079
+msgid "Save as"
+msgstr "Gardar como"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1082
+msgid "_Change Title"
+msgstr "Cambiar _titulo"
+
+#. Tooltip for Change Title menu entry
+#: ../editor/gtk/editor.c:1084
+msgid "Change game title"
+msgstr "Cambiar titulo do xogo"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1087 ../server/gtk/main.c:106
+msgid "_Check Victory Point Target"
+msgstr "Comproba o obxetivo de puntos de _victoria"
+
+#. Tooltip for Check Victory Point Target menu entry
+#. Tooltop for Check Victory Point Target menu entry
+#: ../editor/gtk/editor.c:1090 ../server/gtk/main.c:109
+msgid "Check whether the game can be won"
+msgstr "Comproba cando pode gañarse o xogo"
+
+#. Tooltip for Quit menu entry
+#: ../editor/gtk/editor.c:1095
+msgid "Quit"
+msgstr "Saír"
+
+#. Menu entry
+#: ../editor/gtk/editor.c:1105
+msgid "_About Pioneers Editor"
+msgstr "_Acerca do editor de Pioneiros"
+
+#. Tooltip for About Pioneers Editor menu entry
+#: ../editor/gtk/editor.c:1107
+msgid "Information about Pioneers Editor"
+msgstr "Informacion acerca de editor de Pioneiros"
+
+#. Long help for commandline option (editor): filename
+#: ../editor/gtk/editor.c:1145
+msgid "Open this file"
+msgstr "Abrir este ficheiro"
+
+#. Commandline option for editor: filename
+#. Commandline meta-server: pidfile argument
+#: ../editor/gtk/editor.c:1147 ../meta-server/main.c:1069
+msgid "filename"
+msgstr "nome de ficheiro"
+
+#. Long description in the command line: --help
+#: ../editor/gtk/editor.c:1179
+msgid "- Editor for games of Pioneers"
+msgstr "- Editor para xogos de Pioneiros"
+
+#. Error message
+#: ../editor/gtk/editor.c:1220 ../server/gtk/main.c:1086
+#, c-format
+msgid "Building menus failed: %s"
+msgstr "Construción menús fallada: %s"
+
+#. Tab page name
+#: ../editor/gtk/editor.c:1250
+msgid "Settings"
+msgstr "Axustes"
+
+#: ../editor/gtk/game-resources.c:48
+msgid "Resource count"
+msgstr "Conta de recursos"
+
+#: ../editor/gtk/pioneers-editor.desktop.in.h:1
+msgid "Create your own game for Pioneers"
+msgstr "Crea o teu propio xogo para Pioneiros"
+
+#. Commandline meta-server: daemon
+#: ../meta-server/main.c:1064
+msgid "Daemonize the meta-server on start"
+msgstr "Converter en daemon o meta servidor ao iniciar"
+
+#. Commandline meta-server: pidfile
+#: ../meta-server/main.c:1067
+msgid "Pidfile to create when daemonizing (implies -d)"
+msgstr "Ficheiro PID a crear ao converter en daemon (implica -d)"
+
+#. Commandline meta-server: redirect
+#: ../meta-server/main.c:1072
+msgid "Redirect clients to another meta-server"
+msgstr "Redirixir clientes a outro meta-servidor"
+
+#. Commandline meta-server: server
+#: ../meta-server/main.c:1075
+msgid "Use this hostname when creating new games"
+msgstr "Usar este nome de servidor ao crear novas partidas"
+
+#. Commandline meta-server: server argument
+#: ../meta-server/main.c:1077
+msgid "hostname"
+msgstr "nome de equipo"
+
+#. Commandline meta-server: port-range
+#: ../meta-server/main.c:1080
+msgid "Use this port range when creating new games"
+msgstr "Usa este rango de portos cando estea creando novos xogos"
+
+#. Commandline meta-server: port-range argument
+#: ../meta-server/main.c:1082
+msgid "from-to"
+msgstr "de-para"
+
+#. Commandline option of meta server: syslog-debug
+#: ../meta-server/main.c:1088
+msgid "Debug syslog messages"
+msgstr "Depurar mensaxes do log do sistema"
+
+#. Long description in the commandline for server-console: help
+#: ../meta-server/main.c:1109
+msgid "- Meta server for Pioneers"
+msgstr "- Meta Servidor para Pioneiros"
+
+#: ../meta-server/main.c:1125
+#, c-format
+msgid "meta-server protocol:"
+msgstr "protocolo do meta-servidor:"
+
+#: ../server/avahi.c:68
+msgid "Avahi registration successful.\n"
+msgstr ""
+
+#: ../server/avahi.c:78
+#, c-format
+msgid "Avahi service name collision, renaming service to '%s'.\n"
+msgstr ""
+
+#. Some kind of failure happened while we were registering
+#: ../server/avahi.c:89
+#, c-format
+msgid "Avahi error: %s\n"
+msgstr ""
+
+#: ../server/avahi.c:113 ../server/avahi.c:147 ../server/avahi.c:157
+#: ../server/avahi.c:193 ../server/avahi.c:214 ../server/avahi.c:228
+#, fuzzy, c-format
+#| msgid "Error (%s): %s\n"
+msgid "Avahi error: %s, %s\n"
+msgstr "Erro(%s): %s\n"
+
+#: ../server/avahi.c:215 ../server/avahi.c:229
+#, fuzzy
+#| msgid "Unregister from meta-server\n"
+msgid "Unable to register Avahi server"
+msgstr "Darse de baixa do metaservidor\n"
+
+#: ../server/avahi.c:262
+msgid "Unregistering Avahi.\n"
+msgstr ""
+
+#. Menu entry
+#: ../server/gtk/main.c:117
+msgid "_About Pioneers Server"
+msgstr "_Acerca do servidor de Pioneiros"
+
+#. Tooltop for About Pioneers Server menu entry
+#: ../server/gtk/main.c:119
+msgid "Information about Pioneers Server"
+msgstr "Información do servidor Pioneiros"
+
+#: ../server/gtk/main.c:236
+msgid "Stop Server"
+msgstr "Deter o servidor"
+
+#: ../server/gtk/main.c:237
+msgid "Start Server"
+msgstr "Iniciar o servidor"
+
+#: ../server/gtk/main.c:239 ../server/gtk/main.c:743
+msgid "Stop the server"
+msgstr "Deter o servidor"
+
+#: ../server/gtk/main.c:240
+msgid "Start the server"
+msgstr "Inicie o servidor"
+
+#: ../server/gtk/main.c:382
+#, c-format
+msgid "Player %s from %s entered\n"
+msgstr "Entrou o xogador %s de %s\n"
+
+#: ../server/gtk/main.c:389
+#, c-format
+msgid "Player %s from %s left\n"
+msgstr "O xogador %s de %s foise\n"
+
+#: ../server/gtk/main.c:396
+#, c-format
+msgid "Player %d is now %s\n"
+msgstr "O xogador %d é agora %s\n"
+
+#: ../server/gtk/main.c:570
+msgid "Game settings"
+msgstr "Configuración do xogo"
+
+#: ../server/gtk/main.c:620
+msgid "Server parameters"
+msgstr "Parámetros do servidor"
+
+#: ../server/gtk/main.c:646
+msgid "The port for the game server"
+msgstr "O porto para o servidor do xogo"
+
+#: ../server/gtk/main.c:649
+msgid "Register server"
+msgstr "Rexistrar o servidor"
+
+#: ../server/gtk/main.c:657
+msgid "Register this game at the meta server"
+msgstr "Rexistrar este xogo no meta-servidor"
+
+#: ../server/gtk/main.c:672
+msgid "Reported hostname"
+msgstr "Nome informado do anfitrión"
+
+#: ../server/gtk/main.c:686
+msgid ""
+"The public name of this computer (needed when playing behind a firewall)"
+msgstr ""
+"O nome público deste computador (preciso cando se xoga a través dun firewall)"
+
+#: ../server/gtk/main.c:691
+#, fuzzy
+#| msgid "Randomize turn order"
+msgid "Random turn order"
+msgstr "Desordenar a orde das quendas"
+
+#: ../server/gtk/main.c:699
+msgid "Randomize turn order"
+msgstr "Desordenar a orde das quendas"
+
+#: ../server/gtk/main.c:739
+msgid "Running game"
+msgstr "Xogo actual"
+
+#. Caption
+#: ../server/gtk/main.c:754
+msgid "Players connected"
+msgstr "Xogadores conectados"
+
+#. Tooltip for server connection overview
+#: ../server/gtk/main.c:787
+msgid "Shows all players and viewers connected to the server"
+msgstr "Amosar todos os xogadores e visores conectados ao servidor"
+
+#: ../server/gtk/main.c:792
+msgid "Connected"
+msgstr "Conectado"
+
+#. Tooltip for column Connected
+#: ../server/gtk/main.c:800
+msgid "Is the player currently connected?"
+msgstr "Está conectado actualmente o xogador  ?"
+
+#: ../server/gtk/main.c:803
+msgid "Name"
+msgstr "Nome"
+
+#. Tooltip for column Name
+#: ../server/gtk/main.c:811
+msgid "Name of the player"
+msgstr "Nome do xogador"
+
+#: ../server/gtk/main.c:813
+msgid "Location"
+msgstr "Ubicación"
+
+#. Tooltip for column Location
+#: ../server/gtk/main.c:821
+msgid "Host name of the player"
+msgstr "Nome do xogador anfitrión"
+
+#: ../server/gtk/main.c:825
+msgid "Number"
+msgstr "Número"
+
+#. Tooltip for colum Number
+#: ../server/gtk/main.c:832
+msgid "Player number"
+msgstr "Número do xogador"
+
+#: ../server/gtk/main.c:836
+msgid "Role"
+msgstr "Rol"
+
+#. Tooltip for column Role
+#: ../server/gtk/main.c:840
+#, fuzzy
+#| msgid "Player of viewer"
+msgid "Player or viewer"
+msgstr "Xogador de visor"
+
+#. Button text
+#: ../server/gtk/main.c:852
+msgid "Launch Pioneers Client"
+msgstr "Lanzar o cliente de Pioneiros"
+
+#. Tooltip
+#: ../server/gtk/main.c:861
+msgid "Launch the Pioneers client"
+msgstr "Lanzar o cliente de Pioneiros"
+
+#. Caption
+#: ../server/gtk/main.c:864
+msgid "Computer players"
+msgstr "Xogadores do computador"
+
+#. Label
+#: ../server/gtk/main.c:874
+msgid "Enable chat"
+msgstr "Permitir conversa"
+
+#. Tooltip
+#: ../server/gtk/main.c:881
+msgid "Enable chat messages"
+msgstr "Permitir as mensaxes de conversa"
+
+#. Button text
+#: ../server/gtk/main.c:889
+msgid "Add Computer Player"
+msgstr "Engadir un xogador do computador"
+
+#. Tooltip
+#: ../server/gtk/main.c:898
+msgid "Add a computer player to the game"
+msgstr "Engadir un xogador do computador no xogo"
+
+#. Caption
+#: ../server/gtk/main.c:909
+msgid "Messages"
+msgstr "Mensaxes"
+
+#. Tooltip
+#: ../server/gtk/main.c:928
+msgid "Messages from the server"
+msgstr "Mensaxes do servidor"
+
+#. Dialog caption of about box
+#: ../server/gtk/main.c:980
+msgid "The Pioneers Game Server"
+msgstr "O servidor do xogo Pioneiros"
+
+#. Wait for all players to disconnect,
+#. * then enable the UI
+#.
+#: ../server/gtk/main.c:988
+msgid "The game is over.\n"
+msgstr "O xogo rematou.\n"
+
+#. Long description in the commandline for server-gtk: help
+#. Long description in the commandline for server-console: help
+#: ../server/gtk/main.c:1042 ../server/main.c:176
+msgid "- Host a game of Pioneers"
+msgstr "- Organice un xogo de Pioneiros"
+
+#. Name in the titlebar of the server
+#: ../server/gtk/main.c:1066 ../server/gtk/pioneers-server.desktop.in.h:2
+msgid "Pioneers Server"
+msgstr "Servidor de Pioneiros"
+
+#: ../server/gtk/pioneers-server.desktop.in.h:1
+msgid "Host a game of Pioneers"
+msgstr "Hospedar unha partida de Pioneiros"
+
+#. Commandline server-console: game-title
+#: ../server/main.c:76
+msgid "Game title to use"
+msgstr "Título do xogo para usar"
+
+#. Commandline server-console: file
+#: ../server/main.c:79
+msgid "Game file to use"
+msgstr "Ficheiro de xogo para usar"
+
+#. Commandline server-console: port
+#: ../server/main.c:82
+msgid "Port to listen on"
+msgstr "Porto para escoitar"
+
+#. Commandline server-console: players
+#: ../server/main.c:85
+msgid "Override number of players"
+msgstr "Anular o número de xogadores"
+
+#. Commandline server-console: points
+#: ../server/main.c:88
+msgid "Override number of points needed to win"
+msgstr "Anular o número de puntos precisos para gañar"
+
+#. Commandline server-console: seven-rule
+#: ../server/main.c:91
+msgid "Override seven-rule handling"
+msgstr "Anular a regra do 7"
+
+#. Commandline server-console: terrain
+#: ../server/main.c:94
+msgid "Override terrain type, 0=default 1=random"
+msgstr "Anular tipo de terreo, 0=predefinido 1=ao chou"
+
+#. Commandline server-console: computer-players
+#: ../server/main.c:97
+msgid "Add N computer players"
+msgstr "Engadir N xogadores do computador"
+
+#. Commandline server-console: register
+#: ../server/main.c:107
+msgid "Register server with meta-server"
+msgstr "Rexistrar o servidor co meta-servidor"
+
+#. Commandline server-console: meta-server
+#: ../server/main.c:110
+msgid "Register at meta-server name (implies -r)"
+msgstr "Rexistrar en nome do meta-servidor (supón -r)"
+
+#. Commandline server-console: hostname
+#: ../server/main.c:114
+msgid "Use this hostname when registering"
+msgstr "Usar este nome de máquina cando se rexistre"
+
+#. Commandline server-console: auto-quit
+#: ../server/main.c:121
+msgid "Quit after a player has won"
+msgstr "Saír despois de que un xogador gañe"
+
+#. Commandline server-console: empty-timeout
+#: ../server/main.c:124
+msgid "Quit after N seconds with no players"
+msgstr "Saír despois de N segundos sen xogadores"
+
+#. Commandline server-console: tournament
+#: ../server/main.c:127
+msgid "Tournament mode, computer players added after N minutes"
+msgstr "Modo de torneo, xogadores do computador engadidos despois de N minutos"
+
+#. Commandline server-console: admin-port
+#: ../server/main.c:131
+msgid "Admin port to listen on"
+msgstr "Porto administrador para a escoita"
+
+#. Commandline server-console: admin-wait
+#: ../server/main.c:134
+msgid "Don't start game immediately, wait for a command on admin port"
+msgstr ""
+"Non comece o xogo inmediatamente, espere unha orde do porto administrador"
+
+#. Commandline server-console: fixed-seating-order
+#: ../server/main.c:140
+msgid "Give players numbers according to the order they enter the game"
+msgstr "Dar números de xogadores de acordo á orde na que entren no xogo"
+
+#. Commandline server-console: Short description of meta group
+#: ../server/main.c:182
+msgid "Meta-server Options"
+msgstr "Opción do metaservidor"
+
+#. Commandline server-console: Long description of meta group
+#: ../server/main.c:184
+msgid "Options for the meta-server"
+msgstr "Opción para o metaservidor"
+
+#. Commandline server-console: Short description of misc group
+#: ../server/main.c:193
+msgid "Miscellaneous Options"
+msgstr "Opcións varias"
+
+#. Commandline server-console: Long description of misc group
+#: ../server/main.c:195
+msgid "Miscellaneous options"
+msgstr "Opcións varias"
+
+#. server-console commandline error
+#: ../server/main.c:225
+#, c-format
+msgid "Cannot set game title and filename at the same time\n"
+msgstr ""
+"Non se pode establecer un titulo ao xogo e un nome ao ficheiro ao mesmo "
+"tempo\n"
+
+#. server-console commandline error
+#: ../server/main.c:242
+#, c-format
+msgid "Cannot load the parameters for the game\n"
+msgstr "Non se poden cargar os parámetros da partida\n"
+
+#. Error message
+#: ../server/main.c:275
+#, fuzzy, c-format
+#| msgid "Sorry, %s available.\n"
+msgid "Admin port not available.\n"
+msgstr "Sintoo, %s dispoñíbel.\n"
+
+#. server-console commandline error
+#: ../server/main.c:282
+#, c-format
+msgid "Admin port is not set, cannot disable game start too\n"
+msgstr ""
+"O porto de administración non está asignado, tampouco se pode desactivar o "
+"inicio do xogo\n"
+
+#: ../server/meta.c:187
+#, c-format
+msgid "Register with meta-server at %s, port %s\n"
+msgstr "Rexistrar co metaservidor no %s, porto %s\n"
+
+#: ../server/meta.c:205
+msgid "Unregister from meta-server\n"
+msgstr "Darse de baixa do metaservidor\n"
+
+#: ../server/player.c:140
+msgid "chat too long"
+msgstr "Conversa demasiado longa"
+
+#: ../server/player.c:157
+msgid "name too long"
+msgstr "Nome demasiado longo"
+
+#: ../server/player.c:189
+msgid "ignoring unknown extension"
+msgstr "ignorar extensión descoñecida"
+
+#: ../server/player.c:226 ../server/player.c:296
+msgid "The last player left, the tournament timer is reset."
+msgstr "O ultimo xogador saíu, o contador do torneo restableceuse."
+
+#: ../server/player.c:260 ../server/player.c:633
+msgid "No human players present. Bye."
+msgstr ""
+
+#: ../server/player.c:267
+msgid "Game starts, adding computer players."
+msgstr "A partida comeza, engadindo xogadores do computador."
+
+#: ../server/player.c:309
+#, c-format
+msgid "The game starts in %s minutes."
+msgstr "O xogo comeza en %s minutos."
+
+#: ../server/player.c:310
+#, c-format
+msgid "The game starts in %s minute."
+msgstr "O xogo comeza en %s minutos."
+
+#. Default name for the AI when the computer_names file
+#. * is not found or empty.
+#.
+#: ../server/player.c:368 ../server/player.c:374
+msgid "Computer Player"
+msgstr "Xogador do computador"
+
+#: ../server/player.c:465
+msgid "Sorry, game is over."
+msgstr "O xogo rematou."
+
+#: ../server/player.c:468
+#, c-format
+msgid "Player from %s is refused: game is over\n"
+msgstr "Xogador de %s rexeitado: fin do xogo\n"
+
+#: ../server/player.c:510
+msgid "Name not changed: new name is already in use"
+msgstr "O nome non cambiou: o novo nome xa está en uso"
+
+#: ../server/player.c:628 ../server/server.c:43
+msgid "Was hanging around for too long without players... bye.\n"
+msgstr "Esperouse demasiado tempo sen xogadores... Adeus.\n"
+
+#: ../server/player.c:707
+msgid "The last human player left. Waiting for the return of a player."
+msgstr ""
+
+#: ../server/player.c:728
+msgid "Resuming the game."
+msgstr ""
+
+#. %s is the name of the reconnecting player
+#: ../server/player.c:860
+#, c-format
+msgid "%s has reconnected."
+msgstr "%s reconectouse."
+
+#: ../server/player.c:991
+#, c-format
+msgid "Version mismatch: %s"
+msgstr "A versión non coincide: %s"
+
+#: ../server/player.c:1028
+msgid "This game will start soon."
+msgstr "Este xogo comezará en breve"
+
+#. Server: preparing game #.....
+#: ../server/server.c:236
+msgid "Preparing game"
+msgstr "Preparando a partida"
+
+#: ../server/server.c:383 ../server/server.c:472
+#, c-format
+msgid "Looking for games in '%s'\n"
+msgstr "Buscando xogos en '%s'\n"
+
+#: ../server/server.c:385 ../server/server.c:474
+#, c-format
+msgid "Game directory '%s' not found\n"
+msgstr "Directorio de xogos '%s' non atopado\n"
+
+#: ../server/turn.c:253
+msgid "Island Discovery Bonus"
+msgstr "Bonificación por descubrimento de illas"
+
+#: ../server/turn.c:254
+msgid "Additional Island Bonus"
+msgstr "Bonificación por illas adicionais"
+
+#: ../server/turn.c:385
+msgid "Tried to assign resources to NULL player.\n"
+msgstr "Tentouse asignar recursos para un xogador nulo.\n"
+
+#. Cheat mode has been activated
+#: ../server/turn.c:495
+msgid "The dice roll has been determined by the administrator."
+msgstr "O rol do dado foi determinado polo administrador."
+
+#~ msgid "Number of AI Players"
+#~ msgstr "Número de xogadores do computador"
+
+#~ msgid "The number of AI players"
+#~ msgstr "Número de xogadores do computador"
+
+#~ msgid "Recent Games"
+#~ msgstr "Xogos recentes"
+
+#~ msgid "You may choose 1 resource"
+#~ msgstr "Podes elixir 1 recurso"
+
+#~ msgid "_Player name"
+#~ msgstr "Nome do _xogador"
+
+#~ msgid "The Pioneers Game"
+#~ msgstr "O xogo de Pioneiros"
+
+#~ msgid "Select the ship to steal from"
+#~ msgstr "Seleccione o barco a roubar"
+
+#~ msgid "Select the building to steal from"
+#~ msgstr "Elixe o edificio que queres roubar"
+
+#~ msgid "Development Card"
+#~ msgstr "Carta de desenvolvemento"
+
+#~ msgid "Player Name:"
+#~ msgstr "Nome do xogador:"
+
+#~ msgid "I Want"
+#~ msgstr "Quero..."
+
+#~ msgid "Interplayer Trading Allowed?"
+#~ msgstr "Permítese comercio entre os xogadores?"
+
+#~ msgid "Trading allowed only before build/buy?"
+#~ msgstr "Comercio permitido só antes de construír/mercar?"
+
+#~ msgid "Check Victory Only At End Of Turn?"
+#~ msgstr "Comprobar victoria só ao final da quenda?"
+
+#~ msgid "Sevens Rule:"
+#~ msgstr "Regra dos setes:"
+
+#~ msgid "Use Pirate:"
+#~ msgstr "Use Pirata:"
+
+#~ msgid "Number of Players"
+#~ msgstr "Número de xogadores"
+
+#~ msgid "Development Cards"
+#~ msgstr "Carta de desenvolvemento"
+
+#~ msgid "Save as..."
+#~ msgstr "Gardar como..."
+
+#~ msgid "Pioneers Game Editor"
+#~ msgstr "Editor do xogo Pioneiros"
+
+#~ msgid "_Change title"
+#~ msgstr "Cambiar _titulo"
+
+#~ msgid "Random Turn Order"
+#~ msgstr "Orde de quendas ao chou"

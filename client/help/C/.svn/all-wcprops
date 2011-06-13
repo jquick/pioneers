@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/pio/!svn/ver/1436/trunk/pioneers/client/help/C
+END
+custom.xsl
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/pio/!svn/ver/1292/trunk/pioneers/client/help/C/custom.xsl
+END
+legal.xml
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/471/trunk/pioneers/client/help/C/legal.xml
+END
+pioneers.xml
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/pio/!svn/ver/1436/trunk/pioneers/client/help/C/pioneers.xml
+END
+pioneers-C.omf
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/pio/!svn/ver/852/trunk/pioneers/client/help/C/pioneers-C.omf
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/pio/!svn/ver/1373/trunk/pioneers/client/help/C/Makefile.am
+END

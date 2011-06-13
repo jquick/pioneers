@@ -1,0 +1,9 @@
+K 10
+svn:ignore
+V 64
+Makefile.in
+Makefile
+index.html
+pioneers-C.omf.out
+omf_timestamp
+END

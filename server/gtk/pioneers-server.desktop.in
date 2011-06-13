@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+_Name=Pioneers Server
+_Comment=Host a game of Pioneers
+Exec=pioneers-server-gtk
+Icon=pioneers-server.png
+Terminal=false
+Type=Application
+Categories=Game;BoardGame;GNOME;GTK;

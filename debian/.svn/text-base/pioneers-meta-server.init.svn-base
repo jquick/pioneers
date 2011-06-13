@@ -1,0 +1,110 @@
+#! /bin/sh
+
+### BEGIN INIT INFO
+# Provides:		pioneers-meta-server
+# Required-Start:	$syslog $network $remote_fs
+# Required-Stop:	$syslog $network $remote_fs
+# Default-Start:	2 3 4 5
+# Default-Stop:		0 1 6
+# Short-Description:	Meta-server for Pioneers
+# Description:		Start a meta-server for Pioneers, to allow
+#			clients to find servers.
+### END INIT INFO
+
+# The defaults below can be overridden in /etc/default/pioneers-meta-server
+CONFIG_FILE=/etc/default/pioneers-meta-server
+
+# Port range
+PORT_RANGE="5560-5569"
+
+# Arguments to meta-server.
+META_SERVER_ARGS=""
+
+# Reported hostname for servers started by the meta-server.
+META_SERVER_NAME="`dnsdomainname --fqdn`"
+
+# Arguments to start-stop-daemon.
+ARGS="--make-pidfile --quiet --chuid nobody:nogroup"
+
+# File for storing the pid.  You probably don't need to change this.
+PIDFILE=/var/run/pioneers-meta-server.pid
+
+# End of variable list.
+
+if test -r $CONFIG_FILE; then
+	. $CONFIG_FILE
+fi
+
+test -z "$PORT_RANGE" || PORT_RANGE="--port-range $PORT_RANGE"
+test -z "$META_SERVER_NAME" || META_SERVER_NAME="--servername $META_SERVER_NAME"
+
+export PIONEERS_META_SERVER
+NAME="Pioneers meta-server"
+DAEMON=/usr/games/pioneers-meta-server
+ARGS="--pidfile $PIDFILE --exec $DAEMON $ARGS"
+START_ARGS="--background --start $ARGS -- $PORT_RANGE $META_SERVER_ARGS $META_SERVER_NAME"
+STOP_ARGS="--stop $ARGS"
+
+if test ! -x "$DAEMON"; then
+	echo "$DAEMON does not exist"
+	exit 0
+fi
+
+case "$1" in
+	start)
+		if start-stop-daemon --test $START_ARGS; then
+			echo -n "Starting $NAME..."
+			if start-stop-daemon $START_ARGS; then
+				echo "done."
+			else
+				echo "failed."
+			fi
+		else
+			echo "Not starting $NAME: already running"
+		fi
+		;;
+	stop)
+		echo -n "Stopping $NAME: pioneers-meta-server..."
+		if start-stop-daemon $STOP_ARGS ; then
+			echo "done."
+		else
+			echo "failed."
+		fi
+		;;
+	restart|force-reload)
+		echo -n "Restarting $NAME..."
+		if start-stop-daemon $STOP_ARGS --oknodo ; then
+			sleep 2
+			if start-stop-daemon $START_ARGS; then
+				echo "done."
+			else
+				echo "failed."
+			fi
+		else
+			echo "failed."
+		fi
+		;;
+	status)
+		if start-stop-daemon --test $START_ARGS; then
+			echo "$NAME is not running."
+			# Use proper exit codes, see LSB 3.1.0
+			if [ -e $PIDFILE ] ; then
+				exit 1 # not running, but pidfile exists
+			else
+				exit 3 # not running
+			fi
+		elif start-stop-daemon --test $STOP_ARGS >/dev/null ; then
+			echo "$NAME is running."
+			exit 0 # running
+		else
+			echo "Cannot get status of $NAME."
+			exit 4 # status is unknown
+		fi
+		;;
+	*)
+		echo "Usage: /etc/init.d/pioneers-meta-server {start|stop|restart|force-reload|status}"
+		exit 1
+		;;
+esac
+
+exit 0

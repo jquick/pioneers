@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svnroot/pio/!svn/ver/1591/trunk/pioneers/admin-scripts
+END
+meta.sh
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/1591/trunk/pioneers/admin-scripts/meta.sh
+END
+locallobbybot.sh
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnroot/pio/!svn/ver/1591/trunk/pioneers/admin-scripts/locallobbybot.sh
+END
+getVersions.sh
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnroot/pio/!svn/ver/1591/trunk/pioneers/admin-scripts/getVersions.sh
+END
+remotelobbybot.sh
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svnroot/pio/!svn/ver/1591/trunk/pioneers/admin-scripts/remotelobbybot.sh
+END
+list.sh
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/1591/trunk/pioneers/admin-scripts/list.sh
+END
+screenrc
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1591/trunk/pioneers/admin-scripts/screenrc
+END
+kill-game.sh
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/pio/!svn/ver/1591/trunk/pioneers/admin-scripts/kill-game.sh
+END
+locallobby.sh
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/pio/!svn/ver/1591/trunk/pioneers/admin-scripts/locallobby.sh
+END
+remotelobby.sh
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnroot/pio/!svn/ver/1591/trunk/pioneers/admin-scripts/remotelobby.sh
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pio/!svn/ver/1591/trunk/pioneers/admin-scripts/README
+END

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svnroot/pio/!svn/ver/1560/trunk/pioneers/meta-server
+END
+meta-report
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/829/trunk/pioneers/meta-server/meta-report
+END
+main.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1560/trunk/pioneers/meta-server/main.c
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/1102/trunk/pioneers/meta-server/Makefile.am
+END
+README.protocol
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/pio/!svn/ver/985/trunk/pioneers/meta-server/README.protocol
+END

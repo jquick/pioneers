@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE omf PUBLIC "-//OMF//DTD Scrollkeeper OMF Variant V1.0//EN" "http://scrollkeeper.sourceforge.net/dtds/scrollkeeper-omf-1.0/scrollkeeper-omf.dtd">
+<omf>
+  <resource>
+    <creator>
+    Dave Cole
+    </creator>
+    <creator>
+    Andy Heroff
+    </creator>
+    <title>
+     Pioneers Player's Guide
+    </title>
+    <date>
+    2000-05-03
+    </date>
+    <version identifier="1.0" date="2003-10-07" description="Updated to full OMF format"/>
+    <subject category="GNOME|Games"/>
+    <description>
+      Pioneers is an Internet playable implementation of
+	  the Settlers of Catan board game.
+    </description>
+    <type>
+     user's guide
+    </type>
+    <format mime="text/xml" dtd="-//OASIS//DTD DocBook XML V4.1.2//EN"/>
+    <identifier url="file://usr/share/gnome/help/pioneers/C/pioneers.xml"/>
+    <language code="C"/>
+<!-- for information on how Scrollkeeper uses the following relation element,
+  see http://scrollkeeper.sourceforge.net/documentation/writing_scrollkeeper_omf_files/index.html -->
+    <relation seriesid="b1c831b6-f920-11d7-9e65-963f05991571"/>
+  </resource>
+</omf>

@@ -1,0 +1,173 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svnroot/pio/!svn/ver/1657/trunk/pioneers/common/gtk
+END
+gtkcompat.h
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1656/trunk/pioneers/common/gtk/gtkcompat.h
+END
+game-rules.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/1636/trunk/pioneers/common/gtk/game-rules.c
+END
+colors.c
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/pio/!svn/ver/1637/trunk/pioneers/common/gtk/colors.c
+END
+common_gtk.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/1576/trunk/pioneers/common/gtk/common_gtk.h
+END
+theme.c
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1646/trunk/pioneers/common/gtk/theme.c
+END
+gtkbugs.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pio/!svn/ver/1615/trunk/pioneers/common/gtk/gtkbugs.c
+END
+game-rules.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/1636/trunk/pioneers/common/gtk/game-rules.h
+END
+colors.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/pio/!svn/ver/1637/trunk/pioneers/common/gtk/colors.h
+END
+game-settings.c
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/pio/!svn/ver/1548/trunk/pioneers/common/gtk/game-settings.c
+END
+theme.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pio/!svn/ver/1645/trunk/pioneers/common/gtk/theme.h
+END
+config-gnome.c
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/pio/!svn/ver/1168/trunk/pioneers/common/gtk/config-gnome.c
+END
+gtkbugs.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pio/!svn/ver/1612/trunk/pioneers/common/gtk/gtkbugs.h
+END
+game-settings.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/pio/!svn/ver/1452/trunk/pioneers/common/gtk/game-settings.h
+END
+config-gnome.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/pio/!svn/ver/960/trunk/pioneers/common/gtk/config-gnome.h
+END
+metaserver.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/1452/trunk/pioneers/common/gtk/metaserver.c
+END
+guimap.c
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/pio/!svn/ver/1657/trunk/pioneers/common/gtk/guimap.c
+END
+metaserver.h
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/1452/trunk/pioneers/common/gtk/metaserver.h
+END
+player-icon.c
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/pio/!svn/ver/1545/trunk/pioneers/common/gtk/player-icon.c
+END
+aboutbox.c
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pio/!svn/ver/1406/trunk/pioneers/common/gtk/aboutbox.c
+END
+select-game.c
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/pio/!svn/ver/1452/trunk/pioneers/common/gtk/select-game.c
+END
+guimap.h
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svnroot/pio/!svn/ver/1657/trunk/pioneers/common/gtk/guimap.h
+END
+player-icon.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/pio/!svn/ver/1296/trunk/pioneers/common/gtk/player-icon.h
+END
+polygon.c
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pio/!svn/ver/1653/trunk/pioneers/common/gtk/polygon.c
+END
+aboutbox.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pio/!svn/ver/960/trunk/pioneers/common/gtk/aboutbox.h
+END
+Makefile.am
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pio/!svn/ver/1395/trunk/pioneers/common/gtk/Makefile.am
+END
+select-game.h
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/pio/!svn/ver/1452/trunk/pioneers/common/gtk/select-game.h
+END
+polygon.h
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pio/!svn/ver/1653/trunk/pioneers/common/gtk/polygon.h
+END
+common_gtk.c
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pio/!svn/ver/1593/trunk/pioneers/common/gtk/common_gtk.c
+END
