@@ -189,8 +189,6 @@ static void update_game_settings(const GameParams * params)
 				  params->num_players);
 	game_settings_set_victory_points(GAMESETTINGS(game_settings),
 					 params->victory_points);
-	game_settings_set_turn_timer(GAMESETTINGS(game_settings),
-					 params->turn_time);
 	game_rules_set_victory_at_end_of_turn(GAMERULES(game_rules),
 					      params->
 					      check_victory_at_end_of_turn);
@@ -272,9 +270,6 @@ static void start_clicked_cb(G_GNUC_UNUSED GtkButton * start_btn,
 							      (game_settings)));
 		cfg_set_victory_points(params,
 				       game_settings_get_victory_points
-				       (GAMESETTINGS(game_settings)));
-		cfg_set_turn_time(params,
-				       game_settings_get_turn_timer
 				       (GAMESETTINGS(game_settings)));
 		params->check_victory_at_end_of_turn =
 		    game_rules_get_victory_at_end_of_turn(GAMERULES
@@ -611,10 +606,9 @@ static GtkWidget *build_interface(GtkWindow * main_window)
 	temp = config_get_int("game/victory-points", &default_returned);
 	if (!default_returned)
 		cfg_set_victory_points(params, temp);
-	temp = config_get_int("game/turn-time", &default_returned);
-	if (!default_returned)
-		cfg_set_turn_time(params, temp);
-	temp = config_get_int("game/victory-at-end-of-turn", &default_returned);
+	temp =
+	    config_get_int("game/victory-at-end-of-turn",
+			   &default_returned);
 	if (!default_returned)
 		params->check_victory_at_end_of_turn = temp;
 	temp =
@@ -965,9 +959,6 @@ static void check_vp_cb(G_GNUC_UNUSED GObject * caller,
 						      (game_settings)));
 	cfg_set_victory_points(params,
 			       game_settings_get_victory_points
-			       (GAMESETTINGS(game_settings)));
-	cfg_set_turn_time(params,
-			       game_settings_get_turn_timer
 			       (GAMESETTINGS(game_settings)));
 	params->check_victory_at_end_of_turn =
 	    game_rules_get_victory_at_end_of_turn(GAMERULES(game_rules));

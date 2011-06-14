@@ -32,6 +32,9 @@ struct _GameSettings {
 
 	guint players;		/* The number of players */
 	guint victory_points;	/* The points needed to win */
+
+	GtkWidget *timer_spin;
+	gint turn_time;
 };
 
 struct _GameSettingsClass {
@@ -50,6 +53,8 @@ guint game_settings_get_players(GameSettings * gs);
 void game_settings_set_victory_points(GameSettings * gs,
 				      guint victory_points);
 guint game_settings_get_victory_points(GameSettings * gs);
+void game_settings_set_turn_timer(GameSettings *gs, gint turn_time);
+gint game_settings_get_turn_timer(GameSettings *gs);
 
 G_END_DECLS
 #endif				/* __GAMESETTINGS_H__ */

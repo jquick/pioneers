@@ -24,7 +24,6 @@
 #include <math.h>
 #include <ctype.h>
 #include <assert.h>
-#include <gtkosxapplication.h>
 #ifdef HAVE_HELP
 #include <libgnome/libgnome.h>
 #endif
@@ -41,8 +40,6 @@
 #include "gtkbugs.h"
 #include "audio.h"
 #include "gtkcompat.h"
-
-extern TURN_LENGTH_SECONDS;
 
 static GtkWidget *preferences_dlg;
 GtkWidget *app_window;		/* main application window */
@@ -866,113 +863,6 @@ static void set_16_9_layout(gboolean layout_16_9)
 	g_object_unref(chat_panel);
 }
 
-static GtkWidget *turn_timer_widget = NULL;
-
-void update_turn_timer(void)
-{
-	static char time_remaining_string[15];
-	void frontend_state_idle(G_GNUC_UNUSED GuiEvent event); // prototype from interface.c
-
-	if(seconds_remaining == 1) {
-		// time's up noob!
-		seconds_remaining = 0;
-
-		if(callback_mode == MODE_TURN) {
-			gui_set_instructions("Time's up, your turn is now over.");
-			log_message(MSG_INFO, "%s's time has run out; their turn is now over.\n", player_name(current_player(), TRUE));
-			trade_finish();
-			quote_finish();
-			if(!have_rolled_dice()) {
-				cb_roll();
-				seconds_remaining = 1; // FIXME hack; wait for the roll event to resolve first
-			} else {
-				cb_end_turn();
-				set_gui_state(frontend_state_idle);
-			}
-		} else if(callback_mode == MODE_DOMESTIC) {
-			// end trading
-			trade_finish();
-			cb_end_trade();
-			seconds_remaining = 1; // FIXME hack; wait for current event to resolve first
-		} else if(callback_mode == MODE_ROBBER) {
-			// place robber in the corner
-			Hex *hex, *happyhex;
-			Map *map = callbacks.get_map();
-			int i, j;
-			for(i = 0; i < map->x_size; i++) {
-				for(j = 0; j < map->y_size; j++) {
-					hex = map_hex(map, i, j);
-					if(hex != NULL && can_robber_or_pirate_be_moved(hex)) {
-						happyhex = hex;
-					}
-				}
-			}
-
-			cb_place_robber(happyhex);
-			seconds_remaining = 1; // FIXME hack; wait for current event to resolve first
-		} else if(callback_mode == MODE_ROB) {
-			// pick the first valid player
-			int victim, i, numres;
-			Hex *hex = map_robber_hex(callbacks.get_map());
-			for (i = 0; i < 6; i++) {
-				numres = 0;
-
-				if ((hex->nodes[i]->owner != -1) && (hex->nodes[i]->owner != my_player_num())) {
-					numres = player_get(hex->nodes[i]->owner)->statistics[STAT_RESOURCES];
-				}
-
-				if (numres > 0) {
-					victim = hex->nodes[i]->owner;
-					break;
-				}
-			}
-
-			cb_rob(victim);
-			seconds_remaining = 1; // FIXME hack; wait for current event to resolve first
-		} else {
-			seconds_remaining = 1; // FIXME hack; wait for current event to resolve first
-		}
-	} else if(seconds_remaining > 0 && callback_mode != MODE_DISCARD) {
-		// count down, unless we're in discard mode
-		seconds_remaining--;
-	}
-
-	// render timer
-	if(seconds_remaining > 0) {
-		snprintf(time_remaining_string, 15, "<b>%02d:%02d</b>", seconds_remaining / 60, seconds_remaining % 60);
-		gtk_label_set_markup(GTK_LABEL(turn_timer_widget), time_remaining_string);
-		gtk_widget_queue_draw(turn_timer_widget);
-	} else {
-		gtk_label_set_markup(GTK_LABEL(turn_timer_widget), "<b>N/A</b>");
-		gtk_widget_queue_draw(turn_timer_widget);
-	}
-}
-
-static GtkWidget *timer_panel(void)
-{
-	GtkWidget *hbox;
-	GtkWidget *label;
-
-	hbox = gtk_hbox_new(FALSE, 2);
-	gtk_widget_show(hbox);
-
-	label = gtk_label_new(NULL);
-	gtk_label_set_markup(GTK_LABEL(label), "Turn Timer:  ");
-	gtk_widget_show(label);
-
-	if(turn_timer_widget == NULL) {
-		turn_timer_widget = gtk_label_new(NULL);
-		gtk_widget_show(turn_timer_widget);
-	}
-	update_turn_timer();
-	g_timeout_add(1000, (GSourceFunc) update_turn_timer, NULL);
-
-	gtk_box_pack_start(GTK_BOX(hbox), label, FALSE, TRUE, 0);
-	gtk_box_pack_start(GTK_BOX(hbox), turn_timer_widget, FALSE, TRUE, 0);
-
-	return hbox;
-}
-
 static GtkWidget *build_main_interface(void)
 {
 	GtkWidget *vbox;
@@ -987,8 +877,6 @@ static GtkWidget *build_main_interface(void)
 	gtk_widget_show(vbox);
 	gtk_paned_pack1(GTK_PANED(hpaned), vbox, FALSE, TRUE);
 
-	gtk_box_pack_start(GTK_BOX(vbox),
-			   timer_panel(), FALSE, TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(vbox),
 			   identity_build_panel(), FALSE, TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(vbox),
@@ -1737,7 +1625,6 @@ GtkWidget *gui_build_interface(void)
 	gmap = guimap_new();
 
 	register_pixmaps();
-	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
 
 	app_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	/* The name of the application */

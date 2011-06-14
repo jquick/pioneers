@@ -35,8 +35,6 @@
 #include "quoteinfo.h"
 #include "notifying-string.h"
 
-TURN_LENGTH_SECONDS = -1;
-
 static enum callback_mode previous_mode;
 GameParams *game_params;
 static struct recovery_info_t {
@@ -549,7 +547,7 @@ static gboolean global_filter(StateMachine * sm, gint event)
  */
 static gboolean global_unhandled(StateMachine * sm, gint event)
 {
-	gchar *str, *ptr;
+	gchar *str;
 
 	switch (event) {
 	case SM_NET_CLOSE:
@@ -587,19 +585,11 @@ static gboolean global_unhandled(StateMachine * sm, gint event)
 		 * before the next protocol changing version of the game is
 		 * released.  Notify the client about it anyway. */
 		if (sm_recv(sm, "extension %S", &str)) {
-			// hack to send the turn time limit to the client
-			if (ptr = strstr(str, "turn time limit is ")) {
-				ptr += strlen("turn time limit is ");
-				TURN_LENGTH_SECONDS  = atoi(ptr);
-				printf("yo dawg, %d from '%s'\n", TURN_LENGTH_SECONDS, str);
-				return TRUE;
-			} else {
-				log_message(MSG_INFO,
-						"Ignoring extension used by server: %s\n",
-						str);
-				g_free(str);
-				return TRUE;
-			}
+			log_message(MSG_INFO,
+				    "Ignoring extension used by server: %s\n",
+				    str);
+			g_free(str);
+			return TRUE;
 		}
 		/* we're receiving strange things */
 		if (sm_recv(sm, "%S", &str)) {

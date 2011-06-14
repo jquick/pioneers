@@ -521,6 +521,8 @@ gboolean mode_pre_game(Player * player, gint event)
 		player_send_uncached(player, FIRST_VERSION, LATEST_VERSION,
 				     "player %d is %s\n", player->num,
 				     player->name);
+		player_send_uncached(player, FIRST_VERSION, LATEST_VERSION,
+				     "extension turn time limit is %d\n", game->params->turn_time);
 		break;
 
 	case SM_RECV:

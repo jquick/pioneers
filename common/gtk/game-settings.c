@@ -27,6 +27,7 @@ static void game_settings_class_init(GameSettingsClass * klass);
 static void game_settings_init(GameSettings * sg);
 static void game_settings_change_players(GtkSpinButton * widget,
 					 GameSettings * gs);
+static void game_settings_change_turn_timer(GtkSpinButton *widget, GameSettings *gs);
 static void game_settings_change_victory_points(GtkSpinButton * widget,
 						GameSettings * gs);
 static void game_settings_check(GtkButton * widget, GameSettings * gs);
@@ -98,7 +99,7 @@ static void game_settings_init(GameSettings * gs)
 	GtkWidget *hbox;
 	GtkObject *adj;
 
-	gtk_table_resize(GTK_TABLE(gs), 4, 2);
+	gtk_table_resize(GTK_TABLE(gs), 4, 3);
 	gtk_table_set_row_spacings(GTK_TABLE(gs), 3);
 	gtk_table_set_col_spacings(GTK_TABLE(gs), 5);
 
@@ -164,6 +165,24 @@ static void game_settings_init(GameSettings * gs)
 			 GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
 	gtk_widget_show(hbox);
 
+	/* Label for turn time limit */
+	label = gtk_label_new("Turn Time Limit (seconds)");
+	gtk_widget_show(label);
+	gtk_table_attach(GTK_TABLE(gs), label, 0, 1, 3, 4, GTK_FILL, GTK_FILL, 0, 0);
+	gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+
+	adj = gtk_adjustment_new(0, 0, 60*60, 1, 10, 0);
+	gs->timer_spin = gtk_spin_button_new(GTK_ADJUSTMENT(adj), 1, 0);
+	gtk_entry_set_alignment(GTK_ENTRY(gs->timer_spin), 1.0);
+	gtk_widget_show(gs->timer_spin);
+	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(gs->timer_spin), TRUE);
+	gtk_table_attach(GTK_TABLE(gs), gs->timer_spin, 1, 2, 3, 4,
+			 GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+	g_signal_connect(G_OBJECT(gs->timer_spin), "value-changed",
+			 G_CALLBACK(game_settings_change_turn_timer), gs);
+	gtk_widget_set_tooltip_text(gs->timer_spin,
+				    "The maximum turn length, in seconds.  Set to 0 to disable the timer entirely.");
+
 	gs->players = 4;
 	gs->victory_points = 10;
 	game_settings_update(gs);
@@ -179,6 +198,13 @@ GtkWidget *game_settings_new(gboolean with_check_button)
 	else
 		gtk_widget_hide(GAMESETTINGS(widget)->check_button);
 	return widget;
+}
+
+static void game_settings_change_turn_timer(GtkSpinButton *widget, GameSettings *gs)
+{
+	gs->turn_time = gtk_spin_button_get_value_as_int(widget);
+	game_settings_update(gs);
+	g_signal_emit(G_OBJECT(gs), game_settings_signals[CHANGE], 0);
 }
 
 /* Emits 'change-players' when the number of players has changed */
@@ -228,6 +254,20 @@ guint game_settings_get_victory_points(GameSettings * gs)
 	return gs->victory_points;
 }
 
+/* Set the turn timer */
+void game_settings_set_turn_timer(GameSettings * gs,
+				      gint turn_time)
+{
+	gs->turn_time = turn_time;
+	game_settings_update(gs);
+}
+
+/* Get the turn timer */
+gint game_settings_get_turn_timer(GameSettings * gs)
+{
+	return gs->turn_time;
+}
+
 static void game_settings_check(G_GNUC_UNUSED GtkButton * widget,
 				GameSettings * gs)
 {
@@ -244,17 +284,25 @@ static void game_settings_update(GameSettings * gs)
 	g_signal_handlers_block_matched(G_OBJECT(gs->victory_spin),
 					G_SIGNAL_MATCH_DATA,
 					0, 0, NULL, NULL, gs);
+	g_signal_handlers_block_matched(G_OBJECT(gs->timer_spin),
+					G_SIGNAL_MATCH_DATA,
+					0, 0, NULL, NULL, gs);
 
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(gs->players_spin),
 				  gs->players);
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(gs->victory_spin),
 				  gs->victory_points);
+	gtk_spin_button_set_value(GTK_SPIN_BUTTON(gs->timer_spin),
+				  gs->turn_time);
 
 	/* Reenable the signals */
 	g_signal_handlers_unblock_matched(G_OBJECT(gs->players_spin),
 					  G_SIGNAL_MATCH_DATA,
 					  0, 0, NULL, NULL, gs);
 	g_signal_handlers_unblock_matched(G_OBJECT(gs->victory_spin),
+					  G_SIGNAL_MATCH_DATA,
+					  0, 0, NULL, NULL, gs);
+	g_signal_handlers_unblock_matched(G_OBJECT(gs->timer_spin),
 					  G_SIGNAL_MATCH_DATA,
 					  0, 0, NULL, NULL, gs);
 }

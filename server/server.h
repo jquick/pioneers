@@ -258,6 +258,7 @@ GameParams *cfg_set_game_file(const gchar * game_filename);
 void cfg_set_num_players(GameParams * params, gint num_players);
 void cfg_set_sevens_rule(GameParams * params, gint sevens_rule);
 void cfg_set_victory_points(GameParams * params, gint victory_points);
+void cfg_set_turn_time(GameParams * params, gint turn_time);
 void cfg_set_terrain_type(GameParams * params, gint terrain_type);
 void cfg_set_tournament_time(GameParams * params, gint tournament_time);
 void cfg_set_quit(GameParams * params, gboolean quitdone);

@@ -333,7 +333,4 @@ GtkWidget *gameover_create_dlg(gint player_num, gint num_points);
 #define PIONEERS_PIXMAP_ORE "pioneers/ore.png"
 #define PIONEERS_PIXMAP_WOOL "pioneers/wool.png"
 
-// turn timer
-int seconds_remaining;
-
 #endif

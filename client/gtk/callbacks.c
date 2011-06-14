@@ -22,6 +22,8 @@
 #include "frontend.h"
 #include "histogram.h"
 
+extern int TURN_LENGTH_SECONDS;
+
 static void frontend_network_status(const gchar * description)
 {
 	gui_set_net_status(description);
@@ -84,6 +86,8 @@ static void frontend_update_stock(void)
 
 static void frontend_player_turn(gint player)
 {
+	seconds_remaining = TURN_LENGTH_SECONDS;
+
 	gui_set_show_no_setup_nodes(FALSE);
 	player_show_current(player);
 }

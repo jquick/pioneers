@@ -90,9 +90,8 @@ gboolean can_call_for_quotes(void)
 		if (we_supply_rows[idx].enabled)
 			have_we_supply = TRUE;
 	}
-	/* don't require both supply and receive, for resources may be
-	 * given away for free */
-	return (have_we_receive || have_we_supply)
+	/* require both supply and receive, screw free stuff */
+	return have_we_receive && have_we_supply
 	    && can_trade_domestic()
 	    && (different_call || trade_since_selection_changed);
 }

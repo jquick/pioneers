@@ -46,7 +46,8 @@ static GuiState previous_state = dummy_state;
 
 static gboolean discard_busy = FALSE, robber_busy = FALSE;
 
-static void frontend_state_idle(G_GNUC_UNUSED GuiEvent event)
+// make this non-static so gui.c can reference it
+void frontend_state_idle(G_GNUC_UNUSED GuiEvent event)
 {
 	/* don't react on any event when idle. */
 	/* (except of course chat and name change events, but they are
@@ -191,6 +192,9 @@ void frontend_trade_player_end(gint player_num)
 
 static void frontend_state_quote(GuiEvent event)
 {
+	gint *noobs;
+	int is_anything_being_offered = 0, is_anything_being_asked = 0, i;
+
 	switch (event) {
 	case GUI_UPDATE:
 		frontend_gui_check(GUI_QUOTE_SUBMIT, can_submit_quote());
@@ -198,8 +202,26 @@ static void frontend_state_quote(GuiEvent event)
 		frontend_gui_check(GUI_QUOTE_REJECT, can_reject_quote());
 		break;
 	case GUI_QUOTE_SUBMIT:
-		cb_quote(quote_next_num(), quote_we_supply(),
-			 quote_we_receive());
+		// block free quotes because they're stupid
+		noobs = quote_we_supply();
+		for(i = 0; i < NO_RESOURCE; i++) {
+			if(noobs[i] > 0) {
+				is_anything_being_offered = 1;
+				break;
+			}
+		}
+		noobs = quote_we_receive();
+		for(i = 0; i < NO_RESOURCE; i++) {
+			if(noobs[i] > 0) {
+				is_anything_being_asked = 1;
+				break;
+			}
+		}
+
+		if(is_anything_being_asked && is_anything_being_offered) {
+			cb_quote(quote_next_num(), quote_we_supply(),
+				 quote_we_receive());
+		}
 		return;
 	case GUI_QUOTE_DELETE:
 		cb_delete_quote(quote_current_quote()->var.d.quote_num);
