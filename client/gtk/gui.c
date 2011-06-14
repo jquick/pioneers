@@ -1742,8 +1742,6 @@ GtkWidget *gui_build_interface(void)
 	/* The name of the application */
 	gtk_window_set_title(GTK_WINDOW(app_window), _("Pioneers"));
 
-	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
-	gtk_osxapplication_set_use_quartz_accelerators(theApp,TRUE);
 
 	prepare_gtk_for_close_button_on_tab();
 
@@ -1772,6 +1770,11 @@ GtkWidget *gui_build_interface(void)
 		g_error_free(error);
 		return NULL;
 	}
+
+	GtkUIManager *mgr = gtk_ui_manager_new();
+	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
+	mergeid = gtk_ui_manager_add_ui_from_string(mgr,  ui_description, -1, &error);
+
 
 	icon_file =
 	    g_build_filename(g_get_user_runtime_dir(), "pixmaps", PIONEERS_ICON_FILE, NULL);
@@ -1867,6 +1870,10 @@ GtkWidget *gui_build_interface(void)
 	gtk_widget_show(app_window);
 	g_signal_connect(G_OBJECT(app_window), "delete_event",
 			 G_CALLBACK(quit_cb), NULL);
+	
+	menubar = gtk_ui_manager_get_widget(mgr, "/menubar");
+	  gtk_widget_hide (menubar);
+	    gtk_osxapplication_set_menu_bar(theApp, GTK_MENU_SHELL(menubar));
 
 	return app_window;
 }
