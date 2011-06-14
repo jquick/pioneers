@@ -1743,7 +1743,7 @@ GtkWidget *gui_build_interface(void)
 	gtk_window_set_title(GTK_WINDOW(app_window), _("Pioneers"));
 
 	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
-	gtk_osxapplication_set_use_quartz_accelerators ();
+	gtk_osxapplication_set_use_quartz_accelerators(theApp,TRUE);
 
 	prepare_gtk_for_close_button_on_tab();
 
