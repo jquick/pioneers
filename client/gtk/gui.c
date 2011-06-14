@@ -1733,7 +1733,7 @@ GtkWidget *gui_build_interface(void)
 	gchar *icon_file;
 
 	player_init();
-	gtk_init ();
+	gtk_init (&argc, &argv);
 
 	GtkUIManager *mgr = gtk_ui_manager_new();
 	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
