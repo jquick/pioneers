@@ -1733,6 +1733,10 @@ GtkWidget *gui_build_interface(void)
 	gchar *icon_file;
 
 	player_init();
+	gtk_init ();
+
+	GtkUIManager *mgr = gtk_ui_manager_new();
+	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
 
 	gmap = guimap_new();
 
@@ -1867,8 +1871,6 @@ GtkWidget *gui_build_interface(void)
 	g_signal_connect(G_OBJECT(app_window), "delete_event",
 			 G_CALLBACK(quit_cb), NULL);
 	
-	GtkUIManager *mgr = gtk_ui_manager_new();
-	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
 
 	  gtk_widget_hide (menubar);
 	  gtk_osxapplication_set_menu_bar(theApp, GTK_MENU_SHELL(menubar));
