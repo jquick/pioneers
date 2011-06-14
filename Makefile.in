@@ -833,7 +833,7 @@ LTCOMPILE = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
 	$(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) \
-	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) /Users/jquick/gtk/inst/lib/libigemacintegration.0.dylib \
+	--mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) /Users/jquick/gtk/inst/lib/libigemacintegration.dylib \
 	$(LDFLAGS) -o $@
 SOURCES = $(libpioneers_a_SOURCES) $(libpioneers_gtk_a_SOURCES) \
 	$(libpioneers_server_a_SOURCES) $(libpioneersclient_a_SOURCES) \
@@ -993,7 +993,7 @@ INTLTOOL_MERGE = @INTLTOOL_MERGE@
 INTLTOOL_PERL = @INTLTOOL_PERL@
 INTLTOOL_UPDATE = @INTLTOOL_UPDATE@
 LD = @LD@
-LDFLAGS = @LDFLAGS@ 
+LDFLAGS =-L/Users/jquick/gtk/inst/lib/libigemacintegration.dylib  @LDFLAGS@ 
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@

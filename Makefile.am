@@ -58,6 +58,7 @@ avahi_libs = \
 	$(AVAHI_GLIB_LIBS)
 
 gtk_libs = \
+	/Users/jquick/gtk/inst/lib/libigemacintegration.dylib \
 	$(console_libs) \
 	libpioneers_gtk.a \
 	$(GNOME2_LIBS) \
