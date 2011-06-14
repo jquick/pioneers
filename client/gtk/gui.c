@@ -1742,8 +1742,6 @@ GtkWidget *gui_build_interface(void)
 	/* The name of the application */
 	gtk_window_set_title(GTK_WINDOW(app_window), _("Pioneers"));
 
-	GtkUIManager *mgr = gtk_ui_manager_new();
-	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
 
 	prepare_gtk_for_close_button_on_tab();
 
@@ -1764,6 +1762,9 @@ GtkWidget *gui_build_interface(void)
 
 	accel_group = gtk_ui_manager_get_accel_group(ui_manager);
 	gtk_window_add_accel_group(GTK_WINDOW(app_window), accel_group);
+
+
+	GtkOSXApplication *Pioneers = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
 
 	error = NULL;
 	if (!gtk_ui_manager_add_ui_from_string
@@ -1870,7 +1871,7 @@ GtkWidget *gui_build_interface(void)
 			 G_CALLBACK(quit_cb), NULL);
 	
 
-	  gtk_osxapplication_set_menu_bar(theApp, GTK_MENU_SHELL(menubar));
+	gtk_osxapplication_set_menu_bar(Pioneers, GTK_MENU_SHELL(menubar));
 
 	return app_window;
 }
