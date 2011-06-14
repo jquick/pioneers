@@ -1771,8 +1771,6 @@ GtkWidget *gui_build_interface(void)
 		return NULL;
 	}
 
-	GtkUIManager *mgr = gtk_ui_manager_new();
-	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
 
 	icon_file =
 	    g_build_filename(g_get_user_runtime_dir(), "pixmaps", PIONEERS_ICON_FILE, NULL);
@@ -1869,6 +1867,9 @@ GtkWidget *gui_build_interface(void)
 	g_signal_connect(G_OBJECT(app_window), "delete_event",
 			 G_CALLBACK(quit_cb), NULL);
 	
+	GtkUIManager *mgr = gtk_ui_manager_new();
+	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
+
 	  gtk_widget_hide (menubar);
 	  gtk_osxapplication_set_menu_bar(theApp, GTK_MENU_SHELL(menubar));
 
