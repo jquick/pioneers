@@ -1737,11 +1737,13 @@ GtkWidget *gui_build_interface(void)
 	gmap = guimap_new();
 
 	register_pixmaps();
-	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
 
 	app_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	/* The name of the application */
 	gtk_window_set_title(GTK_WINDOW(app_window), _("Pioneers"));
+
+	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
+	gtk_osxapplication_set_use_quartz_accelerators ();
 
 	prepare_gtk_for_close_button_on_tab();
 
