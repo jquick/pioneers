@@ -175,4 +175,5 @@ void frontend_set_callbacks(void)
 	callbacks.new_bank = &frontend_new_bank;
 	callbacks.get_map = &frontend_get_map;
 	callbacks.set_map = &frontend_set_map;
+	callbacks.special_building_phase = &frontend_special_building_phase;
 }

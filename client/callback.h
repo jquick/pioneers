@@ -83,7 +83,8 @@ enum callback_mode {
 	MODE_DISCARD_WAIT,	/* wait for others discarding resources */
 	MODE_GOLD,		/* choose gold */
 	MODE_GOLD_WAIT,		/* wait for others choosing gold */
-	MODE_GAME_OVER		/* the game is over, nothing can be done */
+	MODE_GAME_OVER,		/* the game is over, nothing can be done */
+	MODE_SPECIAL_BUILDING_PHASE		/* special building phase!!! */
 };
 
 /* functions to be implemented by front ends */
@@ -276,6 +277,8 @@ struct callbacks {
 	 * initialized to quit the main loop.  It should be overridden if
 	 * mainloop is. */
 	void (*quit) (void);
+	/* special building phase!!!! */
+	void (*special_building_phase) (void);
 };
 
 extern struct callbacks callbacks;

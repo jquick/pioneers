@@ -21,6 +21,7 @@
  */
 
 #include "config.h"
+#include <gtkosxapplication.h>
 #include "version.h"
 
 #ifdef HAVE_LOCALE_H
@@ -123,10 +124,9 @@ static GtkActionEntry entries[] = {
 static const char *ui_description =
 "<ui>"
 "  <menubar name='MainMenu'>"
+"      <menuitem action='GameQuit' />" 
 "    <menu action='GameMenu'>"
 "      <menuitem action='GameCheckVP' />"
-"      <separator/>"
-"      <menuitem action='GameQuit' />"
 "    </menu>"
 "    <menu action='HelpMenu'>"
 "      <menuitem action='HelpAbout' />"
@@ -189,6 +189,8 @@ static void update_game_settings(const GameParams * params)
 				  params->num_players);
 	game_settings_set_victory_points(GAMESETTINGS(game_settings),
 					 params->victory_points);
+	game_settings_set_turn_timer(GAMESETTINGS(game_settings),
+					 params->turn_time);
 	game_rules_set_victory_at_end_of_turn(GAMERULES(game_rules),
 					      params->
 					      check_victory_at_end_of_turn);
@@ -270,6 +272,9 @@ static void start_clicked_cb(G_GNUC_UNUSED GtkButton * start_btn,
 							      (game_settings)));
 		cfg_set_victory_points(params,
 				       game_settings_get_victory_points
+				       (GAMESETTINGS(game_settings)));
+		cfg_set_turn_time(params,
+				       game_settings_get_turn_timer
 				       (GAMESETTINGS(game_settings)));
 		params->check_victory_at_end_of_turn =
 		    game_rules_get_victory_at_end_of_turn(GAMERULES
@@ -606,9 +611,10 @@ static GtkWidget *build_interface(GtkWindow * main_window)
 	temp = config_get_int("game/victory-points", &default_returned);
 	if (!default_returned)
 		cfg_set_victory_points(params, temp);
-	temp =
-	    config_get_int("game/victory-at-end-of-turn",
-			   &default_returned);
+	temp = config_get_int("game/turn-time", &default_returned);
+	if (!default_returned)
+		cfg_set_turn_time(params, temp);
+	temp = config_get_int("game/victory-at-end-of-turn", &default_returned);
 	if (!default_returned)
 		params->check_victory_at_end_of_turn = temp;
 	temp =
@@ -960,6 +966,9 @@ static void check_vp_cb(G_GNUC_UNUSED GObject * caller,
 	cfg_set_victory_points(params,
 			       game_settings_get_victory_points
 			       (GAMESETTINGS(game_settings)));
+	cfg_set_turn_time(params,
+			       game_settings_get_turn_timer
+			       (GAMESETTINGS(game_settings)));
 	params->check_victory_at_end_of_turn =
 	    game_rules_get_victory_at_end_of_turn(GAMERULES(game_rules));
 	params->use_cities_and_knights_rules =
@@ -1046,6 +1055,7 @@ int main(int argc, char *argv[])
 
 	/* Initialize frontend inspecific things */
 	server_init();
+	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
 
 #ifdef ENABLE_NLS
 	setlocale(LC_ALL, "");
@@ -1131,12 +1141,16 @@ int main(int argc, char *argv[])
 	g_signal_connect(G_OBJECT(window), "delete_event",
 			 G_CALLBACK(quit_cb), NULL);
 
+gtk_accel_map_load(g_getenv("ACCEL_MAP"));
+gtk_widget_hide (menubar);
+gtk_osxapplication_set_menu_bar(theApp, GTK_MENU_SHELL(menubar));
+gtk_osxapplication_ready(theApp);
+
 	/* in theory, all windows are created now...
 	 *   set logging to message window */
 	log_set_func_message_window();
 
 	gtk_main();
-
 	config_finish();
 	net_finish();
 	g_option_context_free(context);

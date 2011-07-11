@@ -2089,6 +2089,13 @@ static void greedy_new_statistics(gint player_num, StatisticType type,
 	}
 }
 
+static void greedy_special_building_phase(void)
+{
+  // AI doesn't like special building phase
+  // TODO: this doesn't work
+      cb_end_turn();
+}
+  
 void greedy_init(void)
 {
 	callbacks.setup = &greedy_setup;
@@ -2103,6 +2110,7 @@ void greedy_init(void)
 	callbacks.quote = &greedy_consider_quote;
 	callbacks.game_over = &greedy_game_over;
 	callbacks.error = &greedy_error;
+	callbacks.special_building_phase = &greedy_special_building_phase;
 
 	/* chatting */
 	callbacks.player_turn = &greedy_player_turn;

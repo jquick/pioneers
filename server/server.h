@@ -82,6 +82,7 @@ typedef struct {
 	gint libr_played;	/* number of Library cards played */
 	gint market_played;	/* number of Market cards played */
 	gint islands_discovered;	/* number of islands discovered */
+	gint doing_special_building_phase; /* in the middle of SBP? */
 	gboolean disconnected;
 } Player;
 
@@ -259,6 +260,7 @@ void cfg_set_num_players(GameParams * params, gint num_players);
 void cfg_set_sevens_rule(GameParams * params, gint sevens_rule);
 void cfg_set_victory_points(GameParams * params, gint victory_points);
 void cfg_set_turn_time(GameParams * params, gint turn_time);
+void cfg_set_sbp_time(GameParams * params, gint sbp_time);
 void cfg_set_terrain_type(GameParams * params, gint terrain_type);
 void cfg_set_tournament_time(GameParams * params, gint tournament_time);
 void cfg_set_quit(GameParams * params, gboolean quitdone);

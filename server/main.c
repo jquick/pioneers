@@ -52,6 +52,8 @@ static GMainLoop *event_loop;
 
 static gint num_players = 0;
 static gint num_points = 0;
+static gint turn_time_limit = 0;
+static gint sbp_time_limit = 0;
 static gint sevens_rule = -1;
 static gint terrain = -1;
 static gint timeout = 0;
@@ -95,6 +97,12 @@ static GOptionEntry commandline_game_entries[] = {
 	{"computer-players", 'c', 0, G_OPTION_ARG_INT, &num_ai_players,
 	 /* Commandline server-console: computer-players */
 	 N_("Add N computer players"), "N"},
+	{"turn-timer", 't', 0, G_OPTION_ARG_INT, &turn_time_limit,
+	 /* Commandline option of server-console: turn-timer */
+	 N_("Turn time limit in seconds (0 to disable)"), 0},
+	{"sbp-timer", 's', 0, G_OPTION_ARG_INT, &sbp_time_limit,
+	 /* Commandline option of server-console: sbp-timer */
+	 N_("Special Building Phase time limit in seconds (0 to disable SBP)"), 0},
 	{"version", '\0', 0, G_OPTION_ARG_NONE, &show_version,
 	 /* Commandline option of server-console: version */
 	 N_("Show version information"), NULL},
@@ -261,6 +269,12 @@ int main(int argc, char *argv[])
 
 	if (tournament_time != -1)
 		cfg_set_tournament_time(params, tournament_time);
+
+	if (turn_time_limit)
+		cfg_set_turn_time(params, turn_time_limit);
+
+	if (sbp_time_limit)
+		cfg_set_sbp_time(params, sbp_time_limit);
 
 	cfg_set_quit(params, quit_when_done);
 

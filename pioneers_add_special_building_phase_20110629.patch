@@ -1,0 +1,943 @@
+diff -urN pioneers-jjold//client/ai/greedy.c pioneers-0.12.4//client/ai/greedy.c
+--- pioneers-jjold//client/ai/greedy.c	2010-10-31 08:48:59.000000000 -0400
++++ pioneers-0.12.4//client/ai/greedy.c	2011-06-29 15:23:14.784275003 -0400
+@@ -2089,6 +2089,13 @@
+ 	}
+ }
+ 
++static void greedy_special_building_phase(void)
++{
++	// AI doesn't like special building phase
++	// TODO: this doesn't work
++	cb_end_turn();
++}
++
+ void greedy_init(G_GNUC_UNUSED int argc, G_GNUC_UNUSED char **argv)
+ {
+ 	callbacks.setup = &greedy_setup;
+@@ -2103,6 +2110,7 @@
+ 	callbacks.quote = &greedy_consider_quote;
+ 	callbacks.game_over = &greedy_game_over;
+ 	callbacks.error = &greedy_error;
++	callbacks.special_building_phase = &greedy_special_building_phase;
+ 
+ 	/* chatting */
+ 	callbacks.player_turn = &greedy_player_turn;
+diff -urN pioneers-jjold//client/callback.h pioneers-0.12.4//client/callback.h
+--- pioneers-jjold//client/callback.h	2010-03-09 00:13:47.000000000 -0500
++++ pioneers-0.12.4//client/callback.h	2011-06-29 14:40:32.704274999 -0400
+@@ -83,7 +83,8 @@
+ 	MODE_DISCARD_WAIT,	/* wait for others discarding resources */
+ 	MODE_GOLD,		/* choose gold */
+ 	MODE_GOLD_WAIT,		/* wait for others choosing gold */
+-	MODE_GAME_OVER		/* the game is over, nothing can be done */
++	MODE_GAME_OVER,		/* the game is over, nothing can be done */
++	MODE_SPECIAL_BUILDING_PHASE		/* special building phase!!! */
+ };
+ 
+ /* functions to be implemented by front ends */
+@@ -271,6 +272,8 @@
+ 	 * initialized to quit the main loop.  It should be overridden if
+ 	 * mainloop is. */
+ 	void (*quit) (void);
++	/* special building phase!!!! */
++	void (*special_building_phase) (void);
+ };
+ 
+ extern struct callbacks callbacks;
+diff -urN pioneers-jjold//client/common/callback.c pioneers-0.12.4//client/common/callback.c
+--- pioneers-jjold//client/common/callback.c	2008-05-01 13:46:45.000000000 -0400
++++ pioneers-0.12.4//client/common/callback.c	2011-06-29 15:39:10.544275002 -0400
+@@ -87,7 +87,8 @@
+ 	/* build road */
+ 	g_assert(callback_mode == MODE_TURN
+ 		 || callback_mode == MODE_ROAD_BUILD
+-		 || callback_mode == MODE_SETUP);
++		 || callback_mode == MODE_SETUP
++		 || callback_mode == MODE_SPECIAL_BUILDING_PHASE);
+ 	sm_send(SM(), "build road %d %d %d\n", edge->x, edge->y,
+ 		edge->pos);
+ 	sm_push(SM(), mode_build_response);
+@@ -98,7 +99,8 @@
+ 	/* build ship */
+ 	g_assert(callback_mode == MODE_TURN
+ 		 || callback_mode == MODE_ROAD_BUILD
+-		 || callback_mode == MODE_SETUP);
++		 || callback_mode == MODE_SETUP
++		 || callback_mode == MODE_SPECIAL_BUILDING_PHASE);
+ 	sm_send(SM(), "build ship %d %d %d\n", edge->x, edge->y,
+ 		edge->pos);
+ 	sm_push(SM(), mode_build_response);
+@@ -109,7 +111,8 @@
+ 	/* build bridge */
+ 	g_assert(callback_mode == MODE_TURN
+ 		 || callback_mode == MODE_ROAD_BUILD
+-		 || callback_mode == MODE_SETUP);
++		 || callback_mode == MODE_SETUP
++		 || callback_mode == MODE_SPECIAL_BUILDING_PHASE);
+ 	sm_send(SM(), "build bridge %d %d %d\n", edge->x, edge->y,
+ 		edge->pos);
+ 	sm_push(SM(), mode_build_response);
+@@ -128,7 +131,8 @@
+ {
+ 	/* build settlement */
+ 	g_assert(callback_mode == MODE_TURN
+-		 || callback_mode == MODE_SETUP);
++		 || callback_mode == MODE_SETUP
++		 || callback_mode == MODE_SPECIAL_BUILDING_PHASE);
+ 	sm_send(SM(), "build settlement %d %d %d\n",
+ 		node->x, node->y, node->pos);
+ 	sm_push(SM(), mode_build_response);
+@@ -137,7 +141,8 @@
+ void cb_build_city(const Node * node)
+ {
+ 	/* build city */
+-	g_assert(callback_mode == MODE_TURN);
++	g_assert(callback_mode == MODE_TURN
++			|| callback_mode == MODE_SPECIAL_BUILDING_PHASE);
+ 	sm_send(SM(), "build city %d %d %d\n", node->x, node->y,
+ 		node->pos);
+ 	sm_push(SM(), mode_build_response);
+@@ -146,7 +151,8 @@
+ void cb_build_city_wall(const Node * node)
+ {
+ 	/* build city */
+-	g_assert(callback_mode == MODE_TURN);
++	g_assert(callback_mode == MODE_TURN
++			|| callback_mode == MODE_SPECIAL_BUILDING_PHASE);
+ 	sm_send(SM(), "build city_wall %d %d %d\n", node->x, node->y,
+ 		node->pos);
+ 	sm_push(SM(), mode_build_response);
+@@ -174,7 +180,8 @@
+ 	g_assert(callback_mode == MODE_TURN
+ 		 || callback_mode == MODE_ROAD_BUILD
+ 		 || callback_mode == MODE_SETUP
+-		 || callback_mode == MODE_ROB);
++		 || callback_mode == MODE_ROB
++		 || callback_mode == MODE_SPECIAL_BUILDING_PHASE);
+ 	sm_send(SM(), "undo\n");
+ 	sm_push(SM(), mode_undo_response);
+ }
+@@ -208,7 +215,8 @@
+ 	/* end turn or road building or setup */
+ 	g_assert(callback_mode == MODE_TURN
+ 		 || callback_mode == MODE_ROAD_BUILD
+-		 || callback_mode == MODE_SETUP);
++		 || callback_mode == MODE_SETUP
++		 || callback_mode == MODE_SPECIAL_BUILDING_PHASE);
+ 	sm_send(SM(), "done\n");
+ 	sm_push(SM(), mode_done_response);
+ }
+@@ -417,28 +425,28 @@
+ 
+ gboolean turn_can_build_road(void)
+ {
+-	return have_rolled_dice()
++	return (have_rolled_dice() || callback_mode == MODE_SPECIAL_BUILDING_PHASE)
+ 	    && stock_num_roads() > 0 && can_afford(cost_road())
+ 	    && map_can_place_road(callbacks.get_map(), my_player_num());
+ }
+ 
+ gboolean turn_can_build_ship(void)
+ {
+-	return have_rolled_dice()
++	return (have_rolled_dice() || callback_mode == MODE_SPECIAL_BUILDING_PHASE)
+ 	    && stock_num_ships() > 0 && can_afford(cost_ship())
+ 	    && map_can_place_ship(callbacks.get_map(), my_player_num());
+ }
+ 
+ gboolean turn_can_build_bridge(void)
+ {
+-	return have_rolled_dice()
++	return (have_rolled_dice() || callback_mode == MODE_SPECIAL_BUILDING_PHASE)
+ 	    && stock_num_bridges() > 0 && can_afford(cost_bridge())
+ 	    && map_can_place_bridge(callbacks.get_map(), my_player_num());
+ }
+ 
+ gboolean turn_can_build_settlement(void)
+ {
+-	return have_rolled_dice()
++	return (have_rolled_dice() || callback_mode == MODE_SPECIAL_BUILDING_PHASE)
+ 	    && stock_num_settlements() > 0 && can_afford(cost_settlement())
+ 	    && map_can_place_settlement(callbacks.get_map(),
+ 					my_player_num());
+@@ -446,7 +454,7 @@
+ 
+ gboolean turn_can_build_city(void)
+ {
+-	return have_rolled_dice()
++	return (have_rolled_dice() || callback_mode == MODE_SPECIAL_BUILDING_PHASE)
+ 	    && stock_num_cities() > 0
+ 	    && can_afford(cost_upgrade_settlement())
+ 	    && map_can_upgrade_settlement(callbacks.get_map(),
+@@ -455,7 +463,7 @@
+ 
+ gboolean turn_can_build_city_wall(void)
+ {
+-	return have_rolled_dice()
++	return (have_rolled_dice() || callback_mode == MODE_SPECIAL_BUILDING_PHASE)
+ 	    && stock_num_city_walls() > 0 && can_afford(cost_city_wall())
+ 	    && map_can_place_city_wall(callbacks.get_map(),
+ 				       my_player_num());
+diff -urN pioneers-jjold//client/common/client.c pioneers-0.12.4//client/common/client.c
+--- pioneers-jjold//client/common/client.c	2011-06-29 18:18:33.564275001 -0400
++++ pioneers-0.12.4//client/common/client.c	2011-06-29 18:11:18.474275001 -0400
+@@ -34,7 +34,8 @@
+ #include "buildrec.h"
+ #include "quoteinfo.h"
+ 
+-TURN_LENGTH_SECONDS = -1;
++int TURN_LENGTH_SECONDS = 0;
++int SBP_LENGTH_SECONDS = 0;
+ 
+ static enum callback_mode previous_mode;
+ GameParams *game_params;
+@@ -78,6 +79,7 @@
+ 						  gint event);
+ static void recover_from_disconnect(StateMachine * sm,
+ 				    struct recovery_info_t *rinfo);
++static gboolean mode_special_building_phase(StateMachine *sm, gint event);
+ 
+ /* Create and/or return the client state machine.
+  */
+@@ -209,6 +211,10 @@
+ {;
+ }
+ 
++static void dummy_special_building_phase(void)
++{;
++}
++
+ static void dummy_player_turn(G_GNUC_UNUSED gint player_num)
+ {;
+ }
+@@ -483,6 +489,7 @@
+ 	callbacks.error = &dummy_error;
+ 	callbacks.get_map = &dummy_get_map;
+ 	callbacks.set_map = &dummy_set_map;
++	callbacks.special_building_phase = &dummy_special_building_phase;
+ 	/* mainloop and quit are not set here */
+ 	resource_init();
+ }
+@@ -574,8 +581,11 @@
+ 			// hack to send the turn time limit to the client
+ 			if (ptr = strstr(str, "turn time limit is ")) {
+ 				ptr += strlen("turn time limit is ");
+-				TURN_LENGTH_SECONDS  = atoi(ptr);
+-				printf("yo dawg, %d from '%s'\n", TURN_LENGTH_SECONDS, str);
++				TURN_LENGTH_SECONDS = atoi(ptr);
++				return TRUE;
++			} else if(ptr = strstr(str, "special building phase time limit is ")) {
++				ptr += strlen("special building phase time limit is ");
++				SBP_LENGTH_SECONDS = atoi(ptr);
+ 				return TRUE;
+ 			} else {
+ 				log_message(MSG_INFO,
+@@ -1524,6 +1534,11 @@
+ 			sm_push(sm, mode_turn);
+ 			return TRUE;
+ 		}
++		if (sm_recv(sm, "special building phase")) {
++			callbacks.special_building_phase();
++			sm_push(sm, mode_special_building_phase);
++			return TRUE;
++		}
+ 		if (sm_recv
+ 		    (sm,
+ 		     "player %d domestic-trade call supply %R receive %R",
+@@ -2000,6 +2015,23 @@
+ 		break;
+ 	}
+ 	return FALSE;
++}
++
++gboolean mode_special_building_phase(StateMachine *sm, gint event)
++{
++	sm_state_name(sm, "mode_special_building_phase");
++	switch(event) {
++	case SM_ENTER:
++		callback_mode = MODE_SPECIAL_BUILDING_PHASE;
++		callbacks.instructions("Special Building Phase!!!");
++		callbacks.special_building_phase();
++		break;
++	case SM_RECV:
++		if(check_other_players(sm))
++			return TRUE;
++		break;
++	}
++	return FALSE;
+ }
+ 
+ /*----------------------------------------------------------------------
+diff -urN pioneers-jjold//client/common/client.h pioneers-0.12.4//client/common/client.h
+--- pioneers-jjold//client/common/client.h	2011-06-29 18:18:33.564275001 -0400
++++ pioneers-0.12.4//client/common/client.h	2011-06-29 17:05:17.584275000 -0400
+@@ -171,5 +171,5 @@
+ void turn_rolled_dice(gint player_num, gint die1, gint die2);
+ void turn_begin(gint player_num, gint turn_num);
+ 
+-int TURN_LENGTH_SECONDS;
++int TURN_LENGTH_SECONDS, SBP_LENGTH_SECONDS;
+ #endif
+diff -urN pioneers-jjold//client/gtk/callbacks.c pioneers-0.12.4//client/gtk/callbacks.c
+--- pioneers-jjold//client/gtk/callbacks.c	2011-06-29 18:18:33.574275001 -0400
++++ pioneers-0.12.4//client/gtk/callbacks.c	2011-06-29 13:59:15.034275000 -0400
+@@ -174,4 +174,5 @@
+ 	callbacks.new_bank = &frontend_new_bank;
+ 	callbacks.get_map = &frontend_get_map;
+ 	callbacks.set_map = &frontend_set_map;
++	callbacks.special_building_phase = &frontend_special_building_phase;
+ }
+diff -urN pioneers-jjold//client/gtk/frontend.h pioneers-0.12.4//client/gtk/frontend.h
+--- pioneers-jjold//client/gtk/frontend.h	2011-06-29 18:18:33.574275001 -0400
++++ pioneers-0.12.4//client/gtk/frontend.h	2011-06-29 17:44:05.044275001 -0400
+@@ -127,6 +127,7 @@
+ void frontend_monopoly(void);
+ void frontend_plenty(const gint * bank);
+ void frontend_turn(void);
++void frontend_special_building_phase(void);
+ void frontend_trade_player_end(gint player_num);
+ void frontend_trade_add_quote(gint player_num, gint quote_num,
+ 			      const gint * they_supply,
+diff -urN pioneers-jjold//client/gtk/gui.c pioneers-0.12.4//client/gtk/gui.c
+--- pioneers-jjold//client/gtk/gui.c	2011-06-29 18:18:33.574275001 -0400
++++ pioneers-0.12.4//client/gtk/gui.c	2011-06-29 17:43:14.494274997 -0400
+@@ -856,6 +854,9 @@
+ 				cb_end_turn();
+ 				set_gui_state(frontend_state_idle);
+ 			}
++		} else if(callback_mode == MODE_SPECIAL_BUILDING_PHASE) {
++			cb_end_turn();
++			set_gui_state(frontend_state_idle);
+ 		} else if(callback_mode == MODE_DOMESTIC) {
+ 			// end trading
+ 			trade_finish();
+@@ -899,7 +900,7 @@
+ 		} else {
+ 			seconds_remaining = 1; // FIXME hack; wait for current event to resolve first
+ 		}
+-	} else if(seconds_remaining > 0 && callback_mode != MODE_DISCARD) {
++	} else if(seconds_remaining > 0 && callback_mode != MODE_DISCARD && callback_mode != MODE_DISCARD_WAIT && callback_mode != MODE_GOLD && callback_mode != MODE_GOLD_WAIT) {
+ 		// count down, unless we're in discard mode
+ 		seconds_remaining--;
+ 	}
+diff -urN pioneers-jjold//client/gtk/interface.c pioneers-0.12.4//client/gtk/interface.c
+--- pioneers-jjold//client/gtk/interface.c	2011-06-29 18:18:33.574275001 -0400
++++ pioneers-0.12.4//client/gtk/interface.c	2011-06-29 17:58:07.654275000 -0400
+@@ -26,9 +26,12 @@
+ #include "histogram.h"
+ #include "audio.h"
+ 
++extern int SBP_LENGTH_SECONDS;
++
+ /* local functions */
+ static void frontend_state_robber(GuiEvent event);
+ static void frontend_state_turn(GuiEvent event);
++static void frontend_state_special_building_phase(GuiEvent event);
+ static void build_road_cb(MapElement edge, MapElement extra);
+ static void build_ship_cb(MapElement edge, MapElement extra);
+ static void build_bridge_cb(MapElement edge, MapElement extra);
+@@ -417,6 +420,79 @@
+ 	}
+ }
+ 
++static void frontend_state_special_building_phase(GuiEvent event)
++{
++	switch (event) {
++	case GUI_UPDATE:
++		frontend_gui_check(GUI_ROLL, FALSE);
++		frontend_gui_check(GUI_UNDO, can_undo());
++		frontend_gui_check(GUI_ROAD, turn_can_build_road());
++		frontend_gui_check(GUI_SHIP, turn_can_build_ship());
++		frontend_gui_check(GUI_MOVE_SHIP, FALSE);
++		frontend_gui_check(GUI_BRIDGE, turn_can_build_bridge());
++		frontend_gui_check(GUI_SETTLEMENT,
++				   turn_can_build_settlement());
++		frontend_gui_check(GUI_CITY, turn_can_build_city());
++		frontend_gui_check(GUI_CITY_WALL,
++				   turn_can_build_city_wall());
++		frontend_gui_check(GUI_TRADE, FALSE);
++		frontend_gui_check(GUI_PLAY_DEVELOP, FALSE);
++		frontend_gui_check(GUI_BUY_DEVELOP, FALSE);
++		frontend_gui_check(GUI_FINISH, TRUE);
++
++		guimap_single_click_set_functions(check_road,
++						  build_road_cb,
++						  check_ship,
++						  build_ship_cb,
++						  check_bridge,
++						  build_bridge_cb,
++						  check_settlement,
++						  build_settlement_cb,
++						  check_city,
++						  build_city_cb,
++						  check_city_wall,
++						  build_city_wall_cb,
++						  check_ship_move,
++						  move_ship_cb,
++						  cancel_move_ship_cb);
++		break;
++	case GUI_UNDO:
++		cb_undo();
++		return;
++	case GUI_ROAD:
++		gui_cursor_set(ROAD_CURSOR, check_road, build_road_cb,
++			       NULL, NULL);
++		return;
++	case GUI_SHIP:
++		gui_cursor_set(SHIP_CURSOR, check_ship, build_ship_cb,
++			       NULL, NULL);
++		return;
++	case GUI_BRIDGE:
++		gui_cursor_set(BRIDGE_CURSOR, check_bridge,
++			       build_bridge_cb, NULL, NULL);
++		return;
++	case GUI_SETTLEMENT:
++		gui_cursor_set(SETTLEMENT_CURSOR, check_settlement,
++			       build_settlement_cb, NULL, NULL);
++		return;
++	case GUI_CITY:
++		gui_cursor_set(CITY_CURSOR, check_city, build_city_cb,
++			       NULL, NULL);
++		return;
++	case GUI_CITY_WALL:
++		gui_cursor_set(CITY_WALL_CURSOR, check_city_wall,
++			       build_city_wall_cb, NULL, NULL);
++		return;
++	case GUI_FINISH:
++		cb_end_turn();
++		gui_cursor_none();	/* Finish single click build */
++		set_gui_state(frontend_state_idle);
++		return;
++	default:
++		break;
++	}
++}
++
+ void frontend_turn(void)
+ {
+ 	/* if it already is our turn, just update the gui (maybe something
+@@ -433,6 +509,13 @@
+ 	play_sound(SOUND_TURN);
+ }
+ 
++void frontend_special_building_phase(void)
++{
++	seconds_remaining = SBP_LENGTH_SECONDS;
++
++	set_gui_state(frontend_state_special_building_phase);
++}
++
+ /* development card actions */
+ /* road building */
+ static void frontend_state_roadbuilding(GuiEvent event)
+diff -urN pioneers-jjold//common/game.c pioneers-0.12.4//common/game.c
+--- pioneers-jjold//common/game.c	2011-06-29 18:18:33.574275001 -0400
++++ pioneers-0.12.4//common/game.c	2011-06-29 17:52:05.474275001 -0400
+@@ -77,7 +77,8 @@
+ 	{PARAM_V(develop-soldier, PARAM_INT, num_develop_type[DEVEL_SOLDIER])},
+ 	{PARAM_V(use-pirate, PARAM_BOOL, use_pirate)},
+ 	{PARAM_V(island-discovery-bonus, PARAM_INTLIST, island_discovery_bonus)},
+-	{PARAM_V(turn-time, PARAM_INT, turn_time)}
++	{PARAM_V(turn-time, PARAM_INT, turn_time)},
++	{PARAM_V(sbp-time, PARAM_INT, sbp_time)}
+ };
+ /* *INDENT-ON* */
+ 
+diff -urN pioneers-jjold//common/game.h pioneers-0.12.4//common/game.h
+--- pioneers-jjold//common/game.h	2011-06-29 18:18:33.574275001 -0400
++++ pioneers-0.12.4//common/game.h	2011-06-29 17:51:52.524275001 -0400
+@@ -72,7 +72,8 @@
+ 	gboolean quit_when_done;	/* server quits after someone wins *//* Not in game_params[] */
+ 	gboolean use_pirate;	/* is there a pirate in this game? */
+ 	GArray *island_discovery_bonus;	/* list of VPs for discovering an island */
+-	gint turn_time;
++	gint turn_time; /* max turn time limit */
++	gint sbp_time; /* how long Special Building Phase lasts (0 to disable SBP) */
+ } GameParams;
+ 
+ typedef struct {
+diff -urN pioneers-jjold//common/gtk/game-settings.c pioneers-0.12.4//common/gtk/game-settings.c
+--- pioneers-jjold//common/gtk/game-settings.c	2011-06-29 18:18:33.574275001 -0400
++++ pioneers-0.12.4//common/gtk/game-settings.c	2011-06-29 18:14:33.224275010 -0400
+@@ -28,6 +28,7 @@
+ static void game_settings_change_players(GtkSpinButton * widget,
+ 					 GameSettings * gs);
+ static void game_settings_change_turn_timer(GtkSpinButton *widget, GameSettings *gs);
++static void game_settings_change_sbp_timer(GtkSpinButton *widget, GameSettings *gs);
+ static void game_settings_change_victory_points(GtkSpinButton * widget,
+ 						GameSettings * gs);
+ static void game_settings_check(GtkButton * widget, GameSettings * gs);
+@@ -99,7 +100,7 @@
+ 	GtkWidget *hbox;
+ 	GtkObject *adj;
+ 
+-	gtk_table_resize(GTK_TABLE(gs), 4, 3);
++	gtk_table_resize(GTK_TABLE(gs), 5, 3);
+ 	gtk_table_set_row_spacings(GTK_TABLE(gs), 3);
+ 	gtk_table_set_col_spacings(GTK_TABLE(gs), 5);
+ 
+@@ -183,6 +184,24 @@
+ 	gtk_widget_set_tooltip_text(gs->timer_spin,
+ 				    "The maximum turn length, in seconds.  Set to 0 to disable the timer entirely.");
+ 
++	/* Label for Special Building Phase */
++	label = gtk_label_new("Special Building Phase Time Limit (seconds)");
++	gtk_widget_show(label);
++	gtk_table_attach(GTK_TABLE(gs), label, 0, 1, 4, 5, GTK_FILL, GTK_FILL, 0, 0);
++	gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
++
++	adj = gtk_adjustment_new(0, 0, 60*60, 1, 10, 0);
++	gs->sbp_spin = gtk_spin_button_new(GTK_ADJUSTMENT(adj), 1, 0);
++	gtk_entry_set_alignment(GTK_ENTRY(gs->sbp_spin), 1.0);
++	gtk_widget_show(gs->sbp_spin);
++	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(gs->sbp_spin), TRUE);
++	gtk_table_attach(GTK_TABLE(gs), gs->sbp_spin, 1, 2, 4, 5,
++			 GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
++	g_signal_connect(G_OBJECT(gs->sbp_spin), "value-changed",
++			 G_CALLBACK(game_settings_change_sbp_timer), gs);
++	gtk_widget_set_tooltip_text(gs->sbp_spin,
++				    "How long Special Building Phase lasts, in seconds.  Set to 0 to disable Special Building Phase entirely.");
++
+ 	gs->players = 4;
+ 	gs->victory_points = 10;
+ 	game_settings_update(gs);
+@@ -207,6 +226,13 @@
+ 	g_signal_emit(G_OBJECT(gs), game_settings_signals[CHANGE], 0);
+ }
+ 
++static void game_settings_change_sbp_timer(GtkSpinButton *widget, GameSettings *gs)
++{
++	gs->sbp_time = gtk_spin_button_get_value_as_int(widget);
++	game_settings_update(gs);
++	g_signal_emit(G_OBJECT(gs), game_settings_signals[CHANGE], 0);
++}
++
+ /* Emits 'change-players' when the number of players has changed */
+ static void game_settings_change_players(GtkSpinButton * widget,
+ 					 GameSettings * gs)
+@@ -268,6 +294,20 @@
+ 	return gs->turn_time;
+ }
+ 
++/* Set the SBP timer */
++void game_settings_set_sbp_timer(GameSettings * gs,
++				      gint sbp_time)
++{
++	gs->sbp_time = sbp_time;
++	game_settings_update(gs);
++}
++
++/* Get the SBP timer */
++gint game_settings_get_sbp_timer(GameSettings * gs)
++{
++	return gs->sbp_time;
++}
++
+ static void game_settings_check(G_GNUC_UNUSED GtkButton * widget,
+ 				GameSettings * gs)
+ {
+@@ -294,6 +334,8 @@
+ 				  gs->victory_points);
+ 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(gs->timer_spin),
+ 				  gs->turn_time);
++	gtk_spin_button_set_value(GTK_SPIN_BUTTON(gs->sbp_spin),
++				  gs->sbp_time);
+ 
+ 	/* Reenable the signals */
+ 	g_signal_handlers_unblock_matched(G_OBJECT(gs->players_spin),
+diff -urN pioneers-jjold//common/gtk/game-settings.h pioneers-0.12.4//common/gtk/game-settings.h
+--- pioneers-jjold//common/gtk/game-settings.h	2011-06-29 18:18:33.574275001 -0400
++++ pioneers-0.12.4//common/gtk/game-settings.h	2011-06-29 17:54:19.354275000 -0400
+@@ -34,7 +34,9 @@
+ 	guint victory_points;	/* The points needed to win */
+ 
+ 	GtkWidget *timer_spin;
++	GtkWidget *sbp_spin;
+ 	gint turn_time;
++	gint sbp_time;
+ };
+ 
+ struct _GameSettingsClass {
+@@ -55,6 +57,8 @@
+ guint game_settings_get_victory_points(GameSettings * gs);
+ void game_settings_set_turn_timer(GameSettings *gs, gint turn_time);
+ gint game_settings_get_turn_timer(GameSettings *gs);
++void game_settings_set_sbp_timer(GameSettings *gs, gint sbp_time);
++gint game_settings_get_sbp_timer(GameSettings *gs);
+ 
+ G_END_DECLS
+ #endif				/* __GAMESETTINGS_H__ */
+diff -urN pioneers-jjold//Makefile.in pioneers-0.12.4//Makefile.in
+--- pioneers-jjold//Makefile.in	2011-01-26 07:48:45.000000000 -0500
++++ pioneers-0.12.4//Makefile.in	2011-06-29 13:02:21.624274999 -0400
+@@ -667,7 +667,7 @@
+ 	server/develop.c server/discard.c server/gold.c server/meta.c \
+ 	server/player.c server/pregame.c server/resource.c \
+ 	server/robber.c server/server.c server/server.h server/trade.c \
+-	server/turn.c
++	server/turn.c server/special_building_phase.c server/special_building_phase.h
+ @BUILD_SERVER_TRUE@am_libpioneers_server_a_OBJECTS = server/libpioneers_server_a-admin.$(OBJEXT) \
+ @BUILD_SERVER_TRUE@	server/libpioneers_server_a-avahi.$(OBJEXT) \
+ @BUILD_SERVER_TRUE@	server/libpioneers_server_a-buildutil.$(OBJEXT) \
+@@ -681,7 +681,8 @@
+ @BUILD_SERVER_TRUE@	server/libpioneers_server_a-robber.$(OBJEXT) \
+ @BUILD_SERVER_TRUE@	server/libpioneers_server_a-server.$(OBJEXT) \
+ @BUILD_SERVER_TRUE@	server/libpioneers_server_a-trade.$(OBJEXT) \
+-@BUILD_SERVER_TRUE@	server/libpioneers_server_a-turn.$(OBJEXT)
++@BUILD_SERVER_TRUE@	server/libpioneers_server_a-turn.$(OBJEXT) \
++@BUILD_SERVER_TRUE@	server/libpioneers_server_a-special_building_phase.$(OBJEXT)
+ libpioneers_server_a_OBJECTS = $(am_libpioneers_server_a_OBJECTS)
+ libpioneersclient_a_AR = $(AR) $(ARFLAGS)
+ libpioneersclient_a_LIBADD =
+@@ -1400,7 +1401,8 @@
+ @BUILD_SERVER_TRUE@	server/server.c \
+ @BUILD_SERVER_TRUE@	server/server.h \
+ @BUILD_SERVER_TRUE@	server/trade.c \
+-@BUILD_SERVER_TRUE@	server/turn.c
++@BUILD_SERVER_TRUE@	server/turn.c \
++@BUILD_SERVER_TRUE@	server/special_building_phase.c
+ 
+ @BUILD_SERVER_TRUE@pioneers_server_console_SOURCES = \
+ @BUILD_SERVER_TRUE@	server/main.c \
+@@ -1659,6 +1661,8 @@
+ 	server/$(DEPDIR)/$(am__dirstamp)
+ server/libpioneers_server_a-discard.$(OBJEXT): server/$(am__dirstamp) \
+ 	server/$(DEPDIR)/$(am__dirstamp)
++server/libpioneers_server_a-special_building_phase.$(OBJEXT): server/$(am__dirstamp) \
++	server/$(DEPDIR)/$(am__dirstamp)
+ server/libpioneers_server_a-gold.$(OBJEXT): server/$(am__dirstamp) \
+ 	server/$(DEPDIR)/$(am__dirstamp)
+ server/libpioneers_server_a-meta.$(OBJEXT): server/$(am__dirstamp) \
+@@ -1996,6 +2000,7 @@
+ 	-rm -f server/libpioneers_server_a-buildutil.$(OBJEXT)
+ 	-rm -f server/libpioneers_server_a-develop.$(OBJEXT)
+ 	-rm -f server/libpioneers_server_a-discard.$(OBJEXT)
++	-rm -f server/libpioneers_server_a-special_building_phase.$(OBJEXT)
+ 	-rm -f server/libpioneers_server_a-gold.$(OBJEXT)
+ 	-rm -f server/libpioneers_server_a-meta.$(OBJEXT)
+ 	-rm -f server/libpioneers_server_a-player.$(OBJEXT)
+@@ -2090,6 +2095,7 @@
+ @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-buildutil.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-develop.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-discard.Po@am__quote@
++@AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-gold.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-meta.Po@am__quote@
+ @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-player.Po@am__quote@
+@@ -2561,6 +2567,20 @@
+ @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+ @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o server/libpioneers_server_a-discard.obj `if test -f 'server/discard.c'; then $(CYGPATH_W) 'server/discard.c'; else $(CYGPATH_W) '$(srcdir)/server/discard.c'; fi`
+ 
++server/libpioneers_server_a-special_building_phase.o: server/special_building_phase.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT server/libpioneers_server_a-special_building_phase.o -MD -MP -MF server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Tpo -c -o server/libpioneers_server_a-special_building_phase.o `test -f 'server/special_building_phase.c' || echo '$(srcdir)/'`server/special_building_phase.c
++@am__fastdepCC_TRUE@	$(am__mv) server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Tpo server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Po
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='server/special_building_phase.c' object='server/libpioneers_server_a-special_building_phase.o' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o server/libpioneers_server_a-special_building_phase.o `test -f 'server/special_building_phase.c' || echo '$(srcdir)/'`server/special_building_phase.c
++
++server/libpioneers_server_a-special_building_phase.obj: server/special_building_phase.c
++@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT server/libpioneers_server_a-special_building_phase.obj -MD -MP -MF server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Tpo -c -o server/libpioneers_server_a-special_building_phase.obj `if test -f 'server/special_building_phase.c'; then $(CYGPATH_W) 'server/special_building_phase.c'; else $(CYGPATH_W) '$(srcdir)/server/special_building_phase.c'; fi`
++@am__fastdepCC_TRUE@	$(am__mv) server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Tpo server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Po
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='server/special_building_phase.c' object='server/libpioneers_server_a-special_building_phase.obj' libtool=no @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o server/libpioneers_server_a-special_building_phase.obj `if test -f 'server/special_building_phase.c'; then $(CYGPATH_W) 'server/special_building_phase.c'; else $(CYGPATH_W) '$(srcdir)/server/special_building_phase.c'; fi`
++
+ server/libpioneers_server_a-gold.o: server/gold.c
+ @am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT server/libpioneers_server_a-gold.o -MD -MP -MF server/$(DEPDIR)/libpioneers_server_a-gold.Tpo -c -o server/libpioneers_server_a-gold.o `test -f 'server/gold.c' || echo '$(srcdir)/'`server/gold.c
+ @am__fastdepCC_TRUE@	$(am__mv) server/$(DEPDIR)/libpioneers_server_a-gold.Tpo server/$(DEPDIR)/libpioneers_server_a-gold.Po
+diff -urN pioneers-jjold//server/gtk/main.c pioneers-0.12.4//server/gtk/main.c
+--- pioneers-jjold//server/gtk/main.c	2011-06-29 18:18:33.574275001 -0400
++++ pioneers-0.12.4//server/gtk/main.c	2011-06-29 18:04:45.354275003 -0400
+@@ -191,6 +191,8 @@
+ 					 params->victory_points);
+ 	game_settings_set_turn_timer(GAMESETTINGS(game_settings),
+ 					 params->turn_time);
++	game_settings_set_sbp_timer(GAMESETTINGS(game_settings),
++					 params->sbp_time);
+ 	game_rules_set_victory_at_end_of_turn(GAMERULES(game_rules),
+ 					      params->
+ 					      check_victory_at_end_of_turn);
+@@ -273,6 +275,9 @@
+ 		cfg_set_turn_time(params,
+ 				       game_settings_get_turn_timer
+ 				       (GAMESETTINGS(game_settings)));
++		cfg_set_sbp_time(params,
++				       game_settings_get_sbp_timer
++				       (GAMESETTINGS(game_settings)));
+ 		params->check_victory_at_end_of_turn =
+ 		    game_rules_get_victory_at_end_of_turn(GAMERULES
+ 							  (game_rules));
+@@ -605,6 +610,9 @@
+ 	temp = config_get_int("game/turn-time", &default_returned);
+ 	if (!default_returned)
+ 		cfg_set_turn_time(params, temp);
++	temp = config_get_int("game/sbp-time", &default_returned);
++	if (!default_returned)
++		cfg_set_sbp_time(params, temp);
+ 	temp = config_get_int("game/victory-at-end-of-turn", &default_returned);
+ 	if (!default_returned)
+ 		params->check_victory_at_end_of_turn = temp;
+@@ -955,6 +963,9 @@
+ 	cfg_set_turn_time(params,
+ 			       game_settings_get_turn_timer
+ 			       (GAMESETTINGS(game_settings)));
++	cfg_set_sbp_time(params,
++			       game_settings_get_sbp_timer
++			       (GAMESETTINGS(game_settings)));
+ 	params->check_victory_at_end_of_turn =
+ 	    game_rules_get_victory_at_end_of_turn(GAMERULES(game_rules));
+ 	cfg_set_sevens_rule(params,
+diff -urN pioneers-jjold//server/main.c pioneers-0.12.4//server/main.c
+--- pioneers-jjold//server/main.c	2010-10-13 06:06:42.000000000 -0400
++++ pioneers-0.12.4//server/main.c	2011-06-29 17:50:48.924275004 -0400
+@@ -52,6 +52,8 @@
+ 
+ static gint num_players = 0;
+ static gint num_points = 0;
++static gint turn_time_limit = 0;
++static gint sbp_time_limit = 0;
+ static gint sevens_rule = -1;
+ static gint terrain = -1;
+ static gint timeout = 0;
+@@ -95,6 +97,12 @@
+ 	{"computer-players", 'c', 0, G_OPTION_ARG_INT, &num_ai_players,
+ 	 /* Commandline server-console: computer-players */
+ 	 N_("Add N computer players"), "N"},
++	{"turn-timer", 't', 0, G_OPTION_ARG_INT, &turn_time_limit,
++	 /* Commandline option of server-console: turn-timer */
++	 N_("Turn time limit in seconds (0 to disable)"), 0},
++	{"sbp-timer", 's', 0, G_OPTION_ARG_INT, &sbp_time_limit,
++	 /* Commandline option of server-console: sbp-timer */
++	 N_("Special Building Phase time limit in seconds (0 to disable SBP)"), 0},
+ 	{"version", '\0', 0, G_OPTION_ARG_NONE, &show_version,
+ 	 /* Commandline option of server-console: version */
+ 	 N_("Show version information"), NULL},
+@@ -262,6 +270,12 @@
+ 	if (tournament_time != -1)
+ 		cfg_set_tournament_time(params, tournament_time);
+ 
++	if (turn_time_limit)
++		cfg_set_turn_time(params, turn_time_limit);
++
++	if (sbp_time_limit)
++		cfg_set_sbp_time(params, sbp_time_limit);
++
+ 	cfg_set_quit(params, quit_when_done);
+ 
+ 	if (terrain != -1)
+diff -urN pioneers-jjold//server/player.c pioneers-0.12.4//server/player.c
+--- pioneers-jjold//server/player.c	2010-10-20 15:01:12.000000000 -0400
++++ pioneers-0.12.4//server/player.c	2011-06-29 13:06:09.364274999 -0400
+@@ -425,6 +425,7 @@
+ 	player->style = NULL;
+ 	player->special_points = NULL;
+ 	player->special_points_next_id = 0;
++	player->doing_special_building_phase = 0;
+ 
+ 	driver->player_change(game);
+ 
+diff -urN pioneers-jjold//server/pregame.c pioneers-0.12.4//server/pregame.c
+--- pioneers-jjold//server/pregame.c	2011-06-29 18:18:33.574275001 -0400
++++ pioneers-0.12.4//server/pregame.c	2011-06-29 17:47:28.874274998 -0400
+@@ -523,6 +523,10 @@
+ 				     player->name);
+ 		player_send_uncached(player, FIRST_VERSION, LATEST_VERSION,
+ 				     "extension turn time limit is %d\n", game->params->turn_time);
++		if(game->params->sbp_time > 0) {
++			player_send_uncached(player, FIRST_VERSION, LATEST_VERSION,
++					 "extension special building phase time limit is %d\n", game->params->sbp_time);
++		}
+ 		break;
+ 
+ 	case SM_RECV:
+diff -urN pioneers-jjold//server/server.c pioneers-0.12.4//server/server.c
+--- pioneers-jjold//server/server.c	2011-06-29 18:18:33.574275001 -0400
++++ pioneers-0.12.4//server/server.c	2011-06-29 17:48:23.654275001 -0400
+@@ -466,6 +466,15 @@
+ 	params->turn_time = (turn_time == 0 ? -1 : turn_time);
+ }
+ 
++void cfg_set_sbp_time(GameParams *params, gint sbp_time)
++{
++#ifdef PRINT_INFO
++	g_print("cfg_set_sbp_time: %d\n", sbp_time);
++#endif
++	g_return_if_fail(params != NULL);
++	params->sbp_time = (sbp_time == 0 ? -1 : sbp_time);
++}
++
+ /** Attempt to find a game with @a title in @a directory.
+  *  @param title The game must match this title
+  *  @param directory Look in this directory for *.game files
+diff -urN pioneers-jjold//server/server.h pioneers-0.12.4//server/server.h
+--- pioneers-jjold//server/server.h	2011-06-29 18:18:33.574275001 -0400
++++ pioneers-0.12.4//server/server.h	2011-06-29 17:47:55.124275003 -0400
+@@ -82,6 +82,7 @@
+ 	gint libr_played;	/* number of Library cards played */
+ 	gint market_played;	/* number of Market cards played */
+ 	gint islands_discovered;	/* number of islands discovered */
++	gint doing_special_building_phase; /* in the middle of SBP? */
+ 	gboolean disconnected;
+ } Player;
+ 
+@@ -259,6 +260,7 @@
+ void cfg_set_sevens_rule(GameParams * params, gint sevens_rule);
+ void cfg_set_victory_points(GameParams * params, gint victory_points);
+ void cfg_set_turn_time(GameParams * params, gint turn_time);
++void cfg_set_sbp_time(GameParams * params, gint sbp_time);
+ void cfg_set_terrain_type(GameParams * params, gint terrain_type);
+ void cfg_set_tournament_time(GameParams * params, gint tournament_time);
+ void cfg_set_quit(GameParams * params, gboolean quitdone);
+diff -urN pioneers-jjold//server/special_building_phase.c pioneers-0.12.4//server/special_building_phase.c
+--- pioneers-jjold//server/special_building_phase.c	1969-12-31 19:00:00.000000000 -0500
++++ pioneers-0.12.4//server/special_building_phase.c	2011-06-29 16:19:01.884274999 -0400
+@@ -0,0 +1,102 @@
++/* Pioneers - Implementation of the excellent Settlers of Catan board game.
++ *   Go buy a copy.
++ *
++ * Copyright (C) 1999 Dave Cole
++ * Copyright (C) 2003 Bas Wijnen <shevek@fmf.nl>
++ * Copyright (C) 2006 Roland Clobus <rclobus@bigfoot.com>
++ * Copyright (C) 2011 JJ Foote <pioneers@thedopefish.com>
++ *
++ * This program is free software; you can redistribute it and/or modify
++ * it under the terms of the GNU General Public License as published by
++ * the Free Software Foundation; either version 2 of the License, or
++ * (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful,
++ * but WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++ * GNU General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, write to the Free Software
++ * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
++ */
++
++#include "special_building_phase.h"
++
++// prototype from turn.c
++void build_add(Player *player, BuildType type, gint x, gint y, gint pos);
++
++void special_building_phase(Game *game)
++{
++	GList *list;
++	for(list = player_first_real(game); list != NULL; list = player_next_real(list)) {
++		Player *scan = list->data;
++
++		scan->doing_special_building_phase = 1;
++
++		sm_push(scan->sm, (StateFunc) mode_special_building_phase);
++
++		player_send(scan, FIRST_VERSION, LATEST_VERSION,
++			 "special building phase\n");
++	}
++
++	check_finished_special_building_phase(game);
++}
++
++void check_finished_special_building_phase(Game *game)
++{
++	GList *list;
++	// is everyone finished yet?
++	for(list = player_first_real(game); list != NULL; list = player_next_real(list)) {
++		if(((Player *) list->data)->doing_special_building_phase) {
++			break;
++		}
++	}
++	if(list != NULL) {
++		return;
++	}
++
++	for(list = player_first_real(game); list != NULL; list = player_next_real(list)) {
++		Player *scan = list->data;
++		player_send(scan, FIRST_VERSION, LATEST_VERSION, "OK\n");
++		sm_pop(scan->sm);
++	}
++
++	// now that SBP is over, move on to the next turn
++	turn_next_player(game);
++}
++
++gboolean mode_special_building_phase(Player *player, gint event)
++{
++	StateMachine *sm = player->sm;
++	Game *game = player->game;
++	sm_state_name(sm, "mode_special_building_phase");
++
++	if(event != SM_RECV)
++		return FALSE;
++
++	// you're allowed to build, and that's it.  no trading, no D cards, no foolishness.
++	BuildType build_type;
++	gint x, y, pos;
++
++	if (sm_recv(sm, "build %B %d %d %d", &build_type, &x, &y, &pos)) {
++		build_add(player, build_type, x, y, pos);
++		if (!game->params->check_victory_at_end_of_turn)
++			check_victory(player);
++		return TRUE;
++	} else if(!sm_recv(sm, "done")) {
++		return FALSE;
++	}
++
++	player->doing_special_building_phase = 0;
++	sm_goto(sm, (StateFunc) mode_wait_for_other_special_building_phasing_players);
++	check_finished_special_building_phase(game);
++	return TRUE;
++}
++
++gboolean mode_wait_for_other_special_building_phasing_players(Player *player, gint event)
++{
++	StateMachine *sm = player->sm;
++	sm_state_name(sm, "mode_wait_for_other_special_building_phasing_players");
++	return FALSE;
++}
+diff -urN pioneers-jjold//server/special_building_phase.h pioneers-0.12.4//server/special_building_phase.h
+--- pioneers-jjold//server/special_building_phase.h	1969-12-31 19:00:00.000000000 -0500
++++ pioneers-0.12.4//server/special_building_phase.h	2011-06-29 16:19:13.674275003 -0400
+@@ -0,0 +1,13 @@
++#ifndef __SPECIAL_BUILDING_PHASE_H__
++#define __SPECIAL_BUILDING_PHASE_H__
++
++#include "config.h"
++#include "cost.h"
++#include "server.h"
++
++void special_building_phase(Game *game);
++void check_finished_special_building_phase(Game *game);
++gboolean mode_special_building_phase(Player *player, gint event);
++gboolean mode_wait_for_other_special_building_phasing_players(Player *player, gint event);
++
++#endif
+diff -urN pioneers-jjold//server/turn.c pioneers-0.12.4//server/turn.c
+--- pioneers-jjold//server/turn.c	2010-10-26 11:24:09.000000000 -0400
++++ pioneers-0.12.4//server/turn.c	2011-06-29 18:16:04.684275000 -0400
+@@ -26,8 +26,10 @@
+ #include "cost.h"
+ #include "server.h"
+ #include "admin.h"
++#include "special_building_phase.h"
+ 
+-static void build_add(Player * player, BuildType type, gint x, gint y,
++// make this non-static so special_building_phase.c can reference it
++void build_add(Player * player, BuildType type, gint x, gint y,
+ 		      gint pos)
+ {
+ 	Game *game = player->game;
+@@ -529,7 +531,12 @@
+ 		if (!check_victory(player)) {
+ 			/* game isn't over, so pop the state machine back to idle */
+ 			sm_pop(sm);
+-			turn_next_player(game);
++
++			if(game->params->sbp_time > 0) {
++				special_building_phase(game);
++			} else {
++				turn_next_player(game);
++			}
+ 		}
+ 		return TRUE;
+ 	}

@@ -1,0 +1,17 @@
+***************
+*** 40,47 ****
+  #include "gtkbugs.h"
+  #include "audio.h"
+  
+- extern TURN_LENGTH_SECONDS;
+- 
+  static GtkWidget *preferences_dlg;
+  GtkWidget *app_window;		/* main application window */
+  
+--- 40,45 ----
+  #include "gtkbugs.h"
+  #include "audio.h"
+  
+  static GtkWidget *preferences_dlg;
+  GtkWidget *app_window;		/* main application window */
+  

@@ -28,6 +28,7 @@ static void game_settings_init(GameSettings * sg);
 static void game_settings_change_players(GtkSpinButton * widget,
 					 GameSettings * gs);
 static void game_settings_change_turn_timer(GtkSpinButton *widget, GameSettings *gs);
+static void game_settings_change_sbp_timer(GtkSpinButton *widget, GameSettings *gs);
 static void game_settings_change_victory_points(GtkSpinButton * widget,
 						GameSettings * gs);
 static void game_settings_check(GtkButton * widget, GameSettings * gs);
@@ -99,7 +100,7 @@ static void game_settings_init(GameSettings * gs)
 	GtkWidget *hbox;
 	GtkObject *adj;
 
-	gtk_table_resize(GTK_TABLE(gs), 4, 3);
+	gtk_table_resize(GTK_TABLE(gs), 5, 3);
 	gtk_table_set_row_spacings(GTK_TABLE(gs), 3);
 	gtk_table_set_col_spacings(GTK_TABLE(gs), 5);
 
@@ -183,6 +184,24 @@ static void game_settings_init(GameSettings * gs)
 	gtk_widget_set_tooltip_text(gs->timer_spin,
 				    "The maximum turn length, in seconds.  Set to 0 to disable the timer entirely.");
 
+	/* Label for Special Building Phase */
+	label = gtk_label_new("Special Building Phase Time Limit (seconds)");
+	gtk_widget_show(label);
+	gtk_table_attach(GTK_TABLE(gs), label, 0, 1, 4, 5, GTK_FILL, GTK_FILL, 0, 0);
+	gtk_misc_set_alignment(GTK_MISC(label), 0, 0.5);
+
+	adj = gtk_adjustment_new(0, 0, 60*60, 1, 10, 0);
+	gs->sbp_spin = gtk_spin_button_new(GTK_ADJUSTMENT(adj), 1, 0);
+	gtk_entry_set_alignment(GTK_ENTRY(gs->sbp_spin), 1.0);
+	gtk_widget_show(gs->sbp_spin);
+	gtk_spin_button_set_numeric(GTK_SPIN_BUTTON(gs->sbp_spin), TRUE);
+	gtk_table_attach(GTK_TABLE(gs), gs->sbp_spin, 1, 2, 4, 5,
+			 GTK_EXPAND | GTK_FILL, GTK_FILL, 0, 0);
+	g_signal_connect(G_OBJECT(gs->sbp_spin), "value-changed",
+			 G_CALLBACK(game_settings_change_sbp_timer), gs);
+	gtk_widget_set_tooltip_text(gs->sbp_spin,
+				    "How long Special Building Phase lasts, in seconds.  Set to 0 to disable Special Building Phase entirely.");
+
 	gs->players = 4;
 	gs->victory_points = 10;
 	game_settings_update(gs);
@@ -203,6 +222,13 @@ GtkWidget *game_settings_new(gboolean with_check_button)
 static void game_settings_change_turn_timer(GtkSpinButton *widget, GameSettings *gs)
 {
 	gs->turn_time = gtk_spin_button_get_value_as_int(widget);
+	game_settings_update(gs);
+	g_signal_emit(G_OBJECT(gs), game_settings_signals[CHANGE], 0);
+}
+
+static void game_settings_change_sbp_timer(GtkSpinButton *widget, GameSettings *gs)
+{
+	gs->sbp_time = gtk_spin_button_get_value_as_int(widget);
 	game_settings_update(gs);
 	g_signal_emit(G_OBJECT(gs), game_settings_signals[CHANGE], 0);
 }
@@ -268,6 +294,20 @@ gint game_settings_get_turn_timer(GameSettings * gs)
 	return gs->turn_time;
 }
 
+/* Set the SBP timer */
+void game_settings_set_sbp_timer(GameSettings * gs,
+				      gint sbp_time)
+{
+	gs->sbp_time = sbp_time;
+	game_settings_update(gs);
+}
+
+/* Get the SBP timer */
+gint game_settings_get_sbp_timer(GameSettings * gs)
+{
+	return gs->sbp_time;
+}
+
 static void game_settings_check(G_GNUC_UNUSED GtkButton * widget,
 				GameSettings * gs)
 {
@@ -294,6 +334,8 @@ static void game_settings_update(GameSettings * gs)
 				  gs->victory_points);
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(gs->timer_spin),
 				  gs->turn_time);
+	gtk_spin_button_set_value(GTK_SPIN_BUTTON(gs->sbp_spin),
+				  gs->sbp_time);
 
 	/* Reenable the signals */
 	g_signal_handlers_unblock_matched(G_OBJECT(gs->players_spin),

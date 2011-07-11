@@ -1,0 +1,131 @@
+***************
+*** 667,673 ****
+  	server/develop.c server/discard.c server/gold.c server/meta.c \
+  	server/player.c server/pregame.c server/resource.c \
+  	server/robber.c server/server.c server/server.h server/trade.c \
+- 	server/turn.c server/special_building_phase.c server/special_building_phase.h
+  @BUILD_SERVER_TRUE@am_libpioneers_server_a_OBJECTS = server/libpioneers_server_a-admin.$(OBJEXT) \
+  @BUILD_SERVER_TRUE@	server/libpioneers_server_a-avahi.$(OBJEXT) \
+  @BUILD_SERVER_TRUE@	server/libpioneers_server_a-buildutil.$(OBJEXT) \
+--- 667,673 ----
+  	server/develop.c server/discard.c server/gold.c server/meta.c \
+  	server/player.c server/pregame.c server/resource.c \
+  	server/robber.c server/server.c server/server.h server/trade.c \
++ 	server/turn.c
+  @BUILD_SERVER_TRUE@am_libpioneers_server_a_OBJECTS = server/libpioneers_server_a-admin.$(OBJEXT) \
+  @BUILD_SERVER_TRUE@	server/libpioneers_server_a-avahi.$(OBJEXT) \
+  @BUILD_SERVER_TRUE@	server/libpioneers_server_a-buildutil.$(OBJEXT) \
+***************
+*** 681,688 ****
+  @BUILD_SERVER_TRUE@	server/libpioneers_server_a-robber.$(OBJEXT) \
+  @BUILD_SERVER_TRUE@	server/libpioneers_server_a-server.$(OBJEXT) \
+  @BUILD_SERVER_TRUE@	server/libpioneers_server_a-trade.$(OBJEXT) \
+- @BUILD_SERVER_TRUE@	server/libpioneers_server_a-turn.$(OBJEXT) \
+- @BUILD_SERVER_TRUE@	server/libpioneers_server_a-special_building_phase.$(OBJEXT)
+  libpioneers_server_a_OBJECTS = $(am_libpioneers_server_a_OBJECTS)
+  libpioneersclient_a_AR = $(AR) $(ARFLAGS)
+  libpioneersclient_a_LIBADD =
+--- 681,687 ----
+  @BUILD_SERVER_TRUE@	server/libpioneers_server_a-robber.$(OBJEXT) \
+  @BUILD_SERVER_TRUE@	server/libpioneers_server_a-server.$(OBJEXT) \
+  @BUILD_SERVER_TRUE@	server/libpioneers_server_a-trade.$(OBJEXT) \
++ @BUILD_SERVER_TRUE@	server/libpioneers_server_a-turn.$(OBJEXT)
+  libpioneers_server_a_OBJECTS = $(am_libpioneers_server_a_OBJECTS)
+  libpioneersclient_a_AR = $(AR) $(ARFLAGS)
+  libpioneersclient_a_LIBADD =
+***************
+*** 1401,1408 ****
+  @BUILD_SERVER_TRUE@	server/server.c \
+  @BUILD_SERVER_TRUE@	server/server.h \
+  @BUILD_SERVER_TRUE@	server/trade.c \
+- @BUILD_SERVER_TRUE@	server/turn.c \
+- @BUILD_SERVER_TRUE@	server/special_building_phase.c
+  
+  @BUILD_SERVER_TRUE@pioneers_server_console_SOURCES = \
+  @BUILD_SERVER_TRUE@	server/main.c \
+--- 1400,1406 ----
+  @BUILD_SERVER_TRUE@	server/server.c \
+  @BUILD_SERVER_TRUE@	server/server.h \
+  @BUILD_SERVER_TRUE@	server/trade.c \
++ @BUILD_SERVER_TRUE@	server/turn.c
+  
+  @BUILD_SERVER_TRUE@pioneers_server_console_SOURCES = \
+  @BUILD_SERVER_TRUE@	server/main.c \
+***************
+*** 1661,1668 ****
+  	server/$(DEPDIR)/$(am__dirstamp)
+  server/libpioneers_server_a-discard.$(OBJEXT): server/$(am__dirstamp) \
+  	server/$(DEPDIR)/$(am__dirstamp)
+- server/libpioneers_server_a-special_building_phase.$(OBJEXT): server/$(am__dirstamp) \
+- 	server/$(DEPDIR)/$(am__dirstamp)
+  server/libpioneers_server_a-gold.$(OBJEXT): server/$(am__dirstamp) \
+  	server/$(DEPDIR)/$(am__dirstamp)
+  server/libpioneers_server_a-meta.$(OBJEXT): server/$(am__dirstamp) \
+--- 1659,1664 ----
+  	server/$(DEPDIR)/$(am__dirstamp)
+  server/libpioneers_server_a-discard.$(OBJEXT): server/$(am__dirstamp) \
+  	server/$(DEPDIR)/$(am__dirstamp)
+  server/libpioneers_server_a-gold.$(OBJEXT): server/$(am__dirstamp) \
+  	server/$(DEPDIR)/$(am__dirstamp)
+  server/libpioneers_server_a-meta.$(OBJEXT): server/$(am__dirstamp) \
+***************
+*** 2000,2006 ****
+  	-rm -f server/libpioneers_server_a-buildutil.$(OBJEXT)
+  	-rm -f server/libpioneers_server_a-develop.$(OBJEXT)
+  	-rm -f server/libpioneers_server_a-discard.$(OBJEXT)
+- 	-rm -f server/libpioneers_server_a-special_building_phase.$(OBJEXT)
+  	-rm -f server/libpioneers_server_a-gold.$(OBJEXT)
+  	-rm -f server/libpioneers_server_a-meta.$(OBJEXT)
+  	-rm -f server/libpioneers_server_a-player.$(OBJEXT)
+--- 1996,2001 ----
+  	-rm -f server/libpioneers_server_a-buildutil.$(OBJEXT)
+  	-rm -f server/libpioneers_server_a-develop.$(OBJEXT)
+  	-rm -f server/libpioneers_server_a-discard.$(OBJEXT)
+  	-rm -f server/libpioneers_server_a-gold.$(OBJEXT)
+  	-rm -f server/libpioneers_server_a-meta.$(OBJEXT)
+  	-rm -f server/libpioneers_server_a-player.$(OBJEXT)
+***************
+*** 2095,2101 ****
+  @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-buildutil.Po@am__quote@
+  @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-develop.Po@am__quote@
+  @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-discard.Po@am__quote@
+- @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Po@am__quote@
+  @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-gold.Po@am__quote@
+  @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-meta.Po@am__quote@
+  @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-player.Po@am__quote@
+--- 2090,2095 ----
+  @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-buildutil.Po@am__quote@
+  @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-develop.Po@am__quote@
+  @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-discard.Po@am__quote@
+  @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-gold.Po@am__quote@
+  @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-meta.Po@am__quote@
+  @AMDEP_TRUE@@am__include@ @am__quote@server/$(DEPDIR)/libpioneers_server_a-player.Po@am__quote@
+***************
+*** 2567,2586 ****
+  @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+  @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o server/libpioneers_server_a-discard.obj `if test -f 'server/discard.c'; then $(CYGPATH_W) 'server/discard.c'; else $(CYGPATH_W) '$(srcdir)/server/discard.c'; fi`
+  
+- server/libpioneers_server_a-special_building_phase.o: server/special_building_phase.c
+- @am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT server/libpioneers_server_a-special_building_phase.o -MD -MP -MF server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Tpo -c -o server/libpioneers_server_a-special_building_phase.o `test -f 'server/special_building_phase.c' || echo '$(srcdir)/'`server/special_building_phase.c
+- @am__fastdepCC_TRUE@	$(am__mv) server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Tpo server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Po
+- @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='server/special_building_phase.c' object='server/libpioneers_server_a-special_building_phase.o' libtool=no @AMDEPBACKSLASH@
+- @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+- @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o server/libpioneers_server_a-special_building_phase.o `test -f 'server/special_building_phase.c' || echo '$(srcdir)/'`server/special_building_phase.c
+- 
+- server/libpioneers_server_a-special_building_phase.obj: server/special_building_phase.c
+- @am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT server/libpioneers_server_a-special_building_phase.obj -MD -MP -MF server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Tpo -c -o server/libpioneers_server_a-special_building_phase.obj `if test -f 'server/special_building_phase.c'; then $(CYGPATH_W) 'server/special_building_phase.c'; else $(CYGPATH_W) '$(srcdir)/server/special_building_phase.c'; fi`
+- @am__fastdepCC_TRUE@	$(am__mv) server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Tpo server/$(DEPDIR)/libpioneers_server_a-special_building_phase.Po
+- @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='server/special_building_phase.c' object='server/libpioneers_server_a-special_building_phase.obj' libtool=no @AMDEPBACKSLASH@
+- @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+- @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o server/libpioneers_server_a-special_building_phase.obj `if test -f 'server/special_building_phase.c'; then $(CYGPATH_W) 'server/special_building_phase.c'; else $(CYGPATH_W) '$(srcdir)/server/special_building_phase.c'; fi`
+- 
+  server/libpioneers_server_a-gold.o: server/gold.c
+  @am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT server/libpioneers_server_a-gold.o -MD -MP -MF server/$(DEPDIR)/libpioneers_server_a-gold.Tpo -c -o server/libpioneers_server_a-gold.o `test -f 'server/gold.c' || echo '$(srcdir)/'`server/gold.c
+  @am__fastdepCC_TRUE@	$(am__mv) server/$(DEPDIR)/libpioneers_server_a-gold.Tpo server/$(DEPDIR)/libpioneers_server_a-gold.Po
+--- 2561,2566 ----
+  @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+  @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o server/libpioneers_server_a-discard.obj `if test -f 'server/discard.c'; then $(CYGPATH_W) 'server/discard.c'; else $(CYGPATH_W) '$(srcdir)/server/discard.c'; fi`
+  
+  server/libpioneers_server_a-gold.o: server/gold.c
+  @am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libpioneers_server_a_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT server/libpioneers_server_a-gold.o -MD -MP -MF server/$(DEPDIR)/libpioneers_server_a-gold.Tpo -c -o server/libpioneers_server_a-gold.o `test -f 'server/gold.c' || echo '$(srcdir)/'`server/gold.c
+  @am__fastdepCC_TRUE@	$(am__mv) server/$(DEPDIR)/libpioneers_server_a-gold.Tpo server/$(DEPDIR)/libpioneers_server_a-gold.Po

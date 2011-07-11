@@ -20,6 +20,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 #include "config.h"
+#include <gtkosxapplication.h>
 #include "version.h"
 
 #ifdef HAVE_LOCALE_H
@@ -1224,6 +1225,7 @@ static GtkActionEntry entries[] = {
 static const char *ui_description =
 "<ui>"
 "  <menubar name='MainMenu'>"
+"      <menuitem action='Quit' />" 
 "    <menu action='FileMenu'>"
 "      <menuitem action='New'/>"
 "      <menuitem action='Open'/>"
@@ -1232,8 +1234,7 @@ static const char *ui_description =
 "      <separator/>"
 "      <menuitem action='CheckVP'/>"
 "      <menuitem action='ChangeTitle'/>"
-"      <separator/>"
-"      <menuitem action='Quit'/>"
+"      <separator/>" 
 "    </menu>"
 "    <menu action='ViewMenu'>"
 "      <menuitem action='Full'/>"
@@ -1268,6 +1269,7 @@ static GOptionEntry commandline_entries[] = {
 	{NULL, '\0', 0, 0, NULL, NULL, NULL}
 };
 
+
 int main(int argc, char *argv[])
 {
 	gchar *filename;
@@ -1290,6 +1292,8 @@ int main(int argc, char *argv[])
 	bindtextdomain(PACKAGE, LOCALEDIR);
 	textdomain(PACKAGE);
 	bind_textdomain_codeset(PACKAGE, "UTF-8");
+
+GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
 
 	context =
 	    /* Long description in the command line: --help */
@@ -1393,6 +1397,11 @@ int main(int argc, char *argv[])
 		return 1;
 
 	gtk_widget_show_all(toplevel);
+
+	gtk_accel_map_load(g_getenv("ACCEL_MAP"));
+	gtk_widget_hide (menubar);
+	gtk_osxapplication_set_menu_bar(theApp, GTK_MENU_SHELL(menubar));
+	gtk_osxapplication_ready(theApp);
 
 	gtk_main();
 

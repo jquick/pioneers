@@ -21,7 +21,6 @@
 
 #include "config.h"
 #include <locale.h>
-
 #include "client.h"
 #include "callback.h"
 #include <glib.h>

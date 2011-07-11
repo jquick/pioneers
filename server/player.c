@@ -425,6 +425,7 @@ Player *player_new(Game * game, const gchar * name)
 	player->style = NULL;
 	player->special_points = NULL;
 	player->special_points_next_id = 0;
+	player->doing_special_building_phase = 0;
 
 	driver->player_change(game);
 

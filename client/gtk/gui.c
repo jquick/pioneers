@@ -21,10 +21,10 @@
  */
 
 #include "config.h"
+#include <gtkosxapplication.h>
 #include <math.h>
 #include <ctype.h>
 #include <assert.h>
-#include <gtkosxapplication.h>
 #ifdef HAVE_HELP
 #include <libgnome/libgnome.h>
 #endif
@@ -42,8 +42,7 @@
 #include "audio.h"
 #include "gtkcompat.h"
 
-extern TURN_LENGTH_SECONDS;
-
+static gboolean;
 static GtkWidget *preferences_dlg;
 GtkWidget *app_window;		/* main application window */
 
@@ -390,6 +389,7 @@ static GtkToggleActionEntry toggle_entries[] = {
 static const char *ui_description =
 "<ui>"
 "  <menubar name='MainMenu'>"
+"      <menuitem action='GameQuit' />"
 "    <menu action='GameMenu'>"
 "      <menuitem action='GameNew'/>"
 "      <menuitem action='GameLeave'/>"
@@ -402,8 +402,6 @@ static const char *ui_description =
 "      <menuitem action='Legend'/>"
 "      <menuitem action='GameSettings'/>"
 "      <menuitem action='DiceHistogram'/>"
-"      <separator/>"
-"      <menuitem action='GameQuit'/>"
 "    </menu>"
 "    <menu action='ActionsMenu'>"
 "      <menuitem action='RollDice'/>"
@@ -870,8 +868,23 @@ static GtkWidget *turn_timer_widget = NULL;
 
 void update_turn_timer(void)
 {
-	static char time_remaining_string[15];
+	static char time_remaining_string[25];
 	void frontend_state_idle(G_GNUC_UNUSED GuiEvent event); // prototype from interface.c
+
+	/* DEBUG
+	static char modemode[30];
+	if(callback_mode == MODE_WAIT_TURN) strcpy(modemode, "MODE_WAIT_TURN");
+	else if(callback_mode == MODE_TURN) strcpy(modemode, "MODE_TURN");
+	else if(callback_mode == MODE_SPECIAL_BUILDING_PHASE) strcpy(modemode, "MODE_SPECIAL_BUILDING_PHASE");
+	else if(callback_mode == MODE_DISCARD) strcpy(modemode, "MODE_DISCARD");
+	else if(callback_mode == MODE_DISCARD_WAIT) strcpy(modemode, "MODE_DISCARD_WAIT");
+	else if(callback_mode == MODE_ROB) strcpy(modemode, "MODE_ROB");
+	else if(callback_mode == MODE_ROBBER) strcpy(modemode, "MODE_ROBBER");
+	else if(callback_mode == MODE_DOMESTIC) strcpy(modemode, "MODE_DOMESTIC");
+	else if(callback_mode == MODE_QUOTE) strcpy(modemode, "MODE_QUOTE");
+	else strcpy(modemode, "OTHER");
+	log_message(MSG_INFO, "Mode = %s\n", modemode);
+	END DEBUG */
 
 	if(seconds_remaining == 1) {
 		// time's up noob!
@@ -879,16 +892,19 @@ void update_turn_timer(void)
 
 		if(callback_mode == MODE_TURN) {
 			gui_set_instructions("Time's up, your turn is now over.");
-			log_message(MSG_INFO, "%s's time has run out; their turn is now over.\n", player_name(current_player(), TRUE));
 			trade_finish();
 			quote_finish();
 			if(!have_rolled_dice()) {
 				cb_roll();
 				seconds_remaining = 1; // FIXME hack; wait for the roll event to resolve first
 			} else {
+				log_message(MSG_INFO, "%s's time has run out; their turn is now over.\n", player_name(current_player(), TRUE));
 				cb_end_turn();
 				set_gui_state(frontend_state_idle);
 			}
+		} else if(callback_mode == MODE_SPECIAL_BUILDING_PHASE) {
+			cb_end_turn();
+			set_gui_state(frontend_state_idle);
 		} else if(callback_mode == MODE_DOMESTIC) {
 			// end trading
 			trade_finish();
@@ -932,14 +948,14 @@ void update_turn_timer(void)
 		} else {
 			seconds_remaining = 1; // FIXME hack; wait for current event to resolve first
 		}
-	} else if(seconds_remaining > 0 && callback_mode != MODE_DISCARD) {
+	} else if(seconds_remaining > 0 && callback_mode != MODE_DISCARD && callback_mode != MODE_DISCARD_WAIT && callback_mode != MODE_GOLD && callback_mode != MODE_GOLD_WAIT) {
 		// count down, unless we're in discard mode
 		seconds_remaining--;
 	}
 
 	// render timer
 	if(seconds_remaining > 0) {
-		snprintf(time_remaining_string, 15, "<b>%02d:%02d</b>", seconds_remaining / 60, seconds_remaining % 60);
+		snprintf(time_remaining_string, 25, "<b>%02d:%02d</b>%s", seconds_remaining / 60, seconds_remaining % 60, (callback_mode == MODE_SPECIAL_BUILDING_PHASE ? "  [SBP]" : ""));
 		gtk_label_set_markup(GTK_LABEL(turn_timer_widget), time_remaining_string);
 		gtk_widget_queue_draw(turn_timer_widget);
 	} else {
@@ -1723,6 +1739,11 @@ static void register_pixmaps(void)
 	}
 }
 
+can_activate_cb(GtkWidget* widget, guint signal_id, gpointer data)
+{
+  return gtk_widget_is_sensitive(widget);
+}
+
 GtkWidget *gui_build_interface(void)
 {
 	GtkWidget *vbox;
@@ -1737,11 +1758,11 @@ GtkWidget *gui_build_interface(void)
 	gmap = guimap_new();
 
 	register_pixmaps();
+	GtkOSXApplication *theApp = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
 
 	app_window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 	/* The name of the application */
 	gtk_window_set_title(GTK_WINDOW(app_window), _("Pioneers"));
-
 
 	prepare_gtk_for_close_button_on_tab();
 
@@ -1762,9 +1783,6 @@ GtkWidget *gui_build_interface(void)
 
 	accel_group = gtk_ui_manager_get_accel_group(ui_manager);
 	gtk_window_add_accel_group(GTK_WINDOW(app_window), accel_group);
-
-
-	GtkOSXApplication *Pioneers = g_object_new(GTK_TYPE_OSX_APPLICATION, NULL);
 
 	error = NULL;
 	if (!gtk_ui_manager_add_ui_from_string
@@ -1869,10 +1887,13 @@ GtkWidget *gui_build_interface(void)
 	gtk_widget_show(app_window);
 	g_signal_connect(G_OBJECT(app_window), "delete_event",
 			 G_CALLBACK(quit_cb), NULL);
-	
 
-	gtk_osxapplication_set_menu_bar(Pioneers, GTK_MENU_SHELL(menubar));
 
+	gtk_accel_map_load(g_getenv("ACCEL_MAP"));
+
+	gtk_widget_hide (menubar);
+	gtk_osxapplication_set_menu_bar(theApp, GTK_MENU_SHELL(menubar));
+	gtk_osxapplication_ready(theApp);
 	return app_window;
 }
 

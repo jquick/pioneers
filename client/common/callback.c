@@ -75,7 +75,8 @@ void cb_build_road(const Edge * edge)
 	/* build road */
 	g_assert(callback_mode == MODE_TURN
 		 || callback_mode == MODE_ROAD_BUILD
-		 || callback_mode == MODE_SETUP);
+		 || callback_mode == MODE_SETUP
+		 || callback_mode == MODE_SPECIAL_BUILDING_PHASE);
 	sm_send(SM(), "build road %d %d %d\n", edge->x, edge->y,
 		edge->pos);
 	sm_push(SM(), mode_build_response);
@@ -86,7 +87,8 @@ void cb_build_ship(const Edge * edge)
 	/* build ship */
 	g_assert(callback_mode == MODE_TURN
 		 || callback_mode == MODE_ROAD_BUILD
-		 || callback_mode == MODE_SETUP);
+		 || callback_mode == MODE_SETUP
+		 || callback_mode == MODE_SPECIAL_BUILDING_PHASE);
 	sm_send(SM(), "build ship %d %d %d\n", edge->x, edge->y,
 		edge->pos);
 	sm_push(SM(), mode_build_response);
@@ -97,7 +99,8 @@ void cb_build_bridge(const Edge * edge)
 	/* build bridge */
 	g_assert(callback_mode == MODE_TURN
 		 || callback_mode == MODE_ROAD_BUILD
-		 || callback_mode == MODE_SETUP);
+		 || callback_mode == MODE_SETUP
+		 || callback_mode == MODE_SPECIAL_BUILDING_PHASE);
 	sm_send(SM(), "build bridge %d %d %d\n", edge->x, edge->y,
 		edge->pos);
 	sm_push(SM(), mode_build_response);
@@ -116,7 +119,8 @@ void cb_build_settlement(const Node * node)
 {
 	/* build settlement */
 	g_assert(callback_mode == MODE_TURN
-		 || callback_mode == MODE_SETUP);
+		 || callback_mode == MODE_SETUP
+		 || callback_mode == MODE_SPECIAL_BUILDING_PHASE);
 	sm_send(SM(), "build settlement %d %d %d\n",
 		node->x, node->y, node->pos);
 	sm_push(SM(), mode_build_response);
@@ -125,7 +129,8 @@ void cb_build_settlement(const Node * node)
 void cb_build_city(const Node * node)
 {
 	/* build city */
-	g_assert(callback_mode == MODE_TURN);
+	g_assert(callback_mode == MODE_TURN
+			|| callback_mode == MODE_SPECIAL_BUILDING_PHASE);
 	sm_send(SM(), "build city %d %d %d\n", node->x, node->y,
 		node->pos);
 	sm_push(SM(), mode_build_response);
@@ -134,7 +139,8 @@ void cb_build_city(const Node * node)
 void cb_build_city_wall(const Node * node)
 {
 	/* build city */
-	g_assert(callback_mode == MODE_TURN);
+	g_assert(callback_mode == MODE_TURN
+			|| callback_mode == MODE_SPECIAL_BUILDING_PHASE);
 	sm_send(SM(), "build city_wall %d %d %d\n", node->x, node->y,
 		node->pos);
 	sm_push(SM(), mode_build_response);
@@ -162,7 +168,8 @@ void cb_undo(void)
 	g_assert(callback_mode == MODE_TURN
 		 || callback_mode == MODE_ROAD_BUILD
 		 || callback_mode == MODE_SETUP
-		 || callback_mode == MODE_ROB);
+		 || callback_mode == MODE_ROB
+		 || callback_mode == MODE_SPECIAL_BUILDING_PHASE);
 	sm_send(SM(), "undo\n");
 	sm_push(SM(), mode_undo_response);
 }
@@ -196,7 +203,9 @@ void cb_end_turn(void)
 	/* end turn or road building or setup */
 	g_assert(callback_mode == MODE_TURN
 		 || callback_mode == MODE_ROAD_BUILD
-		 || callback_mode == MODE_SETUP);
+		 || callback_mode == MODE_SETUP
+		 || callback_mode == MODE_SPECIAL_BUILDING_PHASE);
+
 	sm_send(SM(), "done\n");
 	sm_push(SM(), mode_done_response);
 }
@@ -405,28 +414,28 @@ gboolean road_building_can_finish(void)
 
 gboolean turn_can_build_road(void)
 {
-	return have_rolled_dice()
+	return (have_rolled_dice() || callback_mode == MODE_SPECIAL_BUILDING_PHASE)
 	    && stock_num_roads() > 0 && can_afford(cost_road())
 	    && map_can_place_road(callbacks.get_map(), my_player_num());
 }
 
 gboolean turn_can_build_ship(void)
 {
-	return have_rolled_dice()
+	return (have_rolled_dice() || callback_mode == MODE_SPECIAL_BUILDING_PHASE)
 	    && stock_num_ships() > 0 && can_afford(cost_ship())
 	    && map_can_place_ship(callbacks.get_map(), my_player_num());
 }
 
 gboolean turn_can_build_bridge(void)
 {
-	return have_rolled_dice()
+	return (have_rolled_dice() || callback_mode == MODE_SPECIAL_BUILDING_PHASE)
 	    && stock_num_bridges() > 0 && can_afford(cost_bridge())
 	    && map_can_place_bridge(callbacks.get_map(), my_player_num());
 }
 
 gboolean turn_can_build_settlement(void)
 {
-	return have_rolled_dice()
+	return (have_rolled_dice() || callback_mode == MODE_SPECIAL_BUILDING_PHASE)
 	    && stock_num_settlements() > 0 && can_afford(cost_settlement())
 	    && map_can_place_settlement(callbacks.get_map(),
 					my_player_num());
@@ -434,7 +443,7 @@ gboolean turn_can_build_settlement(void)
 
 gboolean turn_can_build_city(void)
 {
-	return have_rolled_dice()
+	return (have_rolled_dice() || callback_mode == MODE_SPECIAL_BUILDING_PHASE)
 	    && stock_num_cities() > 0
 	    && can_afford(cost_upgrade_settlement())
 	    && map_can_upgrade_settlement(callbacks.get_map(),
@@ -443,7 +452,7 @@ gboolean turn_can_build_city(void)
 
 gboolean turn_can_build_city_wall(void)
 {
-	return have_rolled_dice()
+	return (have_rolled_dice() || callback_mode == MODE_SPECIAL_BUILDING_PHASE)
 	    && stock_num_city_walls() > 0 && can_afford(cost_city_wall())
 	    && map_can_place_city_wall(callbacks.get_map(),
 				       my_player_num());

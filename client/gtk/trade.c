@@ -256,9 +256,22 @@ static void add_trade_row(GtkWidget * table, TradeRow * row,
 			  Resource resource)
 {
 	gint col;
+	GtkWidget *resource_pic;
+	GdkPixmap *p;
+	GdkBitmap *b;
 
 	col = 0;
 	row->resource = resource;
+
+	gui_get_resource_pixmap(resource, &p, &b, NULL, NULL);
+	resource_pic = gtk_image_new_from_pixmap(p, b);
+	gtk_widget_show(resource_pic);
+	gtk_table_attach(GTK_TABLE(table), resource_pic,
+			 col, col + 1, resource, resource + 1,
+			 GTK_FILL, GTK_FILL, 0, 0);
+	col++;
+
+
 	row->chk =
 	    gtk_check_button_new_with_label(resource_name(resource, TRUE));
 	g_signal_connect(G_OBJECT(row->chk), "toggled",
@@ -445,7 +458,7 @@ GtkWidget *trade_build_page(void)
 	gtk_widget_show(alignment);
 	gtk_box_pack_start(GTK_BOX(vbox), alignment, FALSE, FALSE, 0);
 
-	table = gtk_table_new(NO_RESOURCE, 2, FALSE);
+	table = gtk_table_new(NO_RESOURCE, 3, FALSE);
 	gtk_widget_show(table);
 	gtk_container_add(GTK_CONTAINER(alignment), table);
 	gtk_container_set_border_width(GTK_CONTAINER(table), 0);
@@ -475,7 +488,7 @@ GtkWidget *trade_build_page(void)
 	gtk_box_pack_start(GTK_BOX(we_receive_frame), alignment, FALSE,
 			   FALSE, 0);
 
-	table = gtk_table_new(NO_RESOURCE, 2, FALSE);
+	table = gtk_table_new(NO_RESOURCE, 3, FALSE);
 	gtk_widget_show(table);
 	gtk_container_add(GTK_CONTAINER(alignment), table);
 	gtk_container_set_border_width(GTK_CONTAINER(table), 0);

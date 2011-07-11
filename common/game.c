@@ -78,7 +78,8 @@ static Param game_params[] = {
 	{PARAM_V(develop-soldier, PARAM_INT, num_develop_type[DEVEL_SOLDIER])},
 	{PARAM_V(use-pirate, PARAM_BOOL, use_pirate)},
 	{PARAM_V(island-discovery-bonus, PARAM_INTLIST, island_discovery_bonus)},
-	{PARAM_V(turn-time, PARAM_INT, turn_time)}
+	{PARAM_V(turn-time, PARAM_INT, turn_time)},
+	{PARAM_V(sbp-time, PARAM_INT, sbp_time)}
 };
 /* *INDENT-ON* */
 

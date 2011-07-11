@@ -73,7 +73,8 @@ typedef struct {
 	gboolean quit_when_done;	/* server quits after someone wins *//* Not in game_params[] */
 	gboolean use_pirate;	/* is there a pirate in this game? */
 	GArray *island_discovery_bonus;	/* list of VPs for discovering an island */
-	gint turn_time;
+	gint turn_time; /* max turn time limit */
+	gint sbp_time; /* how long Special Building Phase lasts (0 to disable SBP) */
 } GameParams;
 
 typedef struct {

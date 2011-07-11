@@ -405,6 +405,8 @@ if test $pioneers_is_mingw_port = yes; then
 	pioneers_localedir=locale
 	DATADIRNAME=.
 else
+AC_SUBST(LIBS, "-ligemacintegration $LIBS")
+AC_SUBST(C_INCLUDE_PATH, "/Users/jquick/gtk/inst/include/igemacintegration/")
 	pioneers_datadir=$datadir
 	pioneers_themedir=$datadir/games/pioneers/themes
 	pioneers_themedir_embed=$pioneers_themedir

@@ -26,8 +26,10 @@
 #include "cost.h"
 #include "server.h"
 #include "admin.h"
+#include "special_building_phase.h"
 
-static void build_add(Player * player, BuildType type, gint x, gint y,
+// make this non-static so special_building_phase.c can reference it
+void build_add(Player * player, BuildType type, gint x, gint y,
 		      gint pos)
 {
 	Game *game = player->game;
@@ -529,7 +531,12 @@ gboolean mode_turn(Player * player, gint event)
 		if (!check_victory(player)) {
 			/* game isn't over, so pop the state machine back to idle */
 			sm_pop(sm);
-			turn_next_player(game);
+
+			if(game->params->sbp_time > 0) {
+				special_building_phase(game);
+			} else {
+				turn_next_player(game);
+			}
 		}
 		return TRUE;
 	}

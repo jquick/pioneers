@@ -1,0 +1,22 @@
+***************
+*** 2089,2094 ****
+  	}
+  }
+  
+  void greedy_init(G_GNUC_UNUSED int argc, G_GNUC_UNUSED char **argv)
+  {
+  	callbacks.setup = &greedy_setup;
+--- 2089,2101 ----
+  	}
+  }
+  
++ static void greedy_special_building_phase(void)
++ {
++ 	// AI doesn't like special building phase
++ 	// TODO: this doesn't work
++ 	cb_end_turn();
++ }
++ 
+  void greedy_init(G_GNUC_UNUSED int argc, G_GNUC_UNUSED char **argv)
+  {
+  	callbacks.setup = &greedy_setup;

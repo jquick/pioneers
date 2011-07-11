@@ -143,7 +143,7 @@ void themes_init(void)
 	g_assert(theme_list == NULL);
 
 	/* scan global theme directory */
-	theme_scan_dir(THEMEDIR);
+	theme_scan_dir(g_getenv("PIONEERS_THEME_DIR"));
 
 	/* scan user theme directory */
 	path =
@@ -152,7 +152,7 @@ void themes_init(void)
 	theme_scan_dir(path);
 
 	if (theme_list == NULL) {
-		g_error("No theme found: %s or %s", THEMEDIR, path);
+		g_error("No theme found: %s or %s", g_getenv("PIONEERS_THEME_DIR"), path);
 	}
 	g_free(path);
 

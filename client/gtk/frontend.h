@@ -128,6 +128,7 @@ void frontend_roadbuilding(gint num_roads);
 void frontend_monopoly(void);
 void frontend_plenty(const gint * bank);
 void frontend_turn(void);
+void frontend_special_building_phase(void);
 void frontend_trade_player_end(gint player_num);
 void frontend_trade_add_quote(gint player_num, gint quote_num,
 			      const gint * they_supply,

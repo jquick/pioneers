@@ -26,9 +26,12 @@
 #include "histogram.h"
 #include "audio.h"
 
+extern int SBP_LENGTH_SECONDS;
+
 /* local functions */
 static void frontend_state_robber(GuiEvent event);
 static void frontend_state_turn(GuiEvent event);
+static void frontend_state_special_building_phase(GuiEvent event);
 static void build_road_cb(MapElement edge, MapElement extra);
 static void build_ship_cb(MapElement edge, MapElement extra);
 static void build_bridge_cb(MapElement edge, MapElement extra);
@@ -417,6 +420,79 @@ static void frontend_state_turn(GuiEvent event)
 	}
 }
 
+static void frontend_state_special_building_phase(GuiEvent event)
+{
+	switch (event) {
+	case GUI_UPDATE:
+		frontend_gui_check(GUI_ROLL, FALSE);
+		frontend_gui_check(GUI_UNDO, FALSE);
+		frontend_gui_check(GUI_ROAD, turn_can_build_road());
+		frontend_gui_check(GUI_SHIP, turn_can_build_ship());
+		frontend_gui_check(GUI_MOVE_SHIP, FALSE);
+		frontend_gui_check(GUI_BRIDGE, turn_can_build_bridge());
+		frontend_gui_check(GUI_SETTLEMENT,
+				   turn_can_build_settlement());
+		frontend_gui_check(GUI_CITY, turn_can_build_city());
+		frontend_gui_check(GUI_CITY_WALL,
+				   turn_can_build_city_wall());
+		frontend_gui_check(GUI_TRADE, FALSE);
+		frontend_gui_check(GUI_PLAY_DEVELOP, FALSE);
+		frontend_gui_check(GUI_BUY_DEVELOP, FALSE);
+		frontend_gui_check(GUI_FINISH, FALSE); // don't allow clicking finish during SBP
+
+		guimap_single_click_set_functions(check_road,
+						  build_road_cb,
+						  check_ship,
+						  build_ship_cb,
+						  check_bridge,
+						  build_bridge_cb,
+						  check_settlement,
+						  build_settlement_cb,
+						  check_city,
+						  build_city_cb,
+						  check_city_wall,
+						  build_city_wall_cb,
+						  check_ship_move,
+						  move_ship_cb,
+						  cancel_move_ship_cb);
+		break;
+	case GUI_UNDO:
+		cb_undo();
+		return;
+	case GUI_ROAD:
+		gui_cursor_set(ROAD_CURSOR, check_road, build_road_cb,
+			       NULL, NULL);
+		return;
+	case GUI_SHIP:
+		gui_cursor_set(SHIP_CURSOR, check_ship, build_ship_cb,
+			       NULL, NULL);
+		return;
+	case GUI_BRIDGE:
+		gui_cursor_set(BRIDGE_CURSOR, check_bridge,
+			       build_bridge_cb, NULL, NULL);
+		return;
+	case GUI_SETTLEMENT:
+		gui_cursor_set(SETTLEMENT_CURSOR, check_settlement,
+			       build_settlement_cb, NULL, NULL);
+		return;
+	case GUI_CITY:
+		gui_cursor_set(CITY_CURSOR, check_city, build_city_cb,
+			       NULL, NULL);
+		return;
+	case GUI_CITY_WALL:
+		gui_cursor_set(CITY_WALL_CURSOR, check_city_wall,
+			       build_city_wall_cb, NULL, NULL);
+		return;
+	case GUI_FINISH:
+		cb_end_turn();
+		gui_cursor_none();	/* Finish single click build */
+		set_gui_state(frontend_state_idle);
+		return;
+	default:
+		break;
+	}
+}
+
 void frontend_turn(void)
 {
 	/* if it already is our turn, just update the gui (maybe something
@@ -431,6 +507,11 @@ void frontend_turn(void)
 	}
 	set_gui_state(frontend_state_turn);
 	play_sound(SOUND_TURN);
+}
+
+void frontend_special_building_phase(void)
+{
+	set_gui_state(frontend_state_special_building_phase);
 }
 
 /* development card actions */

@@ -172,5 +172,5 @@ void setup_begin_double(gint player_num);
 void turn_rolled_dice(gint player_num, gint die1, gint die2);
 void turn_begin(gint player_num, gint turn_num);
 
-int TURN_LENGTH_SECONDS;
+int TURN_LENGTH_SECONDS, SBP_LENGTH_SECONDS;
 #endif

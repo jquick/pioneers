@@ -466,6 +466,15 @@ void cfg_set_turn_time(GameParams *params, gint turn_time)
 	params->turn_time = (turn_time == 0 ? -1 : turn_time);
 }
 
+void cfg_set_sbp_time(GameParams *params, gint sbp_time)
+{
+#ifdef PRINT_INFO
+	g_print("cfg_set_sbp_time: %d\n", sbp_time);
+#endif
+	g_return_if_fail(params != NULL);
+	params->sbp_time = (sbp_time == 0 ? -1 : sbp_time);
+}
+
 /** Attempt to find a game with @a title in @a directory.
  *  @param title The game must match this title
  *  @param directory Look in this directory for *.game files

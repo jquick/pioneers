@@ -131,6 +131,8 @@ GtkWidget *resource_table_new(const gchar * title,
 
 	gchar *temp;
 	GtkWidget *widget;
+	GdkPixmap *p;
+	GdkBitmap *b;
 	gint i;
 	gint row;
 
@@ -144,7 +146,7 @@ GtkWidget *resource_table_new(const gchar * title,
 	rt->bank_offset = with_bank ? 1 : 0;
 	gtk_table_resize(GTK_TABLE(rt),
 			 NO_RESOURCE + 1 + with_total ? 1 : 0,
-			 5 + rt->bank_offset);
+			 6 + rt->bank_offset);
 	gtk_table_set_row_spacings(GTK_TABLE(rt), 3);
 	gtk_table_set_col_spacings(GTK_TABLE(rt), 6);
 
@@ -154,24 +156,30 @@ GtkWidget *resource_table_new(const gchar * title,
 	g_free(temp);
 	gtk_widget_show(widget);
 	gtk_table_attach_defaults(GTK_TABLE(rt), widget,
-				  0, 5 + rt->bank_offset, 0, 1);
+				  0, 6 + rt->bank_offset, 0, 1);
 	gtk_misc_set_alignment(GTK_MISC(widget), 0, 0.5);
 
 	row = 1;
 	for (i = 0; i < NO_RESOURCE; i++) {
 		rt->row[i].filter = FALSE;
 
+		gui_get_resource_pixmap(i, &p, &b, NULL, NULL);
+		widget = gtk_image_new_from_pixmap(p, b);
+		gtk_widget_show(widget);
+		gtk_table_attach_defaults(GTK_TABLE(rt), widget,
+					  0, 1, row, row + 1);
+
 		widget = rt->row[i].label_widget =
 		    gtk_label_new(resource_name(i, TRUE));
 		gtk_widget_show(widget);
 		gtk_table_attach_defaults(GTK_TABLE(rt), widget,
-					  0, 1, row, row + 1);
+					  1, 2, row, row + 1);
 		gtk_misc_set_alignment(GTK_MISC(widget), 0.0, 0.5);
 
 		widget = rt->row[i].hand_widget = gtk_entry_new();
 		gtk_widget_show(widget);
 		gtk_table_attach_defaults(GTK_TABLE(rt), widget,
-					  1, 2, row, row + 1);
+					  2, 3, row, row + 1);
 		gtk_entry_set_width_chars(GTK_ENTRY(widget), 3);
 		gtk_widget_set_sensitive(widget, FALSE);
 		gtk_entry_set_alignment(GTK_ENTRY(widget), 1.0);
@@ -189,7 +197,7 @@ GtkWidget *resource_table_new(const gchar * title,
 				 &rt->row[i]);
 		gtk_widget_show(widget);
 		gtk_table_attach_defaults(GTK_TABLE(rt), widget,
-					  2, 3, row, row + 1);
+					  3, 4, row, row + 1);
 		gtk_widget_set_tooltip_text(widget,
 					    /* Tooltip for decreasing the selected amount */
 					    _(""
@@ -200,7 +208,7 @@ GtkWidget *resource_table_new(const gchar * title,
 			widget = rt->row[i].bank_widget = gtk_entry_new();
 			gtk_widget_show(widget);
 			gtk_table_attach_defaults(GTK_TABLE(rt), widget,
-						  3, 4, row, row + 1);
+						  4, 5, row, row + 1);
 			gtk_entry_set_width_chars(GTK_ENTRY(widget), 3);
 			gtk_widget_set_sensitive(widget, FALSE);
 			gtk_entry_set_alignment(GTK_ENTRY(widget), 1.0);
@@ -218,8 +226,8 @@ GtkWidget *resource_table_new(const gchar * title,
 				 &rt->row[i]);
 		gtk_widget_show(widget);
 		gtk_table_attach_defaults(GTK_TABLE(rt), widget,
-					  3 + rt->bank_offset,
-					  4 + rt->bank_offset, row,
+					  4 + rt->bank_offset,
+					  5 + rt->bank_offset, row,
 					  row + 1);
 		gtk_widget_set_tooltip_text(widget,
 					    /* Tooltip for increasing the selected amount */
@@ -230,8 +238,8 @@ GtkWidget *resource_table_new(const gchar * title,
 		    gtk_spin_button_new_with_range(0, 99, 1);
 		gtk_widget_show(widget);
 		gtk_table_attach_defaults(GTK_TABLE(rt), widget,
-					  4 + rt->bank_offset,
-					  5 + rt->bank_offset, row,
+					  5 + rt->bank_offset,
+					  6 + rt->bank_offset, row,
 					  row + 1);
 		gtk_entry_set_width_chars(GTK_ENTRY(widget), 3);
 		gtk_entry_set_alignment(GTK_ENTRY(widget), 1.0);

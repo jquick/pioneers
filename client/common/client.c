@@ -35,7 +35,9 @@
 #include "quoteinfo.h"
 #include "notifying-string.h"
 
-TURN_LENGTH_SECONDS = -1;
+int TURN_LENGTH_SECONDS = 0;
+int SBP_LENGTH_SECONDS = 0;
+int seconds_remaining;
 
 static enum callback_mode previous_mode;
 GameParams *game_params;
@@ -83,6 +85,7 @@ static gboolean mode_recovery_wait_start_response(StateMachine * sm,
 						  gint event);
 static void recover_from_disconnect(StateMachine * sm,
 				    struct recovery_info_t *rinfo);
+static gboolean mode_special_building_phase(StateMachine *sm, gint event);
 
 /* Create and/or return the client state machine.
  */
@@ -216,6 +219,10 @@ static void dummy_plenty(G_GNUC_UNUSED const gint * bank)
 }
 
 static void dummy_turn(void)
+{;
+}
+
+static void dummy_special_building_phase(void)
 {;
 }
 
@@ -494,6 +501,7 @@ void client_init(void)
 	callbacks.error = &dummy_error;
 	callbacks.get_map = &dummy_get_map;
 	callbacks.set_map = &dummy_set_map;
+	callbacks.special_building_phase = &dummy_special_building_phase;
 	/* mainloop and quit are not set here */
 	resource_init();
 }
@@ -590,8 +598,11 @@ static gboolean global_unhandled(StateMachine * sm, gint event)
 			// hack to send the turn time limit to the client
 			if (ptr = strstr(str, "turn time limit is ")) {
 				ptr += strlen("turn time limit is ");
-				TURN_LENGTH_SECONDS  = atoi(ptr);
-				printf("yo dawg, %d from '%s'\n", TURN_LENGTH_SECONDS, str);
+				TURN_LENGTH_SECONDS = atoi(ptr);
+				return TRUE;
+			} else if(ptr = strstr(str, "special building phase time limit is ")) {
+				ptr += strlen("special building phase time limit is ");
+				SBP_LENGTH_SECONDS = atoi(ptr);
 				return TRUE;
 			} else {
 				log_message(MSG_INFO,
@@ -1542,6 +1553,19 @@ static gboolean mode_idle(StateMachine * sm, gint event)
 			sm_push(sm, mode_turn);
 			return TRUE;
 		}
+		if (sm_recv(sm, "special building phase")) {
+			seconds_remaining = SBP_LENGTH_SECONDS;
+			callbacks.special_building_phase();
+			sm_push(sm, mode_special_building_phase);
+			return TRUE;
+		}
+		if (sm_recv(sm, "OK")) {
+			// HACK: ignore an unexpected "OK" here; if we disconnect and rejoin
+			// during SBP, we get put in idle state instead of SBP state.  this is
+			// fine; we simply forfeit the rest of this SBP; however, when SBP ends
+			// and the server sends an OK, we get confused.  so ignore that.
+			return TRUE;
+		}
 		if (sm_recv
 		    (sm,
 		     "player %d domestic-trade call supply %R receive %R",
@@ -2015,6 +2039,23 @@ static gboolean mode_turn(StateMachine * sm, gint event)
 			return TRUE;
 		break;
 	default:
+		break;
+	}
+	return FALSE;
+}
+
+gboolean mode_special_building_phase(StateMachine *sm, gint event)
+{
+	sm_state_name(sm, "mode_special_building_phase");
+	switch(event) {
+	case SM_ENTER:
+		callback_mode = MODE_SPECIAL_BUILDING_PHASE;
+		callbacks.instructions("Special Building Phase!!!");
+		callbacks.special_building_phase();
+		break;
+	case SM_RECV:
+		if(check_other_players(sm))
+			return TRUE;
 		break;
 	}
 	return FALSE;
